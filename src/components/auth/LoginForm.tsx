@@ -2,6 +2,7 @@
 
 import { FC } from "react";
 import Input from "../shared/Input";
+import Link from "next/link";
 
 const LoginForm: FC = () => {
   return (
@@ -22,6 +23,12 @@ const LoginForm: FC = () => {
                 <Input id={"Password"} value={"Password"} label={"Password"} onChange={() => {}} />
                 <button className="bg-red-600 py-3 text-white rounded-md w-full mt-10 :hover-bg-red-700 transition">Login</button>
               </form>
+              <p className="text-neutral-500 mt-12">
+                First time using NextFlix
+              </p>
+              <span className="text-white ml-1 hover:underline cursor-pointer">
+                Create and account: <Link href="/register">Register</Link>
+              </span>
             </div>
           </div>
         </div>
