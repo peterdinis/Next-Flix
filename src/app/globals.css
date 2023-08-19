@@ -1,6 +1,13 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 
 body {
   @apply bg-zinc-900 h-full overflow-x-hidden;
@@ -12,4 +19,20 @@ body {
 
 html {
   @apply h-full;
+}
+
+html::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+}
+
+html::-webkit-scrollbar-thumb {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: inset 2px 2px 2px hsla(0, 0%, 100%, 0.25),
+    inset -2px -2px 2px rgba(0, 0, 0, 0.25);
+}
+
+html::-webkit-scrollbar-track {
+  background: linear-gradient(90deg, #434343, #434343 1px, #111 0, #111);
 }
