@@ -1,25 +1,22 @@
-/*
-  Warnings:
+-- CreateTable
+CREATE TABLE "User" (
+    "id" SERIAL NOT NULL,
+    "name" TEXT NOT NULL,
+    "image" TEXT,
+    "email" TEXT,
+    "emailVerified" TIMESTAMP(3),
+    "hashedPassword" TEXT,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+    "favoriteIds" TEXT[],
 
-  - The primary key for the `User` table will be changed. If it partially fails, the table could be left without primary key constraint.
-  - You are about to drop the column `hashPassword` on the `User` table. All the data in the column will be lost.
-  - The `id` column on the `User` table would be dropped and recreated. This will lead to data loss if there is data in the column.
-
-*/
--- AlterTable
-ALTER TABLE "User" DROP CONSTRAINT "User_pkey",
-DROP COLUMN "hashPassword",
-ADD COLUMN     "favoriteIds" TEXT[],
-ADD COLUMN     "hashedPassword" TEXT,
-DROP COLUMN "id",
-ADD COLUMN     "id" UUID NOT NULL DEFAULT uuid-ossp,
-ALTER COLUMN "email" DROP NOT NULL,
-ADD CONSTRAINT "User_pkey" PRIMARY KEY ("id");
+    CONSTRAINT "User_pkey" PRIMARY KEY ("id")
+);
 
 -- CreateTable
 CREATE TABLE "Account" (
-    "id" UUID NOT NULL DEFAULT uuid-ossp,
-    "userId" UUID NOT NULL,
+    "id" SERIAL NOT NULL,
+    "userId" INTEGER NOT NULL,
     "type" TEXT NOT NULL,
     "provider" TEXT NOT NULL,
     "providerAccountId" TEXT NOT NULL,
@@ -36,9 +33,9 @@ CREATE TABLE "Account" (
 
 -- CreateTable
 CREATE TABLE "Session" (
-    "id" UUID NOT NULL DEFAULT uuid-ossp,
+    "id" SERIAL NOT NULL,
     "sessionToken" TEXT NOT NULL,
-    "userId" UUID NOT NULL,
+    "userId" INTEGER NOT NULL,
     "expires" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "Session_pkey" PRIMARY KEY ("id")
@@ -46,7 +43,7 @@ CREATE TABLE "Session" (
 
 -- CreateTable
 CREATE TABLE "VerificationToken" (
-    "id" UUID NOT NULL DEFAULT uuid-ossp,
+    "id" SERIAL NOT NULL,
     "identifier" TEXT NOT NULL,
     "token" TEXT NOT NULL,
     "expires" TIMESTAMP(3) NOT NULL,
@@ -56,7 +53,7 @@ CREATE TABLE "VerificationToken" (
 
 -- CreateTable
 CREATE TABLE "Movie" (
-    "id" UUID NOT NULL DEFAULT uuid-ossp,
+    "id" SERIAL NOT NULL,
     "title" TEXT NOT NULL,
     "description" TEXT NOT NULL,
     "videoUrl" TEXT NOT NULL,
@@ -66,6 +63,9 @@ CREATE TABLE "Movie" (
 
     CONSTRAINT "Movie_pkey" PRIMARY KEY ("id")
 );
+
+-- CreateIndex
+CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Account_provider_providerAccountId_key" ON "Account"("provider", "providerAccountId");

@@ -33,14 +33,14 @@ export const authOptions: NextAuthOptions = {
           },
         });
 
-        if (!user || !user.hashPassword) {
+        if (!user || !user.hashedPassword) {
           toast.error("Email does not exists");
           throw new Error("Email does not exists");
         }
 
         const isCorrectPassword = await compare(
           credentials?.password as unknown as string,
-          user.hashPassword
+          user.hashedPassword
         );
 
         if (!isCorrectPassword) {
