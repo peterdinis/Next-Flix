@@ -37,7 +37,8 @@ export const authOptions: NextAuthOptions = {
                     throw new Error("Email does not exists");
                 }
 
-                const isCorrectPassword = await compare(credentials?.password as unknown as string, user.hashPassword)
+                const isCorrectPassword = await compare(credentials?.password as unknown as string, user.hashPassword);
+
                 if(!isCorrectPassword) {
                     toast.error("Incorret password");
                     throw new Error("Incorrect password");
@@ -46,6 +47,7 @@ export const authOptions: NextAuthOptions = {
                 return {
                     id: user.id as unknown as string,
                     email: user.email,
+                    name: user.name
                 }
             }
         })
@@ -54,5 +56,8 @@ export const authOptions: NextAuthOptions = {
         signIn: "/signIn"
     },
 
-    debug: process.env.NODE_ENV === 'development'
+    debug: process.env.NODE_ENV === 'development',
+    session: {
+        strategy: "jwt"
+    }
 }
