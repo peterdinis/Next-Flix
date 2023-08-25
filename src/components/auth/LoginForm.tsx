@@ -19,7 +19,7 @@ const LoginForm: FC = () => {
             <h2 className="text-white text-4xl mb-8 font-semibold">Sign In</h2>
             <div className="flex flex-col gap-4">
               <form>
-                <Input id={"Email"} value={"Email"} label={"Email"} onChange={() => {}} />
+                <Input id={"Email"} value={"Email"} label={"Email"} onChange={() => {}} /> <br />
                 <Input id={"Password"} value={"Password"} label={"Password"} onChange={() => {}} />
                 <button className="bg-red-600 py-3 text-white rounded-md w-full mt-10 :hover-bg-red-700 transition">Login</button>
               </form>
