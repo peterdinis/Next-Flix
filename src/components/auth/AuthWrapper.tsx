@@ -1,8 +1,10 @@
+"use client"
+
 import axios from 'axios';
 import { useCallback, useState } from 'react';
 import { NextPageContext } from 'next';
 import { getSession, signIn } from 'next-auth/react';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import Input from '@/components/shared/Input';
 
 export async function getServerSideProps(context: NextPageContext) {
