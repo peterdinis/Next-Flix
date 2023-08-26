@@ -4,6 +4,8 @@ import { getSession, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import * as api from "@/api/queries/userQueries";
 import { useQuery } from "@tanstack/react-query";
+import FallbackLoader from "../shared/Loader";
+import ErrorMessage from "../shared/Error";
 
 const images = [
   "/images/default-blue.jpg",
@@ -56,6 +58,14 @@ const UserCard: React.FC<UserCardProps> = ({ name }) => {
 const ProfileWrapper: FC = () => {
   const router = useRouter();
   const {data, isLoading, isError} = useQuery(["currentUser"], api.getCurrentUser); 
+
+  if(isLoading) {
+    return <FallbackLoader />
+  }
+
+  if(isError) {
+    return <ErrorMessage error={"Something went wrong"} />
+  }
 
   console.log("User data", data);
 

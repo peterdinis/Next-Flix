@@ -5,6 +5,7 @@ import { NextPageContext } from "next";
 import { getSession } from "next-auth/react";
 import useInfoModalStore from "@/zustand/modalStore";
 import Navbar from "../shared/navbar/Navbar";
+import ScrollToTop from "@/hooks/useScroll";
 
 export async function getServerSideProps(context: NextPageContext) {
   const session = await getSession(context);
@@ -28,6 +29,7 @@ const Hero: FC = () => {
   return (
     <>
       <Navbar />
+      <ScrollToTop />
     </>
   )
 };
