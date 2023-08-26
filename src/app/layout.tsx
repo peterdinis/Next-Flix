@@ -24,13 +24,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <QueryClientProvider client={queryClient}>
-          <ErrorBoundary>
+        <ErrorBoundary>
+          <QueryClientProvider client={queryClient}>
             {children}
             <Toaster />
             <ReactQueryDevtools initialIsOpen={false} />
-          </ErrorBoundary>
-        </QueryClientProvider>
+          </QueryClientProvider>
+        </ErrorBoundary>
       </body>
     </html>
   );
