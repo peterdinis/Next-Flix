@@ -7,8 +7,7 @@ import {
 import NavbarItem from "./NavbarItem";
 import MobileMenu from "../menu/MobileMenu";
 import AccountMenu from "../menu/AccountMenu";
-
-const TOP_OFFSET = 66;
+import { TOP_OFFSET } from "@/constants/applictionConstants";
 
 const Navbar = () => {
   const [showAccountMenu, setShowAccountMenu] = useState(false);
