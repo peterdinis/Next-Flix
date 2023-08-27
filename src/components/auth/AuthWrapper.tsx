@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useState, ChangeEvent } from "react";
+import { useCallback, useState, ChangeEvent, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Input from "@/components/shared/Input";
 import Link from "next/link";
@@ -9,7 +9,6 @@ const AuthWrapper = () => {
   const router = useRouter();
 
   const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
   const [password, setPassword] = useState("");
 
   const [variant, setVariant] = useState("login");
@@ -19,6 +18,15 @@ const AuthWrapper = () => {
       currentVariant === "login" ? "register" : "login"
     );
   }, []);
+
+  const mounted = useRef(false)
+
+  useEffect(() => {
+    mounted.current = true
+    return () => {
+      mounted.current = false
+    }
+  }, [])
 
   const login = useCallback(async () => {
     try {
@@ -47,7 +55,7 @@ const AuthWrapper = () => {
     } catch (error) {
       console.log(error);
     }
-  }, [email, name, password, login]);
+  }, [email, password, login]);
 
   return (
     <div className="relative h-full w-full bg-[url('/images/herohero.jpg')] bg-no-repeat bg-center bg-fixed bg-cover">
@@ -61,17 +69,6 @@ const AuthWrapper = () => {
               {variant === "login" ? "Sign in" : "Register"}
             </h2>
             <div className="flex flex-col gap-4">
-              {variant === "register" && (
-                <Input
-                  id="name"
-                  type="text"
-                  label="Username"
-                  value={name}
-                  onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                    setName(e.target.value)
-                  }
-                />
-              )}
               <Input
                 id="email"
                 type="email"
