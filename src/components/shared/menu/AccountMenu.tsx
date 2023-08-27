@@ -1,5 +1,6 @@
 
 import { FC } from "react";
+import { useAuth } from "@/hooks/useAuth";
 
 interface AccountMenuProps {
   visible?: boolean;
@@ -7,9 +8,15 @@ interface AccountMenuProps {
 
 const AccountMenu: FC<AccountMenuProps> = ({ visible }: AccountMenuProps) => {
 
+  const {logout, currentUser} = useAuth();
+
   if (!visible) {
     return null;
   }
+
+
+  console.log("currentUser", currentUser);
+
   return (
     <div className="bg-black w-56 absolute top-14 right-0 py-5 flex-col border-2 border-gray-800 flex">
       <div className="flex flex-col gap-3">
@@ -24,6 +31,7 @@ const AccountMenu: FC<AccountMenuProps> = ({ visible }: AccountMenuProps) => {
       </div>
       <hr className="bg-gray-600 border-0 h-px my-4" />
       <div
+        onClick={() => logout()}
         className="px-3 text-center text-white text-sm hover:underline"
       >
         Sign out of Netflix
