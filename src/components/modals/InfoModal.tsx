@@ -17,13 +17,13 @@ const InfoModal: FC<InfoModalPropsI> = ({
   const [showModal, setShowModal] = useRecoilState(modalState);
   const [currentMovie, setCurrentMovie] = useRecoilState(movieState);
 
-  console.log("netflix originals", netflixOriginals);
+  console.log("netflix originals", netflixOriginals.results);
 
-  useEffect(() => {
+  /* useEffect(() => {
     setMovie(
       netflixOriginals[Math.floor(Math.random() * netflixOriginals.results.length)]
     );
-  }, [netflixOriginals]);
+  }, [netflixOriginals]); */
 
   return (
     <>
