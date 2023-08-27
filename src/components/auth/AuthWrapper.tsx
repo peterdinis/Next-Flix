@@ -4,12 +4,15 @@ import { useCallback, useState, ChangeEvent, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Input from "@/components/shared/Input";
 import Link from "next/link";
+import { useAuth } from "@/hooks/useAuth";
 
 const AuthWrapper = () => {
   const router = useRouter();
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [credentials, setCredentials] = useState({
+    email: "",
+    password: "",
+  });
 
   const [variant, setVariant] = useState("login");
 
@@ -19,43 +22,24 @@ const AuthWrapper = () => {
     );
   }, []);
 
-  const mounted = useRef(false)
+  const { register, login } = useAuth();
+
+  const mounted = useRef(false);
 
   useEffect(() => {
-    mounted.current = true
+    mounted.current = true;
     return () => {
-      mounted.current = false
-    }
-  }, [])
+      mounted.current = false;
+    };
+  }, []);
 
-  const login = useCallback(async () => {
-    try {
-      /*    await signIn('credentials', {
-        email,
-        password,
-        redirect: false,
-        callbackUrl: '/'
-      }); */
+  const registerUser = () => {
+    register(credentials);
+  };
 
-      router.push("/profile");
-    } catch (error) {
-      console.log(error);
-    }
-  }, [email, password, router]);
-
-  const register = useCallback(async () => {
-    try {
-      /* await axios.post('/api/register', {
-        email,
-        name,
-        password
-      }); */
-
-      login();
-    } catch (error) {
-      console.log(error);
-    }
-  }, [email, password, login]);
+  const loginUser = () => {
+    login(credentials);
+  };
 
   return (
     <div className="relative h-full w-full bg-[url('/images/herohero.jpg')] bg-no-repeat bg-center bg-fixed bg-cover">
@@ -73,23 +57,23 @@ const AuthWrapper = () => {
                 id="email"
                 type="email"
                 label="Email address or phone number"
-                value={email}
+                value={credentials.email}
                 onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                  setEmail(e.target.value)
+                  setCredentials({ ...credentials, email: e.target.value })
                 }
               />
               <Input
                 type="password"
                 id="password"
                 label="Password"
-                value={password}
+                value={credentials.password}
                 onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                  setPassword(e.target.value)
+                  setCredentials({ ...credentials, password: e.target.value })
                 }
               />
             </div>
             <button
-              onClick={variant === "login" ? login : register}
+              onClick={variant === "login" ? loginUser : registerUser}
               className="bg-red-600 py-3 text-white rounded-md w-full mt-10 hover:bg-red-700 transition"
             >
               {variant === "login" ? "Login" : "Sign up"}

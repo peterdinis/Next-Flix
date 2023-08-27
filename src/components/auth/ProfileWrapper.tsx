@@ -2,6 +2,7 @@ import { FC, useCallback } from "react";
 import { NextPageContext } from "next";
 import { getSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { useAuth } from "@/hooks/useAuth";
 
 const images = [
   "/images/default-blue.jpg",
@@ -54,9 +55,13 @@ const UserCard: React.FC<UserCardProps> = ({ name }) => {
 const ProfileWrapper: FC = () => {
   const router = useRouter();
 
+  const {currentUser} = useAuth();
+
   const selectProfile = useCallback(() => {
     router.push('/');
   }, [router]);
+
+  console.log("CurrentUser", currentUser);
 
   return (
     <div className="flex items-center h-full justify-center">
