@@ -14,7 +14,7 @@ const LoginForm: FC = () => {
     password: "",
   });
 
-  const { register } = useAuth();
+  const { login } = useAuth();
 
   const mounted = useRef(false);
 
@@ -25,9 +25,9 @@ const LoginForm: FC = () => {
     };
   }, []);
 
-  const registerUser = () => {
-    register(credentials);
-    router.push("/login");
+  const loginUser = () => {
+    login(credentials);
+    router.push("/profile");
   };
   return (
     <div className="relative h-full w-full bg-[url('/images/herohero.jpg')] bg-no-repeat bg-center bg-fixed bg-cover">
@@ -37,7 +37,7 @@ const LoginForm: FC = () => {
         </nav>
         <div className="flex justify-center">
           <div className="bg-black bg-opacity-70 px-16 py-16 self-center mt-2 lg:w-2/5 lg:max-w-md rounded-md w-full">
-            <h2 className="text-white text-4xl mb-8 font-semibold">Register</h2>
+            <h2 className="text-white text-4xl mb-8 font-semibold">Login</h2>
             <div className="flex flex-col gap-4">
               <Input
                 id="email"
@@ -59,15 +59,15 @@ const LoginForm: FC = () => {
               />
             </div>
             <button
-              onClick={registerUser}
+              onClick={loginUser}
               className="bg-red-600 py-3 text-white rounded-md w-full mt-10 hover:bg-red-700 transition"
             >
-              Register
+              Login
             </button>
             <p className="text-neutral-500 mt-12">
-              Already have an account?
+              No account
               <span className="text-white ml-1 hover:underline cursor-pointer">
-                Login
+                <Link href="/register">Register here</Link>
               </span>
               .
             </p>
@@ -86,6 +86,5 @@ const LoginForm: FC = () => {
     </div>
   );
 };
-
 
 export default LoginForm;

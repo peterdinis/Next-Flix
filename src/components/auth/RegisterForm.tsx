@@ -67,7 +67,7 @@ const RegisterForm: FC = () => {
             <p className="text-neutral-500 mt-12">
               Already have an account?
               <span className="text-white ml-1 hover:underline cursor-pointer">
-                Login
+               <Link href="/login"> Login</Link>
               </span>
               .
             </p>
