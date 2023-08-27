@@ -1,6 +1,4 @@
-import { signOut } from "next-auth/react";
-import { useQuery } from "@tanstack/react-query";
-import { getCurrentUser } from "@/api/queries/userQueries";
+
 import { FC } from "react";
 
 interface AccountMenuProps {
@@ -8,9 +6,6 @@ interface AccountMenuProps {
 }
 
 const AccountMenu: FC<AccountMenuProps> = ({ visible }: AccountMenuProps) => {
-  const { data } = useQuery(["currentUser"], getCurrentUser);
-
-  console.log("Data", data);
 
   if (!visible) {
     return null;
@@ -29,7 +24,6 @@ const AccountMenu: FC<AccountMenuProps> = ({ visible }: AccountMenuProps) => {
       </div>
       <hr className="bg-gray-600 border-0 h-px my-4" />
       <div
-        onClick={() => signOut()}
         className="px-3 text-center text-white text-sm hover:underline"
       >
         Sign out of Netflix

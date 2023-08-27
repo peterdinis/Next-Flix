@@ -1,12 +1,8 @@
 "use client";
-
-import { QueryClientProvider } from "@tanstack/react-query";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Toaster } from "react-hot-toast";
-import { queryClient } from "@/api/queryClient";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import ErrorBoundary from "@/components/shared/GlobalError";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -25,11 +21,8 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <ErrorBoundary>
-          <QueryClientProvider client={queryClient}>
             {children}
             <Toaster />
-            <ReactQueryDevtools initialIsOpen={false} />
-          </QueryClientProvider>
         </ErrorBoundary>
       </body>
     </html>

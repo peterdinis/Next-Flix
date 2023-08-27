@@ -1,9 +1,7 @@
 import { FC, useCallback } from "react";
 import { NextPageContext } from "next";
-import { getSession, useSession } from "next-auth/react";
+import { getSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import FallbackLoader from "../shared/Loader";
-import ErrorMessage from "../shared/Error";
 
 const images = [
   "/images/default-blue.jpg",
