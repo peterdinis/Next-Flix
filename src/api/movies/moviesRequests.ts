@@ -1,5 +1,7 @@
 import useSWR, { Fetcher } from "swr";
 
+export const baseUrl = 'https://image.tmdb.org/t/p/original';
+
 const BASE_URL = "https://api.themoviedb.org/3";
 
 const fetcher: Fetcher = (url: string) => fetch(url).then((res) => res.json());

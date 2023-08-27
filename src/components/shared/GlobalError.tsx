@@ -30,7 +30,7 @@ class ErrorBoundary extends Component<Props, State> {
       return (
         <main className="h-screen w-full flex flex-col justify-center items-center">
           <h1 className="text-9xl font-extrabold text-white tracking-widest">
-            Errror
+            Error
           </h1>
           <div className="mt-5">
             <button
