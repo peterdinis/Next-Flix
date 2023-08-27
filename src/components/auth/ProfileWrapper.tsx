@@ -1,11 +1,8 @@
+"use client"
+
 import { FC, useCallback } from "react";
-import { NextPageContext } from "next";
-import { getSession, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import * as api from "@/api/queries/userQueries";
-import { useQuery } from "@tanstack/react-query";
-import FallbackLoader from "../shared/Loader";
-import ErrorMessage from "../shared/Error";
+import { useAuth } from "@/hooks/useAuth";
 
 const images = [
   "/images/default-blue.jpg",
@@ -16,23 +13,6 @@ const images = [
 
 interface UserCardProps {
   name: string;
-}
-
-export async function getServerSideProps(context: NextPageContext) {
-  const session = await getSession(context);
-
-  if (!session) {
-    return {
-      redirect: {
-        destination: "/auth",
-        permanent: false,
-      },
-    };
-  }
-
-  return {
-    props: {},
-  };
 }
 
 const UserCard: React.FC<UserCardProps> = ({ name }) => {
@@ -57,21 +37,14 @@ const UserCard: React.FC<UserCardProps> = ({ name }) => {
 
 const ProfileWrapper: FC = () => {
   const router = useRouter();
-  const {data, isLoading, isError} = useQuery(["currentUser"], api.getCurrentUser); 
 
-  if(isLoading) {
-    return <FallbackLoader />
-  }
-
-  if(isError) {
-    return <ErrorMessage error={"Something went wrong"} />
-  }
-
-  console.log("User data", data);
+  const {currentUser} = useAuth();
 
   const selectProfile = useCallback(() => {
     router.push('/');
   }, [router]);
+
+  console.log("CurrentUser", currentUser);
 
   return (
     <div className="flex items-center h-full justify-center">
@@ -79,7 +52,7 @@ const ProfileWrapper: FC = () => {
         <h1 className="text-3xl md:text-6xl text-white text-center">Who&#39;s watching?</h1>
         <div className="flex items-center justify-center gap-8 mt-10">
           <div onClick={() => selectProfile()}>
-            <UserCard name="USER" />
+            <UserCard name={currentUser!.email as unknown as string} />
           </div>
         </div>
       </div>
