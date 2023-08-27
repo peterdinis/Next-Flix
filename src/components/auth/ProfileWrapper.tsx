@@ -1,3 +1,5 @@
+"use client"
+
 import { FC, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/hooks/useAuth";
