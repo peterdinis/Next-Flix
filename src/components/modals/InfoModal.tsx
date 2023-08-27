@@ -2,7 +2,6 @@ import { Movie } from "@/types/moviesTypes";
 import { FC, useState, useEffect } from "react";
 import { modalState, movieState } from "@/store/atoms/modalAtom";
 import { useRecoilState } from "recoil";
-import Image from 'next/image';
 import { FaPlay } from 'react-icons/fa';
 import { baseUrl } from "@/api/movies/moviesRequests";
 import {BiInfoCircle} from "react-icons/bi";
@@ -18,9 +17,11 @@ const InfoModal: FC<InfoModalPropsI> = ({
   const [showModal, setShowModal] = useRecoilState(modalState);
   const [currentMovie, setCurrentMovie] = useRecoilState(movieState);
 
+  console.log("netflix originals", netflixOriginals);
+
   useEffect(() => {
     setMovie(
-      netflixOriginals[Math.floor(Math.random() * netflixOriginals.length)]
+      netflixOriginals[Math.floor(Math.random() * netflixOriginals.results.length)]
     );
   }, [netflixOriginals]);
 
@@ -28,11 +29,9 @@ const InfoModal: FC<InfoModalPropsI> = ({
     <>
      <div className="flex flex-col space-y-2 py-16 md:space-y-4 lg:h-[65vh] lg:justify-end lg:pb-12">
       <div className="absolute top-0 left-0 h-[95vh] w-screen -z-10">
-        <Image
+        <img
           src={`${baseUrl}/${movie?.backdrop_path || movie?.poster_path}`}
           alt="Movie Poster"
-          layout="fill"
-          objectFit="cover"
         />
       </div>
 
