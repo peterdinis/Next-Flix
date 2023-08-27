@@ -33,12 +33,13 @@ const AuthWrapper = () => {
     };
   }, []);
 
-  const registerUser = () => {
-    register(credentials);
-  };
-
   const loginUser = () => {
     login(credentials);
+    router.push("/profile");
+  };
+
+  const registerUser = () => {
+    register(credentials);
   };
 
   return (
