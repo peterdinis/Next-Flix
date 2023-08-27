@@ -14,9 +14,6 @@ const AccountMenu: FC<AccountMenuProps> = ({ visible }: AccountMenuProps) => {
     return null;
   }
 
-
-  console.log("currentUser", currentUser);
-
   return (
     <div className="bg-black w-56 absolute top-14 right-0 py-5 flex-col border-2 border-gray-800 flex">
       <div className="flex flex-col gap-3">
@@ -26,7 +23,7 @@ const AccountMenu: FC<AccountMenuProps> = ({ visible }: AccountMenuProps) => {
             src="/images/default-blue.jpg"
             alt="Profile Image"
           />
-          <p className="text-white text-sm group-hover/item:underline">USER</p>
+          <p className="text-white text-sm group-hover/item:underline">{currentUser!.email}</p>
         </div>
       </div>
       <hr className="bg-gray-600 border-0 h-px my-4" />
