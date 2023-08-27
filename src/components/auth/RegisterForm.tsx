@@ -86,3 +86,6 @@ const RegisterForm: FC = () => {
     </div>
   );
 };
+
+
+export default RegisterForm;
