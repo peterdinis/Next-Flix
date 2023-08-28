@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Input from "@/components/shared/Input";
 import Link from "next/link";
 import { useAuth } from "@/hooks/useAuth";
+import {toast} from "react-hot-toast";
 
 const RegisterForm: FC = () => {
   const router = useRouter();
@@ -27,6 +28,7 @@ const RegisterForm: FC = () => {
 
   const registerUser = () => {
     register(credentials);
+    toast.success("Registration was successful");
     router.push("/login");
   };
   return (

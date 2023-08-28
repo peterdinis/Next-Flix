@@ -3,6 +3,7 @@
 import { FC } from "react";
 import { useAuth } from "@/hooks/useAuth";
 import { useRouter } from "next/navigation";
+import {toast} from "react-hot-toast";
 
 interface AccountMenuProps {
   visible?: boolean;
@@ -15,6 +16,7 @@ const AccountMenu: FC<AccountMenuProps> = ({ visible }: AccountMenuProps) => {
 
   const logoutUser = () => {
     logout();
+    toast.success("Logout successfull");
     router.push("/login");
   }
 

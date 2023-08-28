@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Input from "@/components/shared/Input";
 import Link from "next/link";
 import { useAuth } from "@/hooks/useAuth";
+import {toast} from "react-hot-toast";
 
 const LoginForm: FC = () => {
   const router = useRouter();
@@ -27,6 +28,7 @@ const LoginForm: FC = () => {
 
   const loginUser = () => {
     login(credentials);
+    toast.success("Login was successfull");
     router.push("/profile");
   };
   return (
