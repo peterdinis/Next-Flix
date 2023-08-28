@@ -2,7 +2,7 @@ import { FC, useState, useRef } from "react";
 import { DocumentData } from "firebase/firestore";
 import { Movie } from "@/types/moviesTypes";
 import Thumbnail from "./Thumbnail";
-import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/outline'
+import {FiArrowLeft, FiArrowRight} from "react-icons/fi";
 
 interface IMovieRowProps {
   title: string;
@@ -33,7 +33,7 @@ const MovieRow: FC<IMovieRowProps> = ({ title, movies }: IMovieRowProps) => {
       {title}
     </h2>
     <div className="group relative md:-ml-2">
-      <ChevronLeftIcon
+      <FiArrowLeft
         className={`absolute top-0 bottom-0 left-2 z-40 m-auto h-9 w-9 cursor-pointer opacity-0 transition hover:scale-125 group-hover:opacity-100 ${
           !isMoved && 'hidden'
         }`}
@@ -43,13 +43,14 @@ const MovieRow: FC<IMovieRowProps> = ({ title, movies }: IMovieRowProps) => {
       <div
         ref={rowRef}
         className="flex items-center space-x-0.5 overflow-x-scroll scrollbar-hide md:space-x-2.5 md:p-2"
-      >
-        {movies.map((movie) => (
+      > 
+      {/* TODO: Fix typing here */}
+        {movies && movies.map((movie: {id: any}) => (
           <Thumbnail key={movie.id} movie={movie} />
         ))}
       </div>
 
-      <ChevronRightIcon
+      <FiArrowRight
         className={`absolute top-0 bottom-0 right-2 z-40 m-auto h-9 w-9 cursor-pointer opacity-0 transition hover:scale-125 group-hover:opacity-100`}
         onClick={() => handleClick('right')}
       />
