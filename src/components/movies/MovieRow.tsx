@@ -27,6 +27,7 @@ const MovieRow: FC<IMovieRowProps> = ({ title, movies }: IMovieRowProps) => {
       rowRef.current.scrollTo({ left: scrollTo, behavior: "smooth" });
     }
   };
+  
   return (
     <div className="h-40 space-y-0.5 md:space-y-2">
     <h2 className="w-56 cursor-pointer text-sm font-semibold text-[#e5e5e5] transition duration-200 hover:text-white md:text-2xl">
@@ -44,11 +45,10 @@ const MovieRow: FC<IMovieRowProps> = ({ title, movies }: IMovieRowProps) => {
         ref={rowRef}
         className="flex items-center space-x-0.5 overflow-x-scroll scrollbar-hide md:space-x-2.5 md:p-2"
       > 
-      {/* TODO1: Fix bug here */}
       {/* TODO: Fix typing here */}
-       {/*  {movies && movies.map((movie: {id: any}) => (
+        {movies.results && movies.results.map((movie: {id: any}) => (
           <Thumbnail key={movie.id} movie={movie} />
-        ))} */}
+        ))}
       </div>
 
       <FiArrowRight
