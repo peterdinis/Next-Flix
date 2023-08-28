@@ -5,6 +5,7 @@ import { useAuth } from "@/hooks/useAuth";
 import { useRouter } from "next/navigation";
 import {toast} from "react-hot-toast";
 import Link from "next/link";
+import Cookies from "js-cookie";
 
 interface AccountMenuProps {
   visible?: boolean;
@@ -17,6 +18,7 @@ const AccountMenu: FC<AccountMenuProps> = ({ visible }: AccountMenuProps) => {
 
   const logoutUser = () => {
     logout();
+    Cookies.remove("userCredentials");
     toast.success("Logout successfull");
     router.push("/login");
   }

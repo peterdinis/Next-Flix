@@ -6,6 +6,7 @@ import Input from "@/components/shared/Input";
 import Link from "next/link";
 import { useAuth } from "@/hooks/useAuth";
 import {toast} from "react-hot-toast";
+import Cookie from "js-cookie";
 
 const LoginForm: FC = () => {
   const router = useRouter();
@@ -28,6 +29,7 @@ const LoginForm: FC = () => {
 
   const loginUser = () => {
     login(credentials);
+    Cookie.set("userCredentials", JSON.stringify(credentials));
     toast.success("Login was successfull");
     router.push("/watch");
   };

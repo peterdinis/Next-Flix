@@ -1,4 +1,4 @@
-import { FC, useState, useEffect } from "react";
+/* import { FC, useState, useEffect } from "react";
 import MuiModal from "@mui/material/Modal";
 import {
   collection,
@@ -212,5 +212,16 @@ const MovieModal: FC = () => {
   </MuiModal>
   );
 };
+
+export default MovieModal;
+ */
+
+import { FC } from "react";
+
+const MovieModal: FC = () => {
+  return (
+    <></>
+  )
+}
 
 export default MovieModal;

@@ -1,6 +1,5 @@
 import { FC } from "react";
 import { DocumentData } from "firebase/firestore";
-import Image from "next/image";
 import React from "react";
 import { useRecoilState } from "recoil";
 import { modalState, movieState } from "@/store/atoms/modalAtom";
@@ -21,11 +20,10 @@ const Thumbnail: FC<Props> = ({ movie }: Props) => {
         setCurrentMovie(movie);
       }}
     >
-      <Image
+      <img
         src={`https://image.tmdb.org/t/p/w500${
           movie.backdrop_path || movie.poster_path
         }`}
-        layout="fill"
         className="rounded-sm object-cover md:rounded"
         alt={movie.name}
       />
