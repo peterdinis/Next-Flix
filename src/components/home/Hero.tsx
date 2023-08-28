@@ -25,7 +25,6 @@ const Hero: FC = () => {
   const { data: hororData } = useHororMovies();
   const { data: romanceData } = useFetchRomanceMovies();
   const { data: documentaries } = useFetchDocumentaries();
-
   return (
     <>
       <Navbar />
