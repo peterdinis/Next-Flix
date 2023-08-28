@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import { FC, useCallback, useEffect, useState } from "react";
 import { FaBell } from 'react-icons/fa';
 import { IoMdSearch, IoMdArrowDropdown } from 'react-icons/io';
 import NavbarItem from "./NavbarItem";
@@ -7,7 +7,7 @@ import AccountMenu from "../menu/AccountMenu";
 import { TOP_OFFSET } from "@/constants/applictionConstants";
 import Link from "next/link";
 
-const Navbar = () => {
+const Navbar: FC = () => {
   const [showAccountMenu, setShowAccountMenu] = useState(false);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [showBackground, setShowBackground] = useState(false);
@@ -79,7 +79,7 @@ const Navbar = () => {
             className="flex flex-row items-center gap-2 cursor-pointer relative"
           >
             <div className="w-6 h-6 lg:w-10 lg:h-10 rounded-md overflow-hidden">
-              <img src="/images/default-blue.png" alt="" />
+              <img src="/images/default-blue.jpg" alt="" />
             </div>
             <IoMdArrowDropdown
               className={`w-4 text-white fill-white transition ${
