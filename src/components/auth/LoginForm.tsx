@@ -29,7 +29,7 @@ const LoginForm: FC = () => {
   const loginUser = () => {
     login(credentials);
     toast.success("Login was successfull");
-    router.push("/profile");
+    router.push("/watch");
   };
   return (
     <div className="relative h-full w-full bg-[url('/images/herohero.jpg')] bg-no-repeat bg-center bg-fixed bg-cover">
