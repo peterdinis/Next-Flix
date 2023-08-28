@@ -52,7 +52,7 @@ const ProfileWrapper: FC = () => {
         <h1 className="text-3xl md:text-6xl text-white text-center">Who&#39;s watching?</h1>
         <div className="flex items-center justify-center gap-8 mt-10">
           <div onClick={() => selectProfile()}>
-            <UserCard name={currentUser!.email as unknown as string} />
+            <UserCard name={currentUser?.email as unknown as string} />
           </div>
         </div>
       </div>
