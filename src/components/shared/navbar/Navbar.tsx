@@ -52,7 +52,6 @@ const Navbar: FC = () => {
           <NavbarItem label="Films" />
           <NavbarItem label="New & Popular" />
           <NavbarItem label="My List" />
-          <NavbarItem label="Browse by Languages" />
         </div>
         <div
           onClick={toggleMobileMenu}
@@ -69,9 +68,6 @@ const Navbar: FC = () => {
         <div className="flex flex-row ml-auto gap-7 items-center">
           <div className="text-gray-200 hover:text-gray-300 cursor-pointer transition">
             <IoMdSearch className="w-6" />
-          </div>
-          <div className="text-gray-200 hover:text-gray-300 cursor-pointer transition">
-            <FaBell className="w-6" />
           </div>
           <div
             onClick={toggleAccountMenu}
