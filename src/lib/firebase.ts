@@ -1,15 +1,16 @@
 import { getApp, getApps, initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
+/* import {env} from "@/env.mjs"; */ /* TODO: Fix problem later */
 
 const firebaseConfig = {
-  apiKey: "AIzaSyB8aEvm1nWqSLriqzDhCvTj4JL2eukbCb0",
-  authDomain: "netflix-clone-6cc93.firebaseapp.com",
-  projectId: "netflix-clone-6cc93",
-  storageBucket: "netflix-clone-6cc93.appspot.com",
-  messagingSenderId: "456198261047",
-  appId: "1:456198261047:web:473cf4c322b605025e32b2",
-  measurementId: "G-ETS4JECC5T",
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY as unknown as string,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN as unknown as string,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID as unknown as string,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET as unknown as string,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGINGSENDER_ID as unknown as string,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID as unknown as string,
+  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID as unknown as string
 };
 
 const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();

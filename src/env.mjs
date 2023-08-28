@@ -1,6 +1,16 @@
 import { createEnv } from "@t3-oss/env-nextjs";
+import {z} from "zod";
 
 export const env = createEnv({
+  client: {
+    FIREBASE_API_KEY: z.string().min(1),
+    FIREBASE_AUTH_DOMAIN: z.string().min(1),
+    FIREBASE_PROJECT_ID: z.string().min(1),
+    FIREBASE_STORAGE_BUCKET: z.string().min(1),
+    FIREBASE_MESSAGINGSENDER_ID: z.string().min(1),
+    FIREBASE_APP_ID: z.string().min(1),
+    FIREBASE_MEASUREMENT_ID: z.string().min(1)
+  },
   runtimeEnv: {
     TMDB_KEY: process.env.NEXT_PUBLIC_TMDB_API_KEY,
     TMDB_READ_ACCESS_TOKEN: process.env.NEXT_PUBLIC_TMDB_READ_ACCESS_TOKEN,
