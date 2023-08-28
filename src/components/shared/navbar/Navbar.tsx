@@ -1,9 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
-import {
-  BellIcon,
-  MagnifyingGlassIcon,
-  ChevronDownIcon,
-} from "@heroicons/react/24/outline";
+import { FaBell } from 'react-icons/fa';
+import { IoMdSearch, IoMdArrowDropdown } from 'react-icons/io';
 import NavbarItem from "./NavbarItem";
 import MobileMenu from "../menu/MobileMenu";
 import AccountMenu from "../menu/AccountMenu";
@@ -63,7 +60,7 @@ const Navbar = () => {
           className="lg:hidden flex flex-row items-center gap-2 ml-8 cursor-pointer relative"
         >
           <p className="text-white text-sm">Browse</p>
-          <ChevronDownIcon
+          <IoMdArrowDropdown
             className={`w-4 text-white fill-white transition ${
               showMobileMenu ? "rotate-180" : "rotate-0"
             }`}
@@ -72,10 +69,10 @@ const Navbar = () => {
         </div>
         <div className="flex flex-row ml-auto gap-7 items-center">
           <div className="text-gray-200 hover:text-gray-300 cursor-pointer transition">
-            <MagnifyingGlassIcon className="w-6" />
+            <IoMdSearch className="w-6" />
           </div>
           <div className="text-gray-200 hover:text-gray-300 cursor-pointer transition">
-            <BellIcon className="w-6" />
+            <FaBell className="w-6" />
           </div>
           <div
             onClick={toggleAccountMenu}
@@ -84,7 +81,7 @@ const Navbar = () => {
             <div className="w-6 h-6 lg:w-10 lg:h-10 rounded-md overflow-hidden">
               <img src="/images/default-blue.png" alt="" />
             </div>
-            <ChevronDownIcon
+            <IoMdArrowDropdown
               className={`w-4 text-white fill-white transition ${
                 showAccountMenu ? "rotate-180" : "rotate-0"
               }`}
