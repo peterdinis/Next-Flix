@@ -1,5 +1,5 @@
 import React from "react";
-import { PlayIcon } from "@heroicons/react/24/solid";
+import {FiAirplay} from "react-icons/fi";
 import { useRouter } from "next/navigation";
 
 interface PlayButtonProps {
@@ -27,7 +27,7 @@ const PlayButton: React.FC<PlayButtonProps> = ({ movieId }) => {
         transition
         "
     >
-      <PlayIcon className="w-4 md:w-7 text-black mr-1" />
+      <FiAirplay className="w-4 md:w-7 text-black mr-1" />
       Play
     </button>
   );

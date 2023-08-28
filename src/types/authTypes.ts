@@ -1,4 +1,5 @@
 import { UserCredential, User } from 'firebase/auth';
+import { ReactNode } from 'react';
 
 export interface AuthContextType {
   currentUser: User | null;
@@ -11,7 +12,7 @@ export interface AuthContextType {
 }
 
 export interface AuthProviderProps {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 export interface Unsubscribe {
