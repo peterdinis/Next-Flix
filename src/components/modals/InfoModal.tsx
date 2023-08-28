@@ -1,5 +1,7 @@
+/* TODO: Update typing here and logic behind displaying movie and fix broken play button and more info button */
+
 import { Movie } from "@/types/moviesTypes";
-import { FC, useState, useEffect } from "react";
+import { FC, useState } from "react";
 import { modalState, movieState } from "@/store/atoms/modalAtom";
 import { useRecoilState } from "recoil";
 import { FaPlay } from 'react-icons/fa';
@@ -7,7 +9,7 @@ import { baseUrl } from "@/api/movies/moviesRequests";
 import {BiInfoCircle} from "react-icons/bi";
 
 interface InfoModalPropsI {
-  netflixOriginals: any // TODO: Fix typing
+  netflixOriginals: Movie[] | unknown;
 }
 
 const InfoModal: FC<InfoModalPropsI> = ({
@@ -17,29 +19,21 @@ const InfoModal: FC<InfoModalPropsI> = ({
   const [showModal, setShowModal] = useRecoilState(modalState);
   const [currentMovie, setCurrentMovie] = useRecoilState(movieState);
 
-  console.log("netflix originals", netflixOriginals.results);
-
-  /* useEffect(() => {
-    setMovie(
-      netflixOriginals[Math.floor(Math.random() * netflixOriginals.results.length)]
-    );
-  }, [netflixOriginals]); */
-
   return (
     <>
      <div className="flex flex-col space-y-2 py-16 md:space-y-4 lg:h-[65vh] lg:justify-end lg:pb-12">
       <div className="absolute top-0 left-0 h-[95vh] w-screen -z-10">
         <img
-          src={`${baseUrl}/${movie?.backdrop_path || movie?.poster_path}`}
+          src={`${baseUrl}/${netflixOriginals!.results[0].backdrop_path || netflixOriginals!.results[0]?.poster_path}`}
           alt="Movie Poster"
         />
       </div>
 
-      <h1 className="text-2xl md:text-4xl lg:text-7xl font-bold">
-        {movie?.title || movie?.name || movie?.original_name}
+      <h1 className="text-2xl md:text-4xl lg:text-7xl font-bold text-blue-50">
+        {netflixOriginals!.results[0]?.title || netflixOriginals!.results[0]?.name || netflixOriginals!.results[0]?.original_name}
       </h1>
-      <p className="max-w-xs text-shadow-md text-xs md:max-w-lg md:text-lg lg:max-w-2xl">
-        {movie?.overview}
+      <p className="max-w-xs text-blue-50 text-shadow-md text-xs md:max-w-lg md:text-lg lg:max-w-2xl">
+        {netflixOriginals!.results[0]?.overview}
       </p>
 
       <div className="flex space-x-3">

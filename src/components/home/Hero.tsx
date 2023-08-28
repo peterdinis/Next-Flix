@@ -7,16 +7,15 @@ import InfoModal from "../modals/InfoModal";
 import { useFetchNetflixOriginals } from "@/api/movies/moviesRequests";
 
 const Hero: FC = () => {
-  const {
-    data: netflixOriginals,
-    error,
-    isLoading,
-  } = useFetchNetflixOriginals();
+  const { data: netflixOriginals } = useFetchNetflixOriginals();
 
   return (
     <>
       <Navbar />
       <InfoModal netflixOriginals={netflixOriginals} />
+      <section className="md:space-y-24">
+          SOME TEXT
+      </section>
       <ScrollToTop />
     </>
   );
