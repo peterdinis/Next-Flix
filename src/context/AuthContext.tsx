@@ -35,7 +35,7 @@ const AuthContextProvider: React.FC<AuthProviderProps> = ({ children }) => {
     }, []);
   
     useEffect(() => {
-      console.log('The user is', currentUser);
+      console.info('The user is', currentUser);
     }, [currentUser]);
   
     function login(credentials: EmailAndPasswordCredentials) {
