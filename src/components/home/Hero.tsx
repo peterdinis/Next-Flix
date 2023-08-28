@@ -15,6 +15,8 @@ import {
   useHororMovies,
 } from "@/api/movies/moviesRequests";
 import MovieRow from "../movies/MovieRow";
+import { modalState } from "@/store/atoms/modalAtom";
+import { useRecoilValue } from "recoil";
 
 const Hero: FC = () => {
   const { data: netflixOriginals } = useFetchNetflixOriginals();
@@ -25,21 +27,30 @@ const Hero: FC = () => {
   const { data: hororData } = useHororMovies();
   const { data: romanceData } = useFetchRomanceMovies();
   const { data: documentaries } = useFetchDocumentaries();
+
+  const showModal = useRecoilValue(modalState);
+
   return (
-    <>
+    <div
+      className={`relative h-screen bg-gradient-to-b lg:h-[140vh] ${
+        showModal && "!h-screen overflow-hidden"
+      }`}
+    >
       <Navbar />
-      <InfoModal netflixOriginals={netflixOriginals} />
-      <section className="md:space-y-24">
-        <MovieRow title="Trending Now" movies={trendingData} />
-        <MovieRow title="Top rated" movies={topRatedData} />
-        <MovieRow title="Action Movies" movies={actionData} />
-        <MovieRow title="Comedies" movies={comedyMovies} />
-        <MovieRow title="Horor Movies" movies={hororData} />
-        <MovieRow title="Romance Movies" movies={romanceData} />
-        <MovieRow title="Documentaries" movies={documentaries} />
-      </section>
+      <main className="relative pl-4 pb-24 lg:space-y-24 lg:pl-16">
+        <InfoModal netflixOriginals={netflixOriginals} />
+        <section className="md:space-y-24">
+          <MovieRow title="Trending Now" movies={trendingData} />
+          <MovieRow title="Top rated" movies={topRatedData} />
+          <MovieRow title="Action Movies" movies={actionData} />
+          <MovieRow title="Comedies" movies={comedyMovies} />
+          <MovieRow title="Horor Movies" movies={hororData} />
+          <MovieRow title="Romance Movies" movies={romanceData} />
+          <MovieRow title="Documentaries" movies={documentaries} />
+        </section>
+      </main>
       <ScrollToTop />
-    </>
+    </div>
   );
 };
 
