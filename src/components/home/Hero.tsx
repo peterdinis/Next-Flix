@@ -17,6 +17,7 @@ import {
 import MovieRow from "../movies/MovieRow";
 import { modalState } from "@/store/atoms/modalAtom";
 import { useRecoilValue } from "recoil";
+import MovieModal from "../modals/MovieModal";
 
 const Hero: FC = () => {
   const { data: netflixOriginals } = useFetchNetflixOriginals();
@@ -49,6 +50,7 @@ const Hero: FC = () => {
           <MovieRow title="Documentaries" movies={documentaries} />
         </section>
       </main>
+      {showModal && <MovieModal />}
       <ScrollToTop />
     </div>
   );
