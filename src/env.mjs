@@ -1,33 +1,15 @@
 import { createEnv } from "@t3-oss/env-nextjs";
-import { z } from "zod";
 
 export const env = createEnv({
-  /*
-   * Serverside Environment variables, not available on the client.
-   * Will throw if you access these variables on the client.
-   */
-  server: {
-    DATABASE_URL: z.string().url(),
-    OPEN_AI_API_KEY: z.string().min(1),
-  },
-  /*
-   * Environment variables available on the client (and server).
-   *
-   * 💡 You'll get type errors if these are not prefixed with NEXT_PUBLIC_.
-   */
-  client: {
-    NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: z.string().min(1),
-  },
-  /*
-   * Due to how Next.js bundles environment variables on Edge and Client,
-   * we need to manually destructure them to make sure all are included in bundle.
-   *
-   * 💡 You'll get type errors if not all variables from `server` & `client` are included here.
-   */
   runtimeEnv: {
-    DATABASE_URL: process.env.DATABASE_URL,
-    OPEN_AI_API_KEY: process.env.OPEN_AI_API_KEY,
-    NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY:
-      process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
+    TMDB_KEY: process.env.NEXT_PUBLIC_TMDB_API_KEY,
+    TMDB_READ_ACCESS_TOKEN: process.env.NEXT_PUBLIC_TMDB_READ_ACCESS_TOKEN,
+    FIREBASE_API_KEY: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+    FIREBASE_AUTH_DOMAIN: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+    FIREBASE_PROJECT_ID: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+    FIREBASE_STORAGE_BUCKET: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+    FIREBASE_MESSAGINGSENDER_ID: process.env.NEXT_PUBLIC_FIREBASE_MESSAGINGSENDER_ID,
+    FIREBASE_APP_ID: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+    FIREBASE_MEASUREMENT_ID: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
   },
 });
