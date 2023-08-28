@@ -54,7 +54,7 @@ export function useFetchTopActionMovies() {
   };
 }
 
-export function useComedyMovies() {
+export function useFetchComedyMovies() {
   const url = `${BASE_URL}/discover/movie?api_key=${API_KEY}&language=en-US&with_genres=35`;
   const { data, error } = useSWR(url, fetcher);
 
