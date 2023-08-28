@@ -30,7 +30,7 @@ const InfoModal: FC<InfoModalPropsI> = ({
       </div>
 
       <h1 className="text-2xl md:text-4xl lg:text-7xl font-bold text-blue-50">
-        {netflixOriginals.results && netflixOriginals!.results[0]?.title || netflixOriginals && netflixOriginals!.results[0]?.name || netflixOriginals.results && netflixOriginals!.results[0]?.original_name}
+        {netflixOriginals.results && netflixOriginals!.results[0]?.title || netflixOriginals.results && netflixOriginals!.results[0]?.name || netflixOriginals.results && netflixOriginals!.results[0]?.original_name}
       </h1>
       <p className="max-w-xs text-blue-50 text-shadow-md text-xs md:max-w-lg md:text-lg lg:max-w-2xl">
         {netflixOriginals.results && netflixOriginals!.results[0]?.overview}
