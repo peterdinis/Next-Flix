@@ -42,7 +42,7 @@ const AuthContextProvider: React.FC<AuthProviderProps> = ({ children }) => {
       return signInWithEmailAndPassword(auth, credentials.email, credentials.password);
     }
   
-    function register(credentials: EmailAndPasswordCredentials) {
+    function signup(credentials: EmailAndPasswordCredentials) {
       return createUserWithEmailAndPassword(auth, credentials.email, credentials.password);
     }
   
@@ -69,7 +69,7 @@ const AuthContextProvider: React.FC<AuthProviderProps> = ({ children }) => {
       currentUser,
       signInWithGoogle,
       login,
-      register,
+      signup,
       logout,
       forgotPassword,
       resetPassword,

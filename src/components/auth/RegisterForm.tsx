@@ -5,6 +5,8 @@ import { useRouter } from "next/navigation";
 import Input from "@/components/shared/Input";
 import Link from "next/link";
 import { useAuth } from "@/hooks/useAuth";
+import {useForm} from "react-hook-form";
+import { EmailAndPasswordCredentials } from "@/types/authTypes";
 
 const RegisterForm: FC = () => {
   const router = useRouter();
@@ -14,7 +16,9 @@ const RegisterForm: FC = () => {
     password: "",
   });
 
-  const { register } = useAuth();
+  const { signup } = useAuth();
+
+  const {handleSubmit, formState: {errors}, trigger, register, watch} = useForm<EmailAndPasswordCredentials>();
 
   const mounted = useRef(false);
 
@@ -26,7 +30,7 @@ const RegisterForm: FC = () => {
   }, []);
 
   const registerUser = () => {
-    register(credentials);
+    signup(credentials);
     router.push("/login");
   };
   return (
