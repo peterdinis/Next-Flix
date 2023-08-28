@@ -5,6 +5,7 @@ import Link from "next/link";
 import ProfileInfo from "./ProfileInfo";
 
 const ProfileWrapper: FC = () => {
+
   return (
     <>
       <header className="header bg-[#141414]">
@@ -35,7 +36,7 @@ const ProfileWrapper: FC = () => {
             </p>
           </div>
         </div>
-        
+
         <ProfileInfo />
       </main>
     </>
