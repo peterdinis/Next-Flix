@@ -4,7 +4,7 @@ import { FaPlay } from 'react-icons/fa';
 import { baseUrl } from "@/api/movies/moviesRequests";
 import { BiInfoCircle } from "react-icons/bi";
 import { Movie, MovieApiResponse } from "@/types/moviesTypes";
-import {FC, useState, useEffect, useCallback} from "react";
+import {FC, useState, useCallback} from "react";
 
 interface InfoModalPropsI {
   netflixOriginals: MovieApiResponse | any;

@@ -1,3 +1,4 @@
+import { MovieApiResponse } from "@/types/moviesTypes";
 import useSWR, { Fetcher } from "swr";
 
 export const baseUrl = "https://image.tmdb.org/t/p/original";

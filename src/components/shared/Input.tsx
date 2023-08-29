@@ -1,11 +1,11 @@
-import { FC } from "react";
+import { FC, ChangeEvent } from "react";
 
 interface InputProps {
   id: string;
   value: string;
   type?: string;
   label: string;
-  onChange: any;
+  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
 const Input: FC<InputProps> = ({ id, value, onChange, type, label }: InputProps) => {

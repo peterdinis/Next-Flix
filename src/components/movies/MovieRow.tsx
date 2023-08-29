@@ -1,13 +1,13 @@
 import { FC, useState, useRef } from "react";
 import { DocumentData } from "firebase/firestore";
-import { Movie } from "@/types/moviesTypes";
+import { Movie, MovieApiResponse } from "@/types/moviesTypes";
 import Thumbnail from "./Thumbnail";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import Header from "../shared/Header";
 
 interface IMovieRowProps {
   title: string;
-  movies: Movie[] | DocumentData[] | any; // TODO: Update typing later
+  movies: MovieApiResponse | DocumentData[];
 }
 
 const MovieRow: FC<IMovieRowProps> = ({ title, movies }: IMovieRowProps) => {
