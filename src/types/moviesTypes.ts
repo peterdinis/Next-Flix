@@ -21,6 +21,10 @@ export interface Genre {
     vote_average: number;
     vote_count: number;
   }
+
+  export interface MovieApiResponse {
+    results: Movie[];
+  }
   
   export interface Element {
     type:

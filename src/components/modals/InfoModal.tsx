@@ -1,6 +1,4 @@
-/* TODO: Update typing here and logic behind displaying movie and fix broken play button and more info button */
-
-import { Movie } from "@/types/moviesTypes";
+import { Movie, MovieApiResponse } from "@/types/moviesTypes";
 import { FC, useState } from "react";
 import { modalState, movieState } from "@/store/atoms/modalAtom";
 import { useRecoilState } from "recoil";
@@ -10,7 +8,7 @@ import {BiInfoCircle} from "react-icons/bi";
 
 
 interface InfoModalPropsI {
-  netflixOriginals: any // TODO: Fixing typing
+  netflixOriginals:MovieApiResponse;
 }
 
 const InfoModal: FC<InfoModalPropsI> = ({
