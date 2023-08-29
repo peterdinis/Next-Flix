@@ -5,6 +5,7 @@ const SeriesWrapper: FC = () => {
     return (
         <>
             <Navbar />
+            <h2>ofofo</h2>
         </>
     )
 }
