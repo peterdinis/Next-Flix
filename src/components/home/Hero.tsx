@@ -36,7 +36,6 @@ const Hero: FC = () => {
       className={`relative h-screen bg-gradient-to-b lg:h-[140vh] ${
         showModal && "!h-screen overflow-hidden"
       }`}
-      /* className="relative h-screen bg-gradient-to-b lg:h-[140vh]" */
     >
       <Navbar />
       <main className="relative pl-4 pb-24 lg:space-y-24 lg:pl-16">
