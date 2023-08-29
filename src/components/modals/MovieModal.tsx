@@ -220,7 +220,7 @@ import { FC } from "react";
 
 const MovieModal: FC = () => {
   return (
-    <></>
+    <> I AM MOVIE MODAL</>
   )
 }
 
