@@ -5,6 +5,7 @@ import { FaPlay } from 'react-icons/fa';
 import { baseUrl } from "@/api/movies/moviesRequests";
 import { BiInfoCircle } from "react-icons/bi";
 import { Movie, MovieApiResponse } from "@/types/moviesTypes";
+import Cookies from "js-cookie";
 
 interface InfoModalPropsI {
   netflixOriginals: MovieApiResponse | any; // TODO: Fix typing later
@@ -14,15 +15,24 @@ const InfoModal: FC<InfoModalPropsI> = ({ netflixOriginals }: InfoModalPropsI) =
   const [movie, setMovie] = useState<Movie | null>(null);
   const [showModal, setShowModal] = useRecoilState(modalState);
   const [currentMovie, setCurrentMovie] = useRecoilState(movieState);
-  
-  const randomIndex = netflixOriginals.results ? Math.floor(Math.random() * netflixOriginals.results.length) : 0;
-  const randomMovie = netflixOriginals.results ? netflixOriginals.results[randomIndex] : null;
+
+  const storedIndex = Cookies.get("randomImageIndex");
+  const initialRandomIndex = storedIndex ? parseInt(storedIndex) : 0;
+
+  const randomIndex = netflixOriginals.results
+    ? initialRandomIndex % netflixOriginals.results.length
+    : 0;
+
+  const randomMovie = netflixOriginals.results
+    ? netflixOriginals.results[randomIndex]
+    : null;
 
   useEffect(() => {
     if (randomMovie) {
       setMovie(randomMovie);
+      Cookies.set("randomImageIndex", randomIndex.toString());
     }
-  }, [randomMovie]);
+  }, [randomMovie, randomIndex]);
 
   return (
     <>
