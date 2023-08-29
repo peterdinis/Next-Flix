@@ -4,7 +4,7 @@ import { FaPlay } from 'react-icons/fa';
 import { baseUrl } from "@/api/movies/moviesRequests";
 import { BiInfoCircle } from "react-icons/bi";
 import { Movie, MovieApiResponse } from "@/types/moviesTypes";
-import {FC, useState, useEffect} from "react";
+import {FC, useState, useEffect, useCallback} from "react";
 
 interface InfoModalPropsI {
   netflixOriginals: MovieApiResponse | any;
@@ -18,7 +18,10 @@ const InfoModal: FC<InfoModalPropsI> = ({ netflixOriginals }: InfoModalPropsI) =
   const randomIndex = netflixOriginals.results ? Math.floor(Math.random() * netflixOriginals.results.length) : 0;
   const randomMovie = netflixOriginals.results ? netflixOriginals.results[randomIndex] : null;
 
-  useEffect(() => {
+  console.log(randomIndex);
+  console.log(randomMovie);
+
+  useCallback(() => {
     if (randomMovie) {
       setMovie(randomMovie);
     }
