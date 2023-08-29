@@ -1,11 +1,12 @@
 import { FC } from "react";
 import Navbar from "../shared/navbar/Navbar";
+import Header from "../shared/Header";
 
 const SeriesWrapper: FC = () => {
     return (
         <>
             <Navbar />
-            <h2>ofofo</h2>
+            <Header title="Netflix series" />
         </>
     )
 }
