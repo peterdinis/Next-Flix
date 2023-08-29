@@ -1,7 +1,7 @@
 import { FC } from "react";
 import Navbar from "../shared/navbar/Navbar";
 
-const FilmsWrapper: FC = () => {
+const ListWrapper: FC = () => {
     return (
         <>
             <Navbar />
@@ -9,4 +9,4 @@ const FilmsWrapper: FC = () => {
     )
 }
 
-export default FilmsWrapper;
+export default ListWrapper;

@@ -1,5 +1,6 @@
+"use client"
+
 import { FC, useCallback, useEffect, useState } from "react";
-import { FaBell } from "react-icons/fa";
 import { IoMdSearch, IoMdArrowDropdown } from "react-icons/io";
 import NavbarItem from "./NavbarItem";
 import MobileMenu from "../menu/MobileMenu";
