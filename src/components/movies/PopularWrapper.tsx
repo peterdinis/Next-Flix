@@ -1,11 +1,12 @@
 import { FC } from "react";
-import Navbar from "../shared/navbar/Navbar";
+
 import Header from "../shared/Header";
+import SecondNavbar from "../shared/navbar/SecondNavbar";
 
 const PopularWrapper: FC = () => {
     return (
         <>
-            <Navbar />
+            <SecondNavbar />
             <Header title="Netflix popular" />
         </>
     )

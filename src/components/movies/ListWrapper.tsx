@@ -1,11 +1,11 @@
 import { FC } from "react";
-import Navbar from "../shared/navbar/Navbar";
 import Header from "../shared/Header";
+import SecondNavbar from "../shared/navbar/SecondNavbar";
 
 const ListWrapper: FC = () => {
     return (
         <>
-            <Navbar />
+            <SecondNavbar />
             <Header title="My List" />
         </>
     )
