@@ -3,6 +3,7 @@ import { DocumentData } from "firebase/firestore";
 import { Movie } from "@/types/moviesTypes";
 import Thumbnail from "./Thumbnail";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
+import Header from "../shared/Header";
 
 interface IMovieRowProps {
   title: string;
@@ -30,9 +31,7 @@ const MovieRow: FC<IMovieRowProps> = ({ title, movies }: IMovieRowProps) => {
 
   return (
     <div className="h-40 space-y-0.5 md:space-y-2">
-      <h2 className="w-56 cursor-pointer text-sm font-semibold text-[#e5e5e5] transition duration-200 hover:text-white md:text-2xl">
-        {title}
-      </h2>
+      <Header title={title} />
       <div className="group relative md:-ml-2">
         <FiArrowLeft
           className={`absolute  top-0 text-blue-50 bottom-0 left-2 z-40 m-auto h-9 w-9 cursor-pointer opacity-0 transition hover:scale-125 group-hover:opacity-100 ${

@@ -1,11 +1,8 @@
 "use client";
 
-/* TODO: Later update this */
-
 import { useState, ChangeEvent, useRef, useEffect, FC } from "react";
 import { useRouter } from "next/navigation";
 import Input from "@/components/shared/Input";
-import Link from "next/link";
 import { useAuth } from "@/hooks/useAuth";
 
 const PasswordResetForm: FC = () => {
@@ -39,17 +36,8 @@ const PasswordResetForm: FC = () => {
         </nav>
         <div className="flex justify-center">
           <div className="bg-black bg-opacity-70 px-16 py-16 self-center mt-2 lg:w-2/5 lg:max-w-md rounded-md w-full">
-            <h2 className="text-white text-4xl mb-8 font-semibold">Register</h2>
+            <h2 className="text-white text-4xl mb-8 font-semibold">Reset Password</h2>
             <div className="flex flex-col gap-4">
-              <Input
-                id="email"
-                type="email"
-                label="Email address or phone number"
-                value={credentials.email}
-                onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                  setCredentials({ ...credentials, email: e.target.value })
-                }
-              />
               <Input
                 type="password"
                 id="password"
@@ -64,24 +52,8 @@ const PasswordResetForm: FC = () => {
               onClick={registerUser}
               className="bg-red-600 py-3 text-white rounded-md w-full mt-10 hover:bg-red-700 transition"
             >
-              Register
+              Reset Password
             </button>
-            <p className="text-neutral-500 mt-12">
-              Already have an account?
-              <span className="text-white ml-1 hover:underline cursor-pointer">
-               <Link href="/login"> Login</Link>
-              </span>
-              .
-            </p>
-            <div className="mt-4">
-              <p className="text-neutral-500 mt-12">
-                Forgot Password ?
-                <span className="text-white ml-1 hover:underline cursor-pointer">
-                  <Link href="/password-reset">Create new password here</Link>
-                </span>
-                .
-              </p>
-            </div>
           </div>
         </div>
       </div>

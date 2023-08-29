@@ -75,7 +75,7 @@ const LoginForm: FC = () => {
               </span>
               .
             </p>
-            <div className="mt-4">
+         {/*    <div className="mt-4">
               <p className="text-neutral-500 mt-12">
                 Forgot Password ?
                 <span className="text-white ml-1 hover:underline cursor-pointer">
@@ -83,7 +83,7 @@ const LoginForm: FC = () => {
                 </span>
                 .
               </p>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
