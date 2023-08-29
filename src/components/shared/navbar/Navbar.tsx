@@ -1,7 +1,7 @@
 "use client"
 
 import { FC, useCallback, useEffect, useState } from "react";
-import { IoMdSearch, IoMdArrowDropdown } from "react-icons/io";
+import { IoMdArrowDropdown } from "react-icons/io";
 import NavbarItem from "./NavbarItem";
 import MobileMenu from "../menu/MobileMenu";
 import AccountMenu from "../menu/AccountMenu";
@@ -38,7 +38,7 @@ const Navbar: FC = () => {
   }, []);
 
   return (
-    <nav className="w-full z-40">
+    <nav className="w-full fixed z-40">
       <div
         className={`px-4 md:px-16 py-6 flex flex-row items-center transition duration-500 ${
           showBackground ? "bg-zinc-900 bg-opacity-90" : ""
@@ -67,9 +67,6 @@ const Navbar: FC = () => {
           <MobileMenu visible={showMobileMenu} />
         </div>
         <div className="flex flex-row ml-auto gap-7 items-center">
-          <div className="text-gray-200 hover:text-gray-300 cursor-pointer transition">
-            <IoMdSearch className="w-6" />
-          </div>
           <div
             onClick={toggleAccountMenu}
             className="flex flex-row items-center gap-2 cursor-pointer relative"
