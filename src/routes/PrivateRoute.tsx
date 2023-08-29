@@ -2,16 +2,15 @@
 
 import { useRouter } from 'next/navigation';
 import { useEffect, ComponentType } from 'react';
-import { useAuth } from '@/hooks/useAuth';
+import Cookies from 'js-cookie';
 
 const PrivateRoute = <T extends object>(WrappedComponent: ComponentType<T>) => {
   return (props: T) => {
     const router = useRouter();
-
-    const {currentUser} = useAuth();
+    const getUserCookie = Cookies.get("userCredentials");
 
     useEffect(() => {
-      if (!currentUser) {
+      if (!getUserCookie) {
         router.push('/login');
       }
     }, []);

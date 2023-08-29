@@ -1,6 +1,7 @@
+"use client"
+
 import { FC, useCallback, useEffect, useState } from "react";
-import { FaBell } from 'react-icons/fa';
-import { IoMdSearch, IoMdArrowDropdown } from 'react-icons/io';
+import { IoMdSearch, IoMdArrowDropdown } from "react-icons/io";
 import NavbarItem from "./NavbarItem";
 import MobileMenu from "../menu/MobileMenu";
 import AccountMenu from "../menu/AccountMenu";
@@ -14,7 +15,6 @@ const Navbar: FC = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      console.log(window.scrollY);
       if (window.scrollY >= TOP_OFFSET) {
         setShowBackground(true);
       } else {
@@ -48,12 +48,11 @@ const Navbar: FC = () => {
           <img src="/images/logo.png" className="h-4 lg:h-7" alt="Logo" />
         </Link>
         <div className="flex-row ml-8 gap-7 hidden lg:flex">
-          <NavbarItem label="Home" active />
-          <NavbarItem label="Series" />
-          <NavbarItem label="Films" />
-          <NavbarItem label="New & Popular" />
-          <NavbarItem label="My List" />
-          <NavbarItem label="Browse by Languages" />
+          <NavbarItem linkToPage="/" label="Home" active />
+          <NavbarItem linkToPage="/series" label="Series" />
+          <NavbarItem linkToPage="/films" label="Films" />
+          <NavbarItem linkToPage="/new-popular" label="New & Popular" />
+          <NavbarItem linkToPage="/list" label="My List" />
         </div>
         <div
           onClick={toggleMobileMenu}
@@ -70,9 +69,6 @@ const Navbar: FC = () => {
         <div className="flex flex-row ml-auto gap-7 items-center">
           <div className="text-gray-200 hover:text-gray-300 cursor-pointer transition">
             <IoMdSearch className="w-6" />
-          </div>
-          <div className="text-gray-200 hover:text-gray-300 cursor-pointer transition">
-            <FaBell className="w-6" />
           </div>
           <div
             onClick={toggleAccountMenu}

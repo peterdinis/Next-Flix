@@ -49,9 +49,9 @@ const Hero: FC = () => {
           <MovieRow title="Romance Movies" movies={romanceData} />
           <MovieRow title="Documentaries" movies={documentaries} />
         </section>
+        <ScrollToTop />
       </main>
       {showModal && <MovieModal />}
-      <ScrollToTop />
     </div>
   );
 };

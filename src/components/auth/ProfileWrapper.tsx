@@ -1,62 +1,45 @@
-"use client"
+"use client";
 
-import { FC, useCallback } from "react";
-import { useRouter } from "next/navigation";
-import { useAuth } from "@/hooks/useAuth";
-
-const images = [
-  "/images/default-blue.jpg",
-  "/images/default-purple.jpg",
-  "/images/default-red.jpg",
-  "/images/default-slate.jpg",
-];
-
-interface UserCardProps {
-  name: string;
-}
-
-const UserCard: React.FC<UserCardProps> = ({ name }) => {
-  const imgSrc = images[Math.floor(Math.random() * 4)];
-
-  return (
-    <div className="group flex-row w-44 mx-auto">
-      <div className="w-44 h-44 rounded-md flex items-center justify-center border-2 border-transparent group-hover:cursor-pointer group-hover:border-white overflow-hidden">
-        <img
-          draggable={false}
-          className="w-max h-max object-contain"
-          src={imgSrc}
-          alt=""
-        />
-      </div>
-      <div className="mt-4 text-gray-400 text-2xl text-center group-hover:text-white">
-        {name}
-      </div>
-    </div>
-  );
-};
+import { FC } from "react";
+import Link from "next/link";
+import ProfileInfo from "./ProfileInfo";
 
 const ProfileWrapper: FC = () => {
-  const router = useRouter();
-
-  const {currentUser} = useAuth();
-
-  const selectProfile = useCallback(() => {
-    router.push('/');
-  }, [router]);
-
-  console.log("CurrentUser", currentUser);
 
   return (
-    <div className="flex items-center h-full justify-center">
-      <div className="flex flex-col">
-        <h1 className="text-3xl md:text-6xl text-white text-center">Who&#39;s watching?</h1>
-        <div className="flex items-center justify-center gap-8 mt-10">
-          <div onClick={() => selectProfile()}>
-            <UserCard name={currentUser?.email as unknown as string} />
+    <>
+      <header className="header bg-[#141414]">
+        <Link href="/">
+          <img
+            src="https://rb.gy/ulxxee"
+            alt="netflix"
+            width={120}
+            height={120}
+            className="cursor-pointer object-contain"
+          />
+        </Link>
+        <Link href="/profile">
+          <img
+            src="https://rb.gy/g1pwyx"
+            alt=""
+            className="cursor-pointer rounded"
+          />
+        </Link>
+      </header>
+      <main className="pt-24 mx-auto max-w-6xl px-5 pb-12 transition-all md:px-10">
+        <div className="flex flex-col gap-x-4 md:flex-row md:items-center">
+          <h1 className="text-3xl md:text-4xl text-white">Account</h1>
+          <div className="-ml-0.5 flex items-center gap-x-1.5">
+            <img src="https://rb.gy/4vfk4r" alt="" className="h-7 w-7" />
+            <p className="text-xs font-semibold text-[#555]">
+              Member since {new Date().toString()}
+            </p>
           </div>
         </div>
-      </div>
-    </div>
+
+        <ProfileInfo />
+      </main>
+    </>
   );
 };
 

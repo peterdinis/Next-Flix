@@ -4,6 +4,8 @@ import { FC } from "react";
 import { useAuth } from "@/hooks/useAuth";
 import { useRouter } from "next/navigation";
 import {toast} from "react-hot-toast";
+import Link from "next/link";
+import Cookies from "js-cookie";
 
 interface AccountMenuProps {
   visible?: boolean;
@@ -16,6 +18,7 @@ const AccountMenu: FC<AccountMenuProps> = ({ visible }: AccountMenuProps) => {
 
   const logoutUser = () => {
     logout();
+    Cookies.remove("userCredentials");
     toast.success("Logout successfull");
     router.push("/login");
   }
@@ -33,7 +36,9 @@ const AccountMenu: FC<AccountMenuProps> = ({ visible }: AccountMenuProps) => {
             src="/images/default-blue.jpg"
             alt="Profile Image"
           />
-          <p className="text-white text-sm group-hover/item:underline">{currentUser!.email}</p>
+          <p className="text-white text-sm group-hover/item:underline">
+            <Link href="/profile">{currentUser!.email}</Link>
+          </p>
         </div>
       </div>
       <hr className="bg-gray-600 border-0 h-px my-4" />

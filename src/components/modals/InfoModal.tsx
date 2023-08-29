@@ -8,8 +8,9 @@ import { FaPlay } from 'react-icons/fa';
 import { baseUrl } from "@/api/movies/moviesRequests";
 import {BiInfoCircle} from "react-icons/bi";
 
+
 interface InfoModalPropsI {
-  netflixOriginals: Movie[] | unknown;
+  netflixOriginals: any // TODO: Fixing typing
 }
 
 const InfoModal: FC<InfoModalPropsI> = ({

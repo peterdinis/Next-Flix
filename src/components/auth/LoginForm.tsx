@@ -6,6 +6,7 @@ import Input from "@/components/shared/Input";
 import Link from "next/link";
 import { useAuth } from "@/hooks/useAuth";
 import {toast} from "react-hot-toast";
+import Cookie from "js-cookie";
 
 const LoginForm: FC = () => {
   const router = useRouter();
@@ -28,8 +29,9 @@ const LoginForm: FC = () => {
 
   const loginUser = () => {
     login(credentials);
+    Cookie.set("userCredentials", JSON.stringify(credentials));
     toast.success("Login was successfull");
-    router.push("/profile");
+    router.push("/watch");
   };
   return (
     <div className="relative h-full w-full bg-[url('/images/herohero.jpg')] bg-no-repeat bg-center bg-fixed bg-cover">
