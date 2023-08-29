@@ -16,7 +16,7 @@ const API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY;
 
 export function useFetchTopTrendingSlovakiaMovies() {
   const url = `${BASE_URL}/trending/all/week?api_key=${API_KEY}&language=sk-SK`;
-  const { data, error } = useSWR(url, fetcher, {
+  const { data, error} = useSWR(url, fetcher, {
     fallbackData: initialMovieData,
     revalidateOnMount: true,
   });

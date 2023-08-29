@@ -32,7 +32,7 @@ const Hero: FC = () => {
   const showModal = useRecoilValue(modalState);
 
   return (
-    <div
+   <div
       className={`relative h-screen bg-gradient-to-b lg:h-[140vh] ${
         showModal && "!h-screen overflow-hidden"
       }`}
@@ -49,9 +49,9 @@ const Hero: FC = () => {
           <MovieRow title="Romance Movies" movies={romanceData} />
           <MovieRow title="Documentaries" movies={documentaries} />
         </section>
-        <ScrollToTop />
       </main>
       {showModal && <MovieModal />}
+      <ScrollToTop />
     </div>
   );
 };
