@@ -26,10 +26,16 @@ const RegisterForm: FC = () => {
     };
   }, []);
 
-  const registerUser = () => {
-    register(credentials);
-    toast.success("Registration was successful");
-    router.push("/login");
+  const registerUser = async () => {
+    try {
+      await register(credentials);
+      toast.success("Registration was successful");
+      router.push("/login");
+    } catch (error) {
+      console.error("Register error:", error);
+      toast.error("Register failed");
+      router.push("/register");
+    }
   };
   return (
     <div className="relative h-full w-full bg-[url('/images/herohero.jpg')] bg-no-repeat bg-center bg-fixed bg-cover">

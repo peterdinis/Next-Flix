@@ -1,1 +1,1 @@
-export const TOP_OFFSET = 66;
+export const TOP_OFFSET: number = 66;

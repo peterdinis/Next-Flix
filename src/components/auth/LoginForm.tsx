@@ -27,12 +27,19 @@ const LoginForm: FC = () => {
     };
   }, []);
 
-  const loginUser = () => {
-    login(credentials);
-    Cookie.set("userCredentials", JSON.stringify(credentials));
-    toast.success("Login was successfull");
-    router.push("/watch");
+  const loginUser = async () => {
+    try {
+      await login(credentials);
+      Cookie.set("userCredentials", JSON.stringify(credentials));
+      toast.success("Login was successful");
+      router.push("/watch");
+    } catch (error) {
+      console.error("Login error:", error);
+      toast.error("Login failed. Please check your credentials.");
+      router.push("/login");
+    }
   };
+
   return (
     <div className="relative h-full w-full bg-[url('/images/herohero.jpg')] bg-no-repeat bg-center bg-fixed bg-cover">
       <div className="bg-black w-full h-full lg:bg-opacity-50">
@@ -75,15 +82,6 @@ const LoginForm: FC = () => {
               </span>
               .
             </p>
-         {/*    <div className="mt-4">
-              <p className="text-neutral-500 mt-12">
-                Forgot Password ?
-                <span className="text-white ml-1 hover:underline cursor-pointer">
-                  <Link href="/password-reset">Create new password here</Link>
-                </span>
-                .
-              </p>
-            </div> */}
           </div>
         </div>
       </div>

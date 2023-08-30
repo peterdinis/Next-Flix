@@ -2,7 +2,6 @@
 
 import { FC } from "react";
 import Navbar from "../shared/navbar/Navbar";
-import ScrollToTop from "@/hooks/useScroll";
 import InfoModal from "../modals/InfoModal";
 import {
   useFetchComedyMovies,
@@ -15,9 +14,9 @@ import {
   useHororMovies,
 } from "@/api/movies/moviesRequests";
 import MovieRow from "../movies/MovieRow";
-/* import { modalState } from "@/store/atoms/modalAtom";
+import { modalState } from "@/store/atoms/modalAtom";
 import { useRecoilValue } from "recoil";
-import MovieModal from "../modals/MovieModal"; */
+import MovieModal from "../modals/MovieModal";
 
 const Hero: FC = () => {
   const { data: netflixOriginals } = useFetchNetflixOriginals();
@@ -29,14 +28,13 @@ const Hero: FC = () => {
   const { data: romanceData } = useFetchRomanceMovies();
   const { data: documentaries } = useFetchDocumentaries();
 
-  /* const showModal = useRecoilValue(modalState); */
+  const showModal = useRecoilValue(modalState);
 
   return (
    <div
-      /* className={`relative h-screen bg-gradient-to-b lg:h-[140vh] ${
+      className={`relative h-screen bg-gradient-to-b lg:h-[140vh] ${
         showModal && "!h-screen overflow-hidden"
-      }`} */
-      className="relative h-screen bg-gradient-to-b lg:h-[140vh]"
+      }`}
     >
       <Navbar />
       <main className="relative pl-4 pb-24 lg:space-y-24 lg:pl-16">
@@ -51,8 +49,7 @@ const Hero: FC = () => {
           <MovieRow title="Documentaries" movies={documentaries} />
         </section>
       </main>
-      {/* {showModal && <MovieModal />} */}
-      <ScrollToTop />
+      {showModal && <MovieModal />}
     </div>
   );
 };
