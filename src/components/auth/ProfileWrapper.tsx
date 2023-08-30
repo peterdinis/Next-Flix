@@ -3,8 +3,11 @@
 import { FC } from "react";
 import Link from "next/link";
 import ProfileInfo from "./ProfileInfo";
+import { useAuth } from "@/hooks/useAuth";
 
 const ProfileWrapper: FC = () => {
+
+  const { currentUser } = useAuth();
 
   return (
     <>
@@ -32,7 +35,7 @@ const ProfileWrapper: FC = () => {
           <div className="-ml-0.5 flex items-center gap-x-1.5">
             <img src="https://rb.gy/4vfk4r" alt="" className="h-7 w-7" />
             <p className="text-xs font-semibold text-[#555]">
-              Member since {new Date().toString()}
+              Member since {currentUser?.metadata.creationTime}
             </p>
           </div>
         </div>
