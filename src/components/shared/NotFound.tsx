@@ -1,19 +1,39 @@
 import { FC } from "react";
 import Link from "next/link";
+import SecondNavbar from "./navbar/SecondNavbar";
 
 const NotFound: FC = () => {
-    return (
-        <div className="flex flex-col items-center justify-center min-h-screen ">
-        <h1 className="text-4xl font-bold text-blue-50 mb-4">404</h1>
-        <p className="text-xl text-blue-50 mb-8">Oops! The page you're looking for doesn't exist.</p>
-        <Link
-          href="/"
-          className="px-6 py-3 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition duration-300"
-        >
-          Back to Home
-        </Link>
+  return (
+    <>
+      <SecondNavbar />
+      <div className="lg:px-24 lg:py-24 md:py-20 md:px-44 px-4 py-24 items-center flex justify-center flex-col-reverse lg:flex-row md:gap-28 gap-16">
+        <div className="xl:pt-24 w-full xl:w-1/2 relative pb-12 lg:pb-0">
+          <div className="relative">
+            <div className="absolute">
+              <div className="mt-52">
+                <h1 className="my-2 text-blue-50 font-bold text-2xl">
+                  Looks like you've found the doorway to the great nothing
+                </h1>
+                <p className="my-2 text-blue-50">
+                  Sorry about that! Please visit our hompage to get where you
+                  need to go.
+                </p>
+                <button className="sm:w-full lg:w-auto my-2 border rounded md py-4 px-8 text-center bg-indigo-600 text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-700 focus:ring-opacity-50">
+                  <Link href="/">Take me there!</Link>
+                </button>
+              </div>
+            </div>
+            <div>
+              <img src="https://i.ibb.co/G9DC8S0/404-2.png" />
+            </div>
+          </div>
+        </div>
+        <div>
+          <img src="https://i.ibb.co/ck1SGFJ/Group.png" />
+        </div>
       </div>
-    )
-}
+    </>
+  );
+};
 
-export default NotFound
+export default NotFound;
