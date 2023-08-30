@@ -1,3 +1,5 @@
+"use client"
+
 import { FC, useState, useRef } from "react";
 import { DocumentData } from "firebase/firestore";
 import { Movie } from "@/types/moviesTypes";

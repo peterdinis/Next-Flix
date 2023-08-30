@@ -1,10 +1,11 @@
 import { modalState, movieState } from "@/store/atoms/modalAtom";
 import { useRecoilState } from "recoil";
 import { FaPlay } from "react-icons/fa";
-import { baseUrl } from "@/api/movies/moviesRequests";
 import { BiInfoCircle } from "react-icons/bi";
 import { Movie, MovieApiResponse } from "@/types/moviesTypes";
 import { FC, useState, useEffect } from "react";
+import { baseUrl } from "@/constants/applictionConstants";
+import Image from "next/image";
 
 interface InfoModalPropsI {
   netflixOriginals: MovieApiResponse | any;
@@ -24,21 +25,23 @@ const InfoModal: FC<InfoModalPropsI> = ({
     : null;
 
     useEffect(() => {
-      if (randomMovie) {
+      if (randomMovie && !movie) {
         setMovie(randomMovie);
       }
-    }, [randomMovie]);
-
+    }, [randomMovie, movie]);
 
   return (
     <>
       <div className="flex flex-col space-y-2 py-16 md:space-y-4 lg:h-[65vh] lg:justify-end lg:pb-12">
         <div className="absolute top-0 left-0 h-[95vh] w-screen -z-10">
-          <img
+          <Image
             src={`${baseUrl}${
               randomMovie?.backdrop_path || randomMovie?.poster_path
             }`}
             alt="Movie Poster"
+            priority={true}
+            fill={true}
+            property="full"
           />
         </div>
 

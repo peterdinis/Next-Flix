@@ -5,11 +5,11 @@ import { useRecoilState } from "recoil";
 import { modalState, movieState } from "@/store/atoms/modalAtom";
 import { Movie } from "@/types/moviesTypes";
 
-interface Props {
+interface ThumbnailProps {
   movie: Movie | DocumentData;
 }
 
-const Thumbnail: FC<Props> = ({ movie }: Props) => {
+const Thumbnail: FC<ThumbnailProps> = ({ movie }: ThumbnailProps) => {
   const [showModal, setShowModal] = useRecoilState(modalState);
   const [currentMovie, setCurrentMovie] = useRecoilState(movieState);
   return (

@@ -1,15 +1,16 @@
+"use client"
+
 import { FC } from "react";
 import SecondNavbar from "../shared/navbar/SecondNavbar";
-import { useFetchNetflixOriginals } from "@/api/movies/moviesRequests";
-import MovieRow from "./MovieRow";
+import Header from "../shared/Header";
+
 
 const ListWrapper: FC = () => {
-  const { data: originalData } = useFetchNetflixOriginals();
   return (
     <>
       <SecondNavbar />
+      <Header title="My List" />
       <section className="md:space-y-24 mt-4">
-        <MovieRow title="Netflix series" movies={originalData} />
       </section>
     </>
   );

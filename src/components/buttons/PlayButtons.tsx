@@ -1,5 +1,5 @@
 import React from "react";
-import {FiAirplay} from "react-icons/fi";
+import { FiAirplay } from "react-icons/fi";
 import { useRouter } from "next/navigation";
 
 interface PlayButtonProps {
