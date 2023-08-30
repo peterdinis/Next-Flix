@@ -1,21 +1,26 @@
 "use client"
 
-import { FC } from "react";
+import { FC, useState } from "react";
 import SecondNavbar from "../shared/navbar/SecondNavbar";
-import { useFetchNetflixOriginals } from "@/api/movies/moviesRequests";
-import MovieRow from "./MovieRow";
+import useSWR from "swr";
+import { API_KEY, BASE_URL, fetcher } from "@/constants/applictionConstants";
 
 const SeriesWrapper: FC = () => {
-  const {data: originalData} = useFetchNetflixOriginals();
+  const [pageIndex, setPageIndex] = useState(1);
+  const url = `${BASE_URL}/tv/pouplar?api_key=${API_KEY}&language=en-US&page=${pageIndex}`;
 
-  console.log(originalData);
+  const {data, error, isLoading} = useSWR(url, fetcher);
 
-  /* We must get here all data */
+  if (error) return <div>failed to load</div>
+  if (isLoading) return <div>loading...</div>
+
+  console.log("Data",data);
+
   return (
     <>
       <SecondNavbar />
       <section className="md:space-y-24 mt-4">
-        <MovieRow title="Netflix series" movies={originalData} />
+
       </section>
     </>
   );

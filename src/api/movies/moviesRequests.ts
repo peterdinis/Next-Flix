@@ -1,45 +1,8 @@
-import { BASE_URL, API_KEY, baseUrl } from "@/constants/applictionConstants";
-import useSWR, { Fetcher } from "swr";
+import { BASE_URL, API_KEY, initialMovieData, fetcher } from "@/constants/applictionConstants";
+import useSWR from "swr";
 
-const initialMovieData = {
-  name: "Custom Name",
-  description: "Custom Description",
-};
-
-const fetcher: Fetcher = (url: string) => fetch(url).then((res) => res.json());
-
-/* TODO: Update later */
 export function useAllMovies() {
-  const url = `${BASE_URL}/trending/all/week?api_key=${API_KEY}&language=sk-SK`;
-  const { data, error} = useSWR(url, fetcher, {
-    fallbackData: initialMovieData,
-    revalidateOnMount: true,
-  });
-
-  return {
-    data,
-    error,
-    isLoading: !data && !error,
-  };
-}
-
-export function useTVList() {
-  const url = `${BASE_URL}/tv/changes?page=1`;
-  const { data, error} = useSWR(url, fetcher, {
-    fallbackData: initialMovieData,
-    revalidateOnMount: true,
-  });
-
-  return {
-    data,
-    error,
-    isLoading: !data && !error,
-  };
-}
-
-
-export function useFetchTopTrendingSlovakiaMovies() {
-  const url = `${BASE_URL}/trending/all/week?api_key=${API_KEY}&language=sk-SK`;
+  const url = `${BASE_URL}/trending/all/week?api_key=${API_KEY}&language=en-US`;
   const { data, error} = useSWR(url, fetcher, {
     fallbackData: initialMovieData,
     revalidateOnMount: true,
