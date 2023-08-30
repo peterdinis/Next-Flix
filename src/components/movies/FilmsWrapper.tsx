@@ -7,7 +7,7 @@ import { API_KEY, BASE_URL, fetcher } from "@/constants/applictionConstants";
 
 const FilmsWrapper: FC = () => {
   const [pageIndex, setPageIndex] = useState(1);
-  const url = `${BASE_URL}/keyword/keyword_id/movies?include_adult=false?api_key=${API_KEY}&language=en-US&page=${pageIndex}`;
+  const url = `${BASE_URL}/movie/now_playing?api_key=${API_KEY}&language=en-US&page=${pageIndex}`;
 
   const { data, error } = useSWR(url, fetcher);
 
@@ -45,7 +45,7 @@ const FilmsWrapper: FC = () => {
     <>
       <SecondNavbar />
       <section className="md:space-y-24 mt-4">
-
+        FILMS PAGE
       </section>
     </>
   );

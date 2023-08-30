@@ -43,14 +43,12 @@ const SeriesWrapper: FC = () => {
     <>
       <SecondNavbar />
       <section className="md:space-y-24 mt-4">
-        {/* TODO: Update */}
         {data?.results && data?.results.map((item: any) => {
           return (
             <h2>{item.name}</h2>
           )
         })}
         <div ref={containerRef}></div>
-        {/* {isValidating && <div>Loading more...</div>} */}
       </section>
     </>
   );
