@@ -9,12 +9,12 @@ const SeriesWrapper: FC = () => {
   const [pageIndex, setPageIndex] = useState(1);
   const url = `${BASE_URL}/tv/popular?api_key=${API_KEY}&language=en-US&page=${pageIndex}`;
 
-  const { data, error, isValidating } = useSWR(url, fetcher);
+  const { data, error } = useSWR(url, fetcher);
 
   const containerRef = useRef<HTMLDivElement | null>(null);
 
   const handleObserver: IntersectionObserverCallback = ([entry]) => {
-    if (entry.isIntersecting && !isValidating) {
+    if (entry.isIntersecting && data && data.page < data.total_pages) {
       setPageIndex((prevIndex) => prevIndex + 1);
     }
   };
@@ -35,7 +35,7 @@ const SeriesWrapper: FC = () => {
         observer.unobserve(containerRef.current);
       }
     };
-  }, []);
+  }, [data]);
 
   if (error) return <div>failed to load</div>;
 
@@ -50,7 +50,7 @@ const SeriesWrapper: FC = () => {
           )
         })}
         <div ref={containerRef}></div>
-        {isValidating && <div>Loading more...</div>}
+        {/* {isValidating && <div>Loading more...</div>} */}
       </section>
     </>
   );
