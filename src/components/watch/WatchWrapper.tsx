@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { FC, useCallback } from "react";
 import { useRouter } from "next/navigation";
@@ -38,18 +38,18 @@ const UserCard: React.FC<UserCardProps> = ({ name }) => {
 const WatchWrapper: FC = () => {
   const router = useRouter();
 
-  const {currentUser} = useAuth();
+  const { currentUser } = useAuth();
 
   const selectProfile = useCallback(() => {
-    router.push('/');
+    router.push("/");
   }, [router]);
-
-  console.log("CurrentUser", currentUser);
 
   return (
     <div className="flex items-center h-full justify-center">
       <div className="flex flex-col">
-        <h1 className="text-3xl md:text-6xl text-white text-center">Who&#39;s watching?</h1>
+        <h1 className="text-3xl md:text-6xl text-white text-center">
+          Who&#39;s watching?
+        </h1>
         <div className="flex items-center justify-center gap-8 mt-10">
           <div onClick={() => selectProfile()}>
             <UserCard name={currentUser?.email as unknown as string} />

@@ -43,8 +43,6 @@ const MovieModal: FC = () => {
     fetchMovie()
   }, [movie]);
 
-  console.log(movie);
-
   return (
     <MuiModal open={showModal} onClose={handleClose}>
       <Fragment>
