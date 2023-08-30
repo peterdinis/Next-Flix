@@ -2,7 +2,6 @@
 
 import { FC } from "react";
 import Navbar from "../shared/navbar/Navbar";
-import ScrollToTop from "@/hooks/useScroll";
 import InfoModal from "../modals/InfoModal";
 import {
   useFetchComedyMovies,
@@ -51,7 +50,6 @@ const Hero: FC = () => {
         </section>
       </main>
       {showModal && <MovieModal />}
-      <ScrollToTop />
     </div>
   );
 };

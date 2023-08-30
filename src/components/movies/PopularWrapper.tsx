@@ -1,6 +1,5 @@
 import { FC } from "react";
 
-import Header from "../shared/Header";
 import SecondNavbar from "../shared/navbar/SecondNavbar";
 import { useFetchNetflixOriginals } from "@/api/movies/moviesRequests";
 import MovieRow from "./MovieRow";

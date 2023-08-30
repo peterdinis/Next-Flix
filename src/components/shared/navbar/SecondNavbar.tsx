@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { FC, useCallback, useEffect, useState } from "react";
 import { IoMdArrowDropdown } from "react-icons/io";
