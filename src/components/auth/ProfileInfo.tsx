@@ -37,9 +37,8 @@ const ProfileInfo: FC = () => {
       <div className="space-y-2 py-4">
         <h4 className="text-lg text-[gray]">Account Info</h4>
       </div>
-
       <div className="col-span-3">
-        <div className="flex flex-col justify-between border-b border-white/10 py-4 md:flex-row">
+        <div className="border-b border-white/10 py-4 md:flex-row">
           <p className="font-medium text-blue-50">
             Email: {currentUser?.email}
           </p>{" "}
