@@ -10,11 +10,13 @@ import { useRouter } from "next/navigation";
 const ProfileInfo: FC = () => {
   const router = useRouter();
   const { currentUser, logout } = useAuth();
-  const profileCookie = JSON.parse(
-    Cookies.get("userCredentials") as unknown as string
-  );
 
-  const userPassword = profileCookie.password;
+  const profileCookie = Cookies.get("userCredentials");
+  let userPassword = "";
+
+  if (profileCookie) {
+    userPassword = JSON.parse(profileCookie).password;
+  }
 
   const [password, setPassword] = useState(userPassword);
   const [showPassword, setShowPassword] = useState(false);
@@ -40,13 +42,16 @@ const ProfileInfo: FC = () => {
         <div className="flex flex-col justify-between border-b border-white/10 py-4 md:flex-row">
           <p className="font-medium text-blue-50">
             Email: {currentUser?.email}
-          </p> <br />
+          </p>{" "}
+          <br />
           <p className="font-medium text-blue-50 mt-4">
             Account Created at: {currentUser?.metadata.creationTime}
-          </p> <br />
+          </p>{" "}
+          <br />
           <p className="font-medium text-blue-50 mt-4">
             Last Login at: {currentUser?.metadata.lastSignInTime}
-          </p> <br />
+          </p>{" "}
+          <br />
           <p className="font-medium text-blue-50 mt-4">
             Your Password:{" "}
             <input
@@ -58,7 +63,8 @@ const ProfileInfo: FC = () => {
             <span onClick={togglePasswordVisibility}>
               {showPassword ? <VisibilityOff /> : <Visibility />} Show Password
             </span>
-          </p> <br />
+          </p>{" "}
+          <br />
         </div>
         <div className="mt-8">
           <button
