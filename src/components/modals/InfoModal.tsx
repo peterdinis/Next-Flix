@@ -1,10 +1,10 @@
 import { modalState, movieState } from "@/store/atoms/modalAtom";
 import { useRecoilState } from "recoil";
 import { FaPlay } from "react-icons/fa";
-import { baseUrl } from "@/api/movies/moviesRequests";
 import { BiInfoCircle } from "react-icons/bi";
 import { Movie, MovieApiResponse } from "@/types/moviesTypes";
 import { FC, useState, useEffect } from "react";
+import { baseUrl } from "@/constants/applictionConstants";
 
 interface InfoModalPropsI {
   netflixOriginals: MovieApiResponse | any;

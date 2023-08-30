@@ -1,17 +1,12 @@
+import { BASE_URL, API_KEY, baseUrl } from "@/constants/applictionConstants";
 import useSWR, { Fetcher } from "swr";
-
-export const baseUrl = "https://image.tmdb.org/t/p/original";
 
 const initialMovieData = {
   name: "Custom Name",
   description: "Custom Description",
 };
 
-const BASE_URL = "https://api.themoviedb.org/3";
-
 const fetcher: Fetcher = (url: string) => fetch(url).then((res) => res.json());
-
-const API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY;
 
 /* TODO: Update later */
 export function useAllMovies() {
