@@ -12,7 +12,7 @@ const ProfileInfo: FC = () => {
   const { currentUser, logout } = useAuth();
 
   const profileCookie = Cookies.get("userCredentials");
-  let userPassword = "";
+  let userPassword = "" as string;
 
   if (profileCookie) {
     userPassword = JSON.parse(profileCookie).password;

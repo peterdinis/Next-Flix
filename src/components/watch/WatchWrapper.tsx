@@ -3,13 +3,7 @@
 import { FC, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/hooks/useAuth";
-
-const images = [
-  "/images/default-blue.jpg",
-  "/images/default-purple.jpg",
-  "/images/default-red.jpg",
-  "/images/default-slate.jpg",
-];
+import { images } from "./images";
 
 interface UserCardProps {
   name: string;

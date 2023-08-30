@@ -6,16 +6,17 @@ interface InputProps {
   type?: string;
   label: string;
   onChange: any;
+  placeholder?: string;
 }
 
-const Input: FC<InputProps> = ({ id, value, onChange, type, label }: InputProps) => {
+const Input: FC<InputProps> = ({ id, value, onChange, type, label, placeholder }: InputProps) => {
   return (
     <div className="relative">
       <input
         id={id}
         type={type}
         value={value}
-        placeholder=" "
+        placeholder={placeholder}
         onChange={onChange}
         className="block pt-6 px-6 pb-1 w-full text-md focus:ring-0 peer text-white rounded-md bg-neutral-700 appearance-none focus:outline-none"
       />
