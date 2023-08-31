@@ -14,6 +14,7 @@ const SecondNavbar: FC = () => {
   const [showAccountMenu, setShowAccountMenu] = useState(false);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [showBackground, setShowBackground] = useState(false);
+  const [showSearchDropdown, setShowSearchDropdown] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,6 +30,10 @@ const SecondNavbar: FC = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
+  }, []);
+
+  const toggleSearchDropdown = useCallback(() => {
+    setShowSearchDropdown((current) => !current);
   }, []);
 
   const toggleAccountMenu = useCallback(() => {
@@ -69,8 +74,8 @@ const SecondNavbar: FC = () => {
           <MobileMenu visible={showMobileMenu} />
         </div>
         <div className="flex flex-row ml-auto gap-7 items-center">
-         <SearchIcon className="hidden sm:inline sm:w-6 sm:h-6 text-blue-50 cursor-pointer" />
-         <SearchDropdown />
+         <SearchIcon onClick={toggleSearchDropdown} className="hidden sm:inline sm:w-6 sm:h-6 text-blue-50 cursor-pointer" />
+         {showSearchDropdown && <SearchDropdown />} 
           <div
             onClick={toggleAccountMenu}
             className="flex flex-row items-center gap-2 cursor-pointer relative"
