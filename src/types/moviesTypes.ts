@@ -22,6 +22,10 @@ export interface Genre {
     vote_count: number;
   }
 
+  export interface Series extends Movie {
+    name: string;
+  }
+
   export interface MovieApiResponse {
     results: Movie[];
   }

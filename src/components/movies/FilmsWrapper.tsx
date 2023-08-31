@@ -9,6 +9,8 @@ const FilmsWrapper: FC = () => {
   const [pageIndex, setPageIndex] = useState(1);
 
   const {data} = usePaginatedFilms(pageIndex);
+
+  console.log(data);
   
   return (
     <>
