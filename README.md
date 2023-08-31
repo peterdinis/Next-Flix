@@ -19,12 +19,11 @@ This project is a Netflix clone built using Next.js, React, TypeScript, Firebase
 
 2. cd netflix-clone-nextjs
 3. Install dependencies 
-npm install
-# or
-yarn install
+npm install or yarn install or pnpm install
 
-4. Firebase Configuration
+1. Firebase Configuration
 To set up Firebase for this project, you'll need to:
 
 Create a Firebase project at https://console.firebase.google.com/
 Obtain your Firebase configuration (apiKey, authDomain, projectId, storageBucket, messagingSenderId, appId) and update the src/lib/firebase.ts file with your configuration.
+Config file is in lib/firebase.ts
