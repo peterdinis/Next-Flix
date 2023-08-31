@@ -16,7 +16,7 @@ const SeriesWrapper: FC = () => {
     <>
       <SecondNavbar />
       <section className="md:space-y-24 mt-4">
-       {data.results && data.results.map((item: Series) => {
+        {data.results && data.results.map((item: Series) => {
         return (
           <>
             <h2>{item.name}</h2>

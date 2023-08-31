@@ -26,6 +26,15 @@ export interface Genre {
     name: string;
   }
 
+  export interface Film extends Movie {
+    adult: boolean;
+    video: boolean;
+  }
+
+  export interface Popular extends Movie {
+    
+  }
+
   export interface MovieApiResponse {
     results: Movie[];
   }
