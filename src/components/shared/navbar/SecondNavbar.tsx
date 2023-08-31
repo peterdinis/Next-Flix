@@ -68,7 +68,7 @@ const SecondNavbar: FC = () => {
           <MobileMenu visible={showMobileMenu} />
         </div>
         <div className="flex flex-row ml-auto gap-7 items-center">
-         <SearchIcon className="hidden sm:inline sm:w-6 sm:h-6 text-blue-50" />
+         <SearchIcon className="hidden sm:inline sm:w-6 sm:h-6 text-blue-50 cursor-pointer" />
           <div
             onClick={toggleAccountMenu}
             className="flex flex-row items-center gap-2 cursor-pointer relative"
