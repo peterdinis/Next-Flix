@@ -58,6 +58,7 @@ const LoginForm: FC = () => {
                 onChange={(e: ChangeEvent<HTMLInputElement>) =>
                   setCredentials({ ...credentials, email: e.target.value })
                 }
+                placeholder="Your Email"
               />
               <Input
                 type="password"
@@ -67,6 +68,7 @@ const LoginForm: FC = () => {
                 onChange={(e: ChangeEvent<HTMLInputElement>) =>
                   setCredentials({ ...credentials, password: e.target.value })
                 }
+                placeholder="Your password"
               />
             </div>
             <button
