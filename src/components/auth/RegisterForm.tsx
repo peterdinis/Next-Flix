@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, ChangeEvent, useRef, useEffect, FC } from "react";
+import { useState, ChangeEvent, FC } from "react";
 import { useRouter } from "next/navigation";
 import Input from "@/components/shared/Input";
 import Link from "next/link";
@@ -16,15 +16,6 @@ const RegisterForm: FC = () => {
   });
 
   const { register } = useAuth();
-
-  const mounted = useRef(false);
-
-  useEffect(() => {
-    mounted.current = true;
-    return () => {
-      mounted.current = false;
-    };
-  }, []);
 
   const registerUser = async () => {
     try {
@@ -55,6 +46,7 @@ const RegisterForm: FC = () => {
                 onChange={(e: ChangeEvent<HTMLInputElement>) =>
                   setCredentials({ ...credentials, email: e.target.value })
                 }
+                placeholder="Your Email"
               />
               <Input
                 type="password"
@@ -64,6 +56,7 @@ const RegisterForm: FC = () => {
                 onChange={(e: ChangeEvent<HTMLInputElement>) =>
                   setCredentials({ ...credentials, password: e.target.value })
                 }
+                placeholder="Your Password"
               />
             </div>
             <button
