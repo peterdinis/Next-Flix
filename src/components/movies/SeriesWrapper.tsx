@@ -4,9 +4,14 @@ import { FC, useState, useRef, useEffect } from "react";
 import SecondNavbar from "../shared/navbar/SecondNavbar";
 import useSWR from "swr";
 import { API_KEY, BASE_URL, fetcher } from "@/constants/applictionConstants";
+import axios from "axios";
+import { useQuery } from "@tanstack/react-query";
 
 const SeriesWrapper: FC = () => {
   const [pageIndex, setPageIndex] = useState(1);
+  const [limit, setLimit] = useState(20);
+
+
   const url = `${BASE_URL}/tv/popular?api_key=${API_KEY}&language=en-US&page=${pageIndex}`;
 
   const { data, error } = useSWR(url, fetcher);
