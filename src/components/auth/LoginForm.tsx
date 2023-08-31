@@ -5,8 +5,9 @@ import { useRouter } from "next/navigation";
 import Input from "@/components/shared/Input";
 import Link from "next/link";
 import { useAuth } from "@/hooks/useAuth";
-import {toast} from "react-hot-toast";
+import { toast } from "react-hot-toast";
 import Cookie from "js-cookie";
+import GoogleIcon from '@mui/icons-material/Google';
 
 const LoginForm: FC = () => {
   const router = useRouter();
@@ -16,7 +17,7 @@ const LoginForm: FC = () => {
     password: "",
   });
 
-  const { login } = useAuth();
+  const { login, signInWithGoogle } = useAuth();
 
   const loginUser = async () => {
     try {
@@ -31,8 +32,15 @@ const LoginForm: FC = () => {
     }
   };
 
+  const loginWithGoogle = async () => {
+    signInWithGoogle();
+    setTimeout(() => {
+      router.push("/profile");
+    }, 10000);
+  };
+
   return (
-    <div className="relative h-full w-full bg-[url('/images/herohero.jpg')] bg-no-repeat bg-center bg-fixed bg-cover">
+    <div className="relative h-full w-full bg-[url('/images/mainhero.jpg')] bg-no-repeat bg-center bg-fixed bg-cover">
       <div className="bg-black w-full h-full lg:bg-opacity-50">
         <nav className="px-12 py-5">
           <img src="/images/logo.png" className="h-12" alt="Logo" />
@@ -44,12 +52,11 @@ const LoginForm: FC = () => {
               <Input
                 id="email"
                 type="email"
-                label="Email address or phone number"
+                label="Email address"
                 value={credentials.email}
                 onChange={(e: ChangeEvent<HTMLInputElement>) =>
                   setCredentials({ ...credentials, email: e.target.value })
                 }
-                placeholder="Your Email"
               />
               <Input
                 type="password"
@@ -59,7 +66,6 @@ const LoginForm: FC = () => {
                 onChange={(e: ChangeEvent<HTMLInputElement>) =>
                   setCredentials({ ...credentials, password: e.target.value })
                 }
-                placeholder="Your password"
               />
             </div>
             <button
@@ -74,6 +80,16 @@ const LoginForm: FC = () => {
                 <Link href="/register">Register here</Link>
               </span>
               .
+            </p>
+            <p className="mt-12">
+              <button
+                onClick={loginWithGoogle}
+                type="button"
+                className="text-white bg-[#4285F4] hover:bg-[#4285F4]/90 focus:ring-4 focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#4285F4]/55 mr-2 mb-2"
+              >
+                <GoogleIcon className="mr-2 -ml-1 w-4 h-4" />
+                Sign in with Google
+              </button>
             </p>
           </div>
         </div>

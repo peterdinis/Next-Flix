@@ -234,3 +234,72 @@ export function useFetchDocumentaries() {
     isLoading: !data && !error,
   };
 }
+
+export function usePaginatedSeries(pageIndex: number) {
+  const url = `${BASE_URL}/tv/popular?api_key=${API_KEY}&language=en-US&page=${pageIndex}`;
+
+  const { data, error } = useQuery(
+    ["pagintedSeries", pageIndex],
+    async () => {
+      const pagintedSeriesRequest = await axios.get(url);
+
+      return pagintedSeriesRequest.data;
+    },
+    {
+      keepPreviousData: true,
+      initialData: initialMovieData,
+    }
+  );
+
+  return {
+    data,
+    error,
+    isLoading: !data && !error,
+  };
+}
+
+export function usePaginatedPopular(pageIndex: number) {
+  const url = `${BASE_URL}/movie/popular?api_key=${API_KEY}&language=en-US&page=${pageIndex}`;
+
+  const { data, error } = useQuery(
+    ["paginatedPopular"],
+    async () => {
+      const paginatedPopularRequest = await axios.get(url);
+
+      return paginatedPopularRequest.data;
+    },
+    {
+      keepPreviousData: true,
+      initialData: initialMovieData,
+    }
+  );
+
+  return {
+    data,
+    error,
+    isLoading: !data && !error,
+  };
+}
+
+export function usePaginatedFilms(pageIndex: number) {
+  const url = `${BASE_URL}/movie/now_playing?api_key=${API_KEY}&language=en-US&page=${pageIndex}`;
+
+  const { data, error } = useQuery(
+    ["paginatedFilms"],
+    async () => {
+      const paginatedFilmsRequest = await axios.get(url);
+
+      return paginatedFilmsRequest.data;
+    },
+    {
+      keepPreviousData: true,
+      initialData: initialMovieData,
+    }
+  );
+
+  return {
+    data,
+    error,
+    isLoading: !data && !error,
+  };
+}

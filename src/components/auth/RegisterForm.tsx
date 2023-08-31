@@ -29,7 +29,7 @@ const RegisterForm: FC = () => {
     }
   };
   return (
-    <div className="relative h-full w-full bg-[url('/images/herohero.jpg')] bg-no-repeat bg-center bg-fixed bg-cover">
+    <div className="relative h-full w-full bg-[url('/images/mainhero.jpg')] bg-no-repeat bg-center bg-fixed bg-cover">
       <div className="bg-black w-full h-full lg:bg-opacity-50">
         <nav className="px-12 py-5">
           <img src="/images/logo.png" className="h-12" alt="Logo" />
@@ -46,7 +46,6 @@ const RegisterForm: FC = () => {
                 onChange={(e: ChangeEvent<HTMLInputElement>) =>
                   setCredentials({ ...credentials, email: e.target.value })
                 }
-                placeholder="Your Email"
               />
               <Input
                 type="password"
@@ -56,7 +55,6 @@ const RegisterForm: FC = () => {
                 onChange={(e: ChangeEvent<HTMLInputElement>) =>
                   setCredentials({ ...credentials, password: e.target.value })
                 }
-                placeholder="Your Password"
               />
             </div>
             <button

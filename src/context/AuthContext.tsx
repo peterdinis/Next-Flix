@@ -42,16 +42,6 @@ const AuthContextProvider: React.FC<AuthProviderProps> = ({ children }) => {
       return createUserWithEmailAndPassword(auth, credentials.email, credentials.password);
     }
   
-    function forgotPassword(email: string) {
-      return sendPasswordResetEmail(auth, email, {
-        url: `http://localhost:3000/login`,
-      });
-    }
-  
-    function resetPassword(oobCode: string, newPassword: string) {
-      return confirmPasswordReset(auth, oobCode, newPassword);
-    }
-  
     function logout() {
       return signOut(auth);
     }
@@ -67,8 +57,6 @@ const AuthContextProvider: React.FC<AuthProviderProps> = ({ children }) => {
       login,
       register,
       logout,
-      forgotPassword,
-      resetPassword,
     };
   
     return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

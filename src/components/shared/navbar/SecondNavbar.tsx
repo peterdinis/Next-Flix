@@ -7,6 +7,7 @@ import MobileMenu from "../menu/MobileMenu";
 import AccountMenu from "../menu/AccountMenu";
 import { TOP_OFFSET } from "@/constants/applictionConstants";
 import Link from "next/link";
+import SearchIcon from '@mui/icons-material/Search';
 
 const SecondNavbar: FC = () => {
   const [showAccountMenu, setShowAccountMenu] = useState(false);
@@ -67,6 +68,7 @@ const SecondNavbar: FC = () => {
           <MobileMenu visible={showMobileMenu} />
         </div>
         <div className="flex flex-row ml-auto gap-7 items-center">
+         <SearchIcon className="hidden sm:inline sm:w-6 sm:h-6 text-blue-50" />
           <div
             onClick={toggleAccountMenu}
             className="flex flex-row items-center gap-2 cursor-pointer relative"

@@ -22,6 +22,19 @@ export interface Genre {
     vote_count: number;
   }
 
+  export interface Series extends Movie {
+    name: string;
+  }
+
+  export interface Film extends Movie {
+    adult: boolean;
+    video: boolean;
+  }
+
+  export interface Popular extends Movie {
+    
+  }
+
   export interface MovieApiResponse {
     results: Movie[];
   }
