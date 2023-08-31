@@ -8,6 +8,7 @@ import ErrorBoundary from "@/components/shared/CustomErrorBoundary";
 import AuthContextProvider from "@/context/AuthContext";
 import { RecoilRoot } from "recoil";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
 const queryClient = new QueryClient();
 
@@ -32,6 +33,7 @@ export default function RootLayout({
               <QueryClientProvider client={queryClient}>
                 {children}
                 <Toaster />
+                <ReactQueryDevtools initialIsOpen={false} />
               </QueryClientProvider>
             </ErrorBoundary>
           </RecoilRoot>
