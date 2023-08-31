@@ -1,12 +1,26 @@
-import { BASE_URL, API_KEY, initialMovieData, fetcher } from "@/constants/applictionConstants";
-import useSWR from "swr";
+import {
+  BASE_URL,
+  API_KEY,
+  initialMovieData,
+} from "@/constants/applictionConstants";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 
 export function useAllMovies() {
   const url = `${BASE_URL}/trending/all/week?api_key=${API_KEY}&language=en-US`;
-  const { data, error} = useSWR(url, fetcher, {
-    fallbackData: initialMovieData,
-    revalidateOnMount: true,
-  });
+
+  const { data, error } = useQuery(
+    ["allMovies"],
+    async () => {
+      const allMoviesRequests = await axios.get(url);
+
+      return allMoviesRequests.data;
+    },
+    {
+      initialData: initialMovieData,
+      refetchOnMount: true,
+    }
+  );
 
   return {
     data,
@@ -17,10 +31,18 @@ export function useAllMovies() {
 
 export function useFetchTopTrendingMovies() {
   const url = `${BASE_URL}/trending/all/week?api_key=${API_KEY}&language=en-US`;
-  const { data, error } = useSWR(url, fetcher, {
-    fallbackData: initialMovieData,
-    revalidateOnMount: true,
-  });
+  const { data, error } = useQuery(
+    ["topTrendingMovies"],
+    async () => {
+      const topTrendingMoviesRequest = await axios.get(url);
+
+      return topTrendingMoviesRequest.data;
+    },
+    {
+      initialData: initialMovieData,
+      refetchOnMount: true,
+    }
+  );
 
   return {
     data,
@@ -32,16 +54,20 @@ export function useFetchTopTrendingMovies() {
 export function useFetchTrendingMovies() {
   const url = `${BASE_URL}/trending/all/week?api_key=${API_KEY}&language=en-US`;
 
-  const { data, error } = useSWR(url, fetcher, {
-    fallbackData: initialMovieData,
-    revalidateOnMount: true,
-  });
+  const {data, error} = useQuery(["trendingMovies"], async() =>{
+    const trendingMovies = await axios.get(url);
+
+    return trendingMovies.data;
+  }, {
+      initialData: initialMovieData,
+      refetchOnMount: true,
+  })
 
   return {
     data,
     error,
     isLoading: !data && !error,
-  };
+  }; 
 }
 
 export function useFetchNetflixOriginals() {
