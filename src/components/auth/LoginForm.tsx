@@ -7,7 +7,6 @@ import Link from "next/link";
 import { useAuth } from "@/hooks/useAuth";
 import { toast } from "react-hot-toast";
 import Cookie from "js-cookie";
-import GoogleIcon from "@mui/icons-material/Google";
 
 const LoginForm: FC = () => {
   const router = useRouter();
@@ -32,9 +31,12 @@ const LoginForm: FC = () => {
     }
   };
 
+  /* TODO: Operation work but later update this logic */
   const loginWithGoogle = async () => {
     signInWithGoogle();
-    router.push("/profile");
+    setTimeout(() => {
+      router.push("/profile");
+    }, 10000);
   };
 
   return (
