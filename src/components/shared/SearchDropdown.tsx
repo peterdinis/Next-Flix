@@ -50,7 +50,7 @@ const SearchDropdown: FC = () => {
   };
 
   return (
-    <FormControl sx={{ m: 1, width: 200, mt: 3 }}>
+    <FormControl sx={{ m: 1, width: 200, mt: 3, color: "white" }}>
       <Select
         multiple
         displayEmpty
@@ -68,7 +68,7 @@ const SearchDropdown: FC = () => {
         inputProps={{ "aria-label": "Without label" }}
       >
         <MenuItem disabled value="">
-          <em>Placeholder</em>
+          <em className="text-blue-50">Placeholder</em>
         </MenuItem>
         {names.map((name) => (
           <MenuItem
