@@ -7,8 +7,6 @@ export interface AuthContextType {
   login: (credentials: EmailAndPasswordCredentials) => Promise<UserCredential>;
   register: (credentials: EmailAndPasswordCredentials) => Promise<UserCredential>;
   logout: () => Promise<void>;
-  forgotPassword: (email: string) => Promise<void>;
-  resetPassword: (oobCode: string, newPassword: string) => Promise<void>;
 }
 
 export interface AuthProviderProps {
