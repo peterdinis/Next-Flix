@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, ChangeEvent, useRef, useEffect, FC } from "react";
+import { useState, ChangeEvent, FC } from "react";
 import { useRouter } from "next/navigation";
 import Input from "@/components/shared/Input";
 import Link from "next/link";
@@ -17,15 +17,6 @@ const LoginForm: FC = () => {
   });
 
   const { login } = useAuth();
-
-  const mounted = useRef(false);
-
-  useEffect(() => {
-    mounted.current = true;
-    return () => {
-      mounted.current = false;
-    };
-  }, []);
 
   const loginUser = async () => {
     try {
