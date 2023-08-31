@@ -7,6 +7,9 @@ import { Toaster } from "react-hot-toast";
 import ErrorBoundary from "@/components/shared/CustomErrorBoundary";
 import AuthContextProvider from "@/context/AuthContext";
 import { RecoilRoot } from "recoil";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,8 +29,10 @@ export default function RootLayout({
         <AuthContextProvider>
           <RecoilRoot>
             <ErrorBoundary>
-              {children}
-              <Toaster />
+              <QueryClientProvider client={queryClient}>
+                {children}
+                <Toaster />
+              </QueryClientProvider>
             </ErrorBoundary>
           </RecoilRoot>
         </AuthContextProvider>
