@@ -2,7 +2,7 @@
 
 import { FC, useState } from "react";
 import SecondNavbar from "../../shared/navbar/SecondNavbar";
-import { usePaginatedFilms } from "@/api/movies/moviesRequests";
+import { usePaginatedFilms } from "@/api/queries/movies/moviesRequests";
 import Header from "@/components/shared/Header";
 import { Film } from "@/types/moviesTypes";
 import FilmCard from "./FilmCard";

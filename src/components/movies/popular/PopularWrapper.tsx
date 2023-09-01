@@ -2,7 +2,7 @@
 
 import { FC, useState } from "react";
 import SecondNavbar from "../../shared/navbar/SecondNavbar";
-import { usePaginatedPopular } from "@/api/movies/moviesRequests";
+import { usePaginatedPopular } from "@/api/queries/movies/moviesRequests";
 import Header from "@/components/shared/Header";
 import { Popular } from "@/types/moviesTypes";
 import PopularCard from "./PopularCard";

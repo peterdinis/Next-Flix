@@ -7,10 +7,9 @@ import { Toaster } from "react-hot-toast";
 import ErrorBoundary from "@/components/shared/CustomErrorBoundary";
 import AuthContextProvider from "@/context/AuthContext";
 import { RecoilRoot } from "recoil";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
-
-const queryClient = new QueryClient();
+import {QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { queryClient } from "@/api/queryClient";
 
 const inter = Inter({ subsets: ["latin"] });
 

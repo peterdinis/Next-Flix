@@ -12,7 +12,7 @@ import {
   useFetchTopRated,
   useFetchTrendingMovies,
   useHororMovies,
-} from "@/api/movies/moviesRequests";
+} from "@/api/queries/movies/moviesRequests";
 import MovieRow from "../movies/MovieRow";
 import { modalState } from "@/store/atoms/modalAtom";
 import { useRecoilValue } from "recoil";

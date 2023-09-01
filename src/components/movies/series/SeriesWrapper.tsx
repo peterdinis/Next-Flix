@@ -2,7 +2,7 @@
 
 import { FC, useState } from "react";
 import SecondNavbar from "../../shared/navbar/SecondNavbar";
-import { usePaginatedSeries } from "@/api/movies/moviesRequests";
+import { usePaginatedSeries } from "@/api/queries/movies/moviesRequests";
 import SerieCard from "./SerieCard";
 import Header from "@/components/shared/Header";
 import { Series } from "@/types/moviesTypes";
