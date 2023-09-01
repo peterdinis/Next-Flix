@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
 import { auth } from "@/lib/firebase";
-import React, { createContext, useEffect, useState } from "react";
+import { FC, createContext, useEffect, useState } from "react";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -9,7 +9,7 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
   signOut,
-  User
+  User,
 } from "firebase/auth";
 import {
   AuthContextType,
@@ -18,46 +18,56 @@ import {
   EmailAndPasswordCredentials,
 } from "@/types/authTypes";
 
-export const AuthContext = createContext<AuthContextType | undefined>(undefined);
+export const AuthContext = createContext<AuthContextType | undefined>(
+  undefined
+);
 
-const AuthContextProvider: React.FC<AuthProviderProps> = ({ children }) => {
-    const [currentUser, setCurrentUser] = useState<User | null>(null);
-  
-    useEffect(() => {
-      const unsubscribe: Unsubscribe = onAuthStateChanged(auth, (user) => {
-        setCurrentUser(user ? (user as User) : null);
-      });
-      return () => {
-        unsubscribe();
-      };
-    }, []);
-  
-    function login(credentials: EmailAndPasswordCredentials) {
-      return signInWithEmailAndPassword(auth, credentials.email, credentials.password);
-    }
-  
-    function register(credentials: EmailAndPasswordCredentials) {
-      return createUserWithEmailAndPassword(auth, credentials.email, credentials.password);
-    }
-  
-    function logout() {
-      return signOut(auth);
-    }
-  
-    function signInWithGoogle() {
-      const provider = new GoogleAuthProvider();
-      return signInWithPopup(auth, provider);
-    }
-  
-    const value: AuthContextType = {
-      currentUser,
-      signInWithGoogle,
-      login,
-      register,
-      logout,
+const AuthContextProvider: FC<AuthProviderProps> = ({ children }) => {
+  const [currentUser, setCurrentUser] = useState<User | null>(null);
+
+  useEffect(() => {
+    const unsubscribe: Unsubscribe = onAuthStateChanged(auth, (user) => {
+      setCurrentUser(user ? (user as User) : null);
+    });
+    return () => {
+      unsubscribe();
     };
-  
-    return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+  }, []);
+
+  function login(credentials: EmailAndPasswordCredentials) {
+    return signInWithEmailAndPassword(
+      auth,
+      credentials.email,
+      credentials.password
+    );
+  }
+
+  function register(credentials: EmailAndPasswordCredentials) {
+    return createUserWithEmailAndPassword(
+      auth,
+      credentials.email,
+      credentials.password
+    );
+  }
+
+  function logout() {
+    return signOut(auth);
+  }
+
+  function signInWithGoogle() {
+    const provider = new GoogleAuthProvider();
+    return signInWithPopup(auth, provider);
+  }
+
+  const value: AuthContextType = {
+    currentUser,
+    signInWithGoogle,
+    login,
+    register,
+    logout,
   };
-  
-  export default AuthContextProvider;
+
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+};
+
+export default AuthContextProvider;
