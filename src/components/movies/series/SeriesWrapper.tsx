@@ -11,6 +11,8 @@ const SeriesWrapper: FC = () => {
 
   const { data } = usePaginatedSeries(pageIndex);
 
+  console.log(data);
+
   return (
     <>
       <SecondNavbar />
