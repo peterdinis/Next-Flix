@@ -1,4 +1,4 @@
-import ListWrapper from "@/components/movies/ListWrapper";
+import ListWrapper from "@/components/movies/myList/ListWrapper";
 import { NextPage } from "next";
 
 const ListPage: NextPage = () => {

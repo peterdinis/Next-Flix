@@ -1,8 +1,8 @@
 "use client"
 
 import { FC } from "react";
-import SecondNavbar from "../shared/navbar/SecondNavbar";
-import Header from "../shared/Header";
+import SecondNavbar from "../../shared/navbar/SecondNavbar";
+import Header from "../../shared/Header";
 
 
 const ListWrapper: FC = () => {

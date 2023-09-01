@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { FC, useState, useRef } from "react";
 import { DocumentData } from "firebase/firestore";
@@ -15,7 +15,7 @@ interface IMovieRowProps {
 const MovieRow: FC<IMovieRowProps> = ({ title, movies }: IMovieRowProps) => {
   const rowRef = useRef<HTMLDivElement>(null);
   const [isMoved, setIsMoved] = useState(false);
-  
+
   const handleClick = (direction: string) => {
     setIsMoved(true);
 
