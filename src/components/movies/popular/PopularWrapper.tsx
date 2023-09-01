@@ -6,6 +6,7 @@ import { usePaginatedPopular } from "@/api/queries/movies/moviesRequests";
 import Header from "@/components/shared/Header";
 import { Popular } from "@/types/moviesTypes";
 import PopularCard from "./PopularCard";
+import ScrollToTop from "react-scroll-to-top";
 
 const PopularWrapper: FC = () => {
   const [pageIndex, setPageIndex] = useState(1);
@@ -15,6 +16,7 @@ const PopularWrapper: FC = () => {
   return (
     <>
       <SecondNavbar />
+      <ScrollToTop />
       <Header title="Netflix popular" />
       <div className="flex flex-wrap justify-center mt-10">
         {data.results &&

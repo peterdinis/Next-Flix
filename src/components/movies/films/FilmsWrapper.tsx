@@ -6,6 +6,7 @@ import { usePaginatedFilms } from "@/api/queries/movies/moviesRequests";
 import Header from "@/components/shared/Header";
 import { Film } from "@/types/moviesTypes";
 import FilmCard from "./FilmCard";
+import ScrollToTop from "react-scroll-to-top";
 
 const FilmsWrapper: FC = () => {
   const [pageIndex, setPageIndex] = useState(1);
@@ -15,6 +16,7 @@ const FilmsWrapper: FC = () => {
   return (
     <>
       <SecondNavbar />
+      <ScrollToTop />
       <Header title="Netflix Films" />
       <div className="flex flex-wrap justify-center mt-10">
         {data.results &&
