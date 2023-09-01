@@ -284,7 +284,7 @@ export function usePaginatedPopular(pageIndex: number) {
 export function usePaginatedFilms(pageIndex: number) {
   const url = `${BASE_URL}/movie/now_playing?api_key=${API_KEY}&language=en-US&page=${pageIndex}`;
 
-  const { data, error } = useQuery(
+  const { data, error, isFetching } = useQuery(
     ["paginatedFilms"],
     async () => {
       const paginatedFilmsRequest = await axios.get(url);
@@ -300,6 +300,7 @@ export function usePaginatedFilms(pageIndex: number) {
   return {
     data,
     error,
+    isFetching,
     isLoading: !data && !error,
   };
 }

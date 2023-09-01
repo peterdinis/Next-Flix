@@ -6,11 +6,14 @@ import { usePaginatedFilms } from "@/api/queries/movies/moviesRequests";
 import Header from "@/components/shared/Header";
 import { Film } from "@/types/moviesTypes";
 import ScrollToTop from "react-scroll-to-top";
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import Loader from "@/components/shared/Loader";
 
 const FilmsWrapper: FC = () => {
   const [pageIndex, setPageIndex] = useState(1);
 
-  const { data } = usePaginatedFilms(pageIndex);
+  const { data, isFetching } = usePaginatedFilms(pageIndex);
 
   return (
     <>
@@ -37,19 +40,19 @@ const FilmsWrapper: FC = () => {
       </div>
       <div className="flex items-center justify-center py-10 lg:px-0 sm:px-6 px-4">
         <div className="lg:w-3/5 w-full flex items-center justify-between border-t border-gray-200">
-          <div className="flex items-center pt-3 text-gray-600 hover:text-indigo-700 cursor-pointer">
+          <div className="flex items-center pt-3 text-blue-50 hover:text-indigo-700 cursor-pointer">
             <button
               onClick={() => setPageIndex((old) => Math.max(old - 1, 0))}
               disabled={pageIndex === 0}
               className="text-sm ml-3 font-medium leading-none "
             >
-              <Icon as={IoArrowBack} boxSize={6} />
+              <ArrowBackIcon />
             </button>
           </div>
-          <span className="flex items-center pt-3 text-gray-600 hover:text-indigo-700 cursor-pointer">
-            Aktuálna stránka: {pageIndex + 1}
+          <span className="flex items-center pt-3 text-blue-50 hover:text-indigo-700 cursor-pointer">
+            Actual page: {pageIndex + 1}
           </span>
-          <div className="flex items-center pt-3 text-gray-600 hover:text-indigo-700 cursor-pointer">
+          <div className="flex items-center pt-3 text-blue-50 hover:text-indigo-700 cursor-pointer">
             <button
             /*   onClick={() => {
                 if (!isPreviousData && paginatedData.data.hasNextPage) {
@@ -59,10 +62,10 @@ const FilmsWrapper: FC = () => {
               /* disabled={isPreviousData || !paginatedData.data.hasNextPage} */
               className="text-sm font-medium leading-none mr-3"
             >
-              <Icon as={IoArrowForward} boxSize={6} />
+              <ArrowForwardIcon />
             </button>
           </div>
-          {isFetching ? <FallbackLoader /> : null}
+          {isFetching ? <Loader color="red" /> : null}
         </div>
       </div>
     </>
