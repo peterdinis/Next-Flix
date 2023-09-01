@@ -5,12 +5,10 @@ import React, { createContext, useEffect, useState } from "react";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  sendPasswordResetEmail,
   onAuthStateChanged,
   signInWithPopup,
   GoogleAuthProvider,
   signOut,
-  confirmPasswordReset,
   User
 } from "firebase/auth";
 import {

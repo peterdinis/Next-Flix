@@ -50,8 +50,9 @@ const SearchDropdown: FC = () => {
   };
 
   return (
-    <FormControl sx={{ m: 1, width: 200, mt: 3, color: "white" }}>
+    <FormControl sx={{ m: 1, width: 150, mt: 3 }}>
       <Select
+        className="outline-none border-none"
         multiple
         displayEmpty
         value={personName}
@@ -59,7 +60,7 @@ const SearchDropdown: FC = () => {
         input={<OutlinedInput />}
         renderValue={(selected) => {
           if (selected.length === 0) {
-            return <em>Placeholder</em>;
+            return <em className="text-blue-50">Search</em>;
           }
 
           return selected.join(", ");
@@ -68,7 +69,7 @@ const SearchDropdown: FC = () => {
         inputProps={{ "aria-label": "Without label" }}
       >
         <MenuItem disabled value="">
-          <em className="text-blue-50">Placeholder</em>
+          <em className="text-blue-50">Search..</em>
         </MenuItem>
         {names.map((name) => (
           <MenuItem
