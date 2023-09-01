@@ -3,12 +3,12 @@
 import { FC, useState } from "react";
 import SecondNavbar from "../../shared/navbar/SecondNavbar";
 import { usePaginatedFilms } from "@/api/queries/movies/moviesRequests";
-import Header from "@/components/shared/Header";
 import { Film } from "@/types/moviesTypes";
 import ScrollToTop from "react-scroll-to-top";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import Loader from "@/components/shared/Loader";
+import SecondHeader from "@/components/shared/SecondHeader";
 
 const FilmsWrapper: FC = () => {
   const [pageIndex, setPageIndex] = useState(1);
@@ -19,7 +19,7 @@ const FilmsWrapper: FC = () => {
     <>
       <SecondNavbar />
       <ScrollToTop />
-      <Header title="Netflix Films" />
+      <SecondHeader title="Netflix Films" />
       <div className="flex flex-wrap justify-center mt-10">
         {data.results &&
           data.results.map((item: Film) => {

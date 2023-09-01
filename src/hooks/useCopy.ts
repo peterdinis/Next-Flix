@@ -5,7 +5,8 @@ import {toast} from "react-hot-toast";
 function useCopyToClipboard(): [CopiedValue, CopyFn] {
   const [copiedText, setCopiedText] = useState<CopiedValue>(null);
 
-  const copiedValue = () =>toast.success("Skopirované");
+  const copiedValue = ()  => toast.success("Copied");
+  const copiedFailed = () => toast.error("Copy failed");
 
   const copy: CopyFn = async (text) => {
     if (!navigator?.clipboard) {
@@ -19,7 +20,7 @@ function useCopyToClipboard(): [CopiedValue, CopyFn] {
       setCopiedText(text);
       return true;
     } catch (error) {
-      console.warn("Copy failed", error);
+      copiedFailed();
       setCopiedText(null);
       return false;
     }
