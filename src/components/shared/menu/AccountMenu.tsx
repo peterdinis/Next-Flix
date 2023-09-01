@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
 import { FC } from "react";
 import { useAuth } from "@/hooks/useAuth";
 import { useRouter } from "next/navigation";
-import {toast} from "react-hot-toast";
+import { toast } from "react-hot-toast";
 import Link from "next/link";
 import Cookies from "js-cookie";
 
@@ -12,23 +12,22 @@ interface AccountMenuProps {
 }
 
 const AccountMenu: FC<AccountMenuProps> = ({ visible }: AccountMenuProps) => {
-
   const router = useRouter();
-  const {logout, currentUser} = useAuth();
+  const { logout, currentUser } = useAuth();
 
   const logoutUser = () => {
     logout();
     Cookies.remove("userCredentials");
     toast.success("Logout successfull");
     router.push("/login");
-  }
+  };
 
   if (!visible) {
     return null;
   }
 
   return (
-    <div className="bg-black w-56 absolute top-14 right-0 py-5 flex-col border-2 border-gray-800 flex">
+    <div className="z-50 bg-black w-56 absolute top-14 right-0 py-5 flex-col border-2 border-gray-800 flex">
       <div className="flex flex-col gap-3">
         <div className="px-3 group/item flex flex-row gap-3 items-center w-full">
           <img
