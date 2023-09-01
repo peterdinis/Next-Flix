@@ -3,7 +3,7 @@
 import { FC, useState } from "react";
 import SecondNavbar from "../../shared/navbar/SecondNavbar";
 import { usePaginatedFilms } from "@/api/movies/moviesRequests";
-import { Film } from "@/types/moviesTypes";
+import Header from "@/components/shared/Header";
 
 
 const FilmsWrapper: FC = () => {
@@ -16,14 +16,8 @@ const FilmsWrapper: FC = () => {
   return (
     <>
       <SecondNavbar />
+      <Header title="Netflix Films" />
       <section className="md:space-y-24 mt-4">
-      {data.results && data.results.map((item: Film) => {
-        return (
-          <>
-            <h2>{item.name}</h2>
-          </>
-        )
-       })}
       </section>
     </>
   );
