@@ -1,7 +1,7 @@
 "use client"
 
 import { FC, useState} from "react";
-import SecondNavbar from "../shared/navbar/SecondNavbar";
+import SecondNavbar from "../../shared/navbar/SecondNavbar";
 import { usePaginatedPopular } from "@/api/movies/moviesRequests";
 import { Popular } from "@/types/moviesTypes";
 

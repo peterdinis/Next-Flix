@@ -1,4 +1,4 @@
-import SeriesWrapper from "@/components/movies/SeriesWrapper";
+import SeriesWrapper from "@/components/movies/series/SeriesWrapper";
 import { NextPage } from "next";
 
 const SeriesPage: NextPage = () => {

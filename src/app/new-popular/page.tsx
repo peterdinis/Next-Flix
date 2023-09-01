@@ -1,4 +1,4 @@
-import PopularWrapper from "@/components/movies/PopularWrapper";
+import PopularWrapper from "@/components/movies/popular/PopularWrapper";
 import { NextPage } from "next";
 
 const NewPopularFilmsPage: NextPage = () => {
