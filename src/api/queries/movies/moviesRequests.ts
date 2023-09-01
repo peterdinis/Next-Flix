@@ -238,7 +238,7 @@ export function useFetchDocumentaries() {
 export function usePaginatedSeries(pageIndex: number) {
   const url = `${BASE_URL}/tv/popular?api_key=${API_KEY}&language=en-US&page=${pageIndex}`;
 
-  const { data, error } = useQuery(
+  const { data, error, isFetching } = useQuery(
     ["pagintedSeries", pageIndex],
     async () => {
       const pagintedSeriesRequest = await axios.get(url);
@@ -253,6 +253,7 @@ export function usePaginatedSeries(pageIndex: number) {
 
   return {
     data,
+    isFetching,
     error,
     isLoading: !data && !error,
   };
@@ -261,7 +262,7 @@ export function usePaginatedSeries(pageIndex: number) {
 export function usePaginatedPopular(pageIndex: number) {
   const url = `${BASE_URL}/movie/popular?api_key=${API_KEY}&language=en-US&page=${pageIndex}`;
 
-  const { data, error } = useQuery(
+  const { data, error, isFetching } = useQuery(
     ["paginatedPopular"],
     async () => {
       const paginatedPopularRequest = await axios.get(url);
@@ -277,6 +278,7 @@ export function usePaginatedPopular(pageIndex: number) {
   return {
     data,
     error,
+    isFetching,
     isLoading: !data && !error,
   };
 }
