@@ -12,11 +12,12 @@ import {
   useFetchTopRated,
   useFetchTrendingMovies,
   useHororMovies,
-} from "@/api/movies/moviesRequests";
+} from "@/api/queries/movies/moviesRequests";
 import MovieRow from "../movies/MovieRow";
 import { modalState } from "@/store/atoms/modalAtom";
 import { useRecoilValue } from "recoil";
 import MovieModal from "../modals/MovieModal";
+import ScrollToTop from "react-scroll-to-top";
 
 const Hero: FC = () => {
   const { data: netflixOriginals } = useFetchNetflixOriginals();
@@ -38,6 +39,7 @@ const Hero: FC = () => {
     >
       <Navbar />
       <main className="relative pl-4 pb-24 lg:space-y-24 lg:pl-16">
+      <ScrollToTop />
         <InfoModal netflixOriginals={netflixOriginals} />
         <section className="md:space-y-24">
           <MovieRow title="Trending Now" movies={trendingData} />
