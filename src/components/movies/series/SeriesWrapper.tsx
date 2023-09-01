@@ -7,6 +7,7 @@ import SerieCard from "./SerieCard";
 import Header from "@/components/shared/Header";
 import { Series } from "@/types/moviesTypes";
 import ScrollToTop from "react-scroll-to-top";
+import SecondHeader from "@/components/shared/SecondHeader";
 
 const SeriesWrapper: FC = () => {
   const [pageIndex, setPageIndex] = useState(1);
@@ -17,7 +18,7 @@ const SeriesWrapper: FC = () => {
     <>
       <SecondNavbar />
       <ScrollToTop />
-      <Header title="Netflix Series" />
+      <SecondHeader title="Netflix Series" />
       <div className="flex flex-wrap justify-center mt-10">
         {data.results &&
           data.results.map((item: Series) => {

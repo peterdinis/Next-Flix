@@ -3,10 +3,10 @@
 import { FC, useState } from "react";
 import SecondNavbar from "../../shared/navbar/SecondNavbar";
 import { usePaginatedPopular } from "@/api/queries/movies/moviesRequests";
-import Header from "@/components/shared/Header";
 import { Popular } from "@/types/moviesTypes";
 import PopularCard from "./PopularCard";
 import ScrollToTop from "react-scroll-to-top";
+import SecondHeader from "@/components/shared/SecondHeader";
 
 const PopularWrapper: FC = () => {
   const [pageIndex, setPageIndex] = useState(1);
@@ -17,7 +17,7 @@ const PopularWrapper: FC = () => {
     <>
       <SecondNavbar />
       <ScrollToTop />
-      <Header title="Netflix popular" />
+      <SecondHeader title="Netflix popular" />
       <div className="flex flex-wrap justify-center mt-10">
         {data.results &&
           data.results.map((item: Popular) => {
