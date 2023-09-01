@@ -6,11 +6,14 @@ import { usePaginatedPopular } from "@/api/queries/movies/moviesRequests";
 import { Popular } from "@/types/moviesTypes";
 import ScrollToTop from "react-scroll-to-top";
 import SecondHeader from "@/components/shared/SecondHeader";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import Loader from "@/components/shared/Loader";
 
 const PopularWrapper: FC = () => {
   const [pageIndex, setPageIndex] = useState(1);
 
-  const { data } = usePaginatedPopular(pageIndex);
+  const { data, isFetching } = usePaginatedPopular(pageIndex);
 
   return (
     <>
@@ -34,6 +37,36 @@ const PopularWrapper: FC = () => {
               </div>
             );
           })}
+      </div>
+      <div className="flex items-center justify-center py-10 lg:px-0 sm:px-6 px-4">
+        <div className="lg:w-3/5 w-full flex items-center justify-between border-t border-gray-200">
+          <div className="flex items-center pt-3 text-blue-50 hover:text-indigo-700 cursor-pointer">
+            <button
+              onClick={() => setPageIndex((old) => Math.max(old - 1, 0))}
+              disabled={pageIndex === 0}
+              className="text-sm ml-3 font-medium leading-none "
+            >
+              <ArrowBackIcon />
+            </button>
+          </div>
+          <span className="flex items-center pt-3 text-blue-50 hover:text-indigo-700 cursor-pointer">
+            Actual page: {pageIndex + 1}
+          </span>
+          <div className="flex items-center pt-3 text-blue-50 hover:text-indigo-700 cursor-pointer">
+            <button
+              /*   onClick={() => {
+                if (!isPreviousData && paginatedData.data.hasNextPage) {
+                  setPage((old) => old + 1);
+                }
+              }} */
+              /* disabled={isPreviousData || !paginatedData.data.hasNextPage} */
+              className="text-sm font-medium leading-none mr-3"
+            >
+              <ArrowForwardIcon />
+            </button>
+          </div>
+          {isFetching ? <Loader color="red" /> : null}
+        </div>
       </div>
     </>
   );
