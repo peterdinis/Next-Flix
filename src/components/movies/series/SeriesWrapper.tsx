@@ -19,7 +19,6 @@ const SeriesWrapper: FC = () => {
       <div className="flex flex-wrap justify-center mt-10">
         {data.results &&
           data.results.map((item: Series) => {
-            /* TODO: Later pagination */
             return (
               <div className="flex items-center space-x-0.5 overflow-x-scroll scrollbar-hide md:space-x-2.5 md:p-2">
                 <SerieCard
