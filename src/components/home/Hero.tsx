@@ -1,8 +1,6 @@
 "use client";
 
 import { FC } from "react";
-import Navbar from "../shared/navbar/Navbar";
-import InfoModal from "../modals/InfoModal";
 import {
   useFetchComedyMovies,
   useFetchDocumentaries,
@@ -13,11 +11,12 @@ import {
   useFetchTrendingMovies,
   useHororMovies,
 } from "@/api/queries/movies/moviesRequests";
-import MovieRow from "../movies/MovieRow";
 import { modalState } from "@/store/atoms/modalAtom";
 import { useRecoilValue } from "recoil";
-import MovieModal from "../modals/MovieModal";
 import ScrollToTop from "react-scroll-to-top";
+import { Navbar } from "../shared";
+import { InfoModal, MovieModal } from "../modals";
+import { MovieRow } from "../movies";
 
 const Hero: FC = () => {
   const { data: netflixOriginals } = useFetchNetflixOriginals();
