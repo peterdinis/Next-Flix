@@ -1,15 +1,13 @@
 "use client";
 
 import { FC, useState } from "react";
-import SecondNavbar from "../../shared/navbar/SecondNavbar";
 import { usePaginatedFilms } from "@/api/queries/movies/moviesRequests";
 import { Film } from "@/types/moviesTypes";
 import ScrollToTop from "react-scroll-to-top";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import Loader from "@/components/shared/Loader";
-import SecondHeader from "@/components/shared/SecondHeader";
 import { TOTAL_FILMS_PAGE } from "@/constants/applictionConstants";
+import {Loader, SecondHeader, SecondNavbar} from "../../shared/index"
 
 const FilmsWrapper: FC = () => {
   const [pageIndex, setPageIndex] = useState<number>(1);

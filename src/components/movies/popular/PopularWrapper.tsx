@@ -1,15 +1,13 @@
 "use client";
 
 import { FC, useState } from "react";
-import SecondNavbar from "../../shared/navbar/SecondNavbar";
 import { usePaginatedPopular } from "@/api/queries/movies/moviesRequests";
 import { Popular } from "@/types/moviesTypes";
 import ScrollToTop from "react-scroll-to-top";
-import SecondHeader from "@/components/shared/SecondHeader";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import Loader from "@/components/shared/Loader";
 import { TOTAL_POPULAR_PAGE } from "@/constants/applictionConstants";
+import {Loader, SecondHeader, SecondNavbar} from "../../shared/index"
 
 const PopularWrapper: FC = () => {
   const [pageIndex, setPageIndex] = useState<number>(1);
