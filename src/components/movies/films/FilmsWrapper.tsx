@@ -16,6 +16,8 @@ const FilmsWrapper: FC = () => {
 
   const { data, isFetching } = usePaginatedFilms(pageIndex);
 
+  console.log(data);
+
   const goToNextPage = () => {
     if (pageIndex === 1) return;
     setPageIndex(pageIndex - 1);
