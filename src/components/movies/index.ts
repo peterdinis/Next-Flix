@@ -7,3 +7,5 @@ export const SearchFilms = dynamic(() => import("./search/SearchFilms"));
 export const SearchPopular = dynamic(() => import("./search/SearchPopular"));
 export const SearchSeries = dynamic(() => import("./search/SearchSeries"));
 export const SeriesWrapper = dynamic(() => import("./series/SeriesWrapper"));
+export const Thumbnail = dynamic(() => import("./Thumbnail"));
+export const MovieRow = dynamic(() => import("./MovieRow"));
