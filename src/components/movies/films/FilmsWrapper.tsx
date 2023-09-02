@@ -17,6 +17,7 @@ const FilmsWrapper: FC = () => {
   const { data, isFetching } = usePaginatedFilms(pageIndex);
 
   console.log(data);
+  console.log(pageIndex);
 
   const goToNextPage = () => {
     if (pageIndex === 1) return;
@@ -58,7 +59,7 @@ const FilmsWrapper: FC = () => {
           <div className="flex items-center pt-3 text-blue-50 hover:text-indigo-700 cursor-pointer">
             <button
               onClick={goToNextPage}
-              className="text-sm ml-3 font-medium leading-none "
+              className="text-sm ml-3 font-medium leading-none"
             >
               <ArrowBackIcon />
             </button>
