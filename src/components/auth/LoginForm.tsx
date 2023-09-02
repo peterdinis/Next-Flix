@@ -2,12 +2,12 @@
 
 import { useState, ChangeEvent, FC } from "react";
 import { useRouter } from "next/navigation";
-import Input from "@/components/shared/Input";
 import Link from "next/link";
 import { useAuth } from "@/hooks/useAuth";
 import { toast } from "react-hot-toast";
 import Cookie from "js-cookie";
 import GoogleIcon from '@mui/icons-material/Google';
+import { Input } from "../shared";
 
 const LoginForm: FC = () => {
   const router = useRouter();

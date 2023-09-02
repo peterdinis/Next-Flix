@@ -2,7 +2,7 @@
 
 import { useState, ChangeEvent, FC } from "react";
 import { useRouter } from "next/navigation";
-import Input from "@/components/shared/Input";
+import { Input } from "../shared";
 import Link from "next/link";
 import { useAuth } from "@/hooks/useAuth";
 import {toast} from "react-hot-toast";

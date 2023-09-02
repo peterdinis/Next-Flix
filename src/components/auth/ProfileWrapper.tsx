@@ -1,9 +1,9 @@
 "use client";
 
 import { FC } from "react";
-import ProfileInfo from "./ProfileInfo";
 import { useAuth } from "@/hooks/useAuth";
-import SecondNavbar from "../shared/navbar/SecondNavbar";
+import { SecondNavbar } from "../shared";
+import { ProfileInfo } from ".";
 
 const ProfileWrapper: FC = () => {
   const { currentUser } = useAuth();
