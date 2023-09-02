@@ -9,11 +9,24 @@ import SecondHeader from "@/components/shared/SecondHeader";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import Loader from "@/components/shared/Loader";
+import { TOTAL_SERIES_PAGE } from "@/constants/applictionConstants";
 
 const SeriesWrapper: FC = () => {
-  const [pageIndex, setPageIndex] = useState(1);
+  const [pageIndex, setPageIndex] = useState<number>(1);
 
   const { data, isFetching } = usePaginatedSeries(pageIndex);
+
+  const goToNextPage = () => {
+    if (pageIndex === 1) return;
+    setPageIndex(pageIndex - 1);
+  };
+
+  const goToLastPage = () => {
+    if (pageIndex === TOTAL_SERIES_PAGE) {
+      return;
+    }
+    setPageIndex(pageIndex + 1);
+  };
 
   return (
     <>
@@ -42,24 +55,18 @@ const SeriesWrapper: FC = () => {
         <div className="lg:w-3/5 w-full flex items-center justify-between border-t border-gray-200">
           <div className="flex items-center pt-3 text-blue-50 hover:text-indigo-700 cursor-pointer">
             <button
-              onClick={() => setPageIndex((old) => Math.max(old - 1, 0))}
-              disabled={pageIndex === 0}
+              onClick={goToNextPage}
               className="text-sm ml-3 font-medium leading-none "
             >
               <ArrowBackIcon />
             </button>
           </div>
           <span className="flex items-center pt-3 text-blue-50 hover:text-indigo-700 cursor-pointer">
-            Actual page: {pageIndex + 1}
+            Actual page: {pageIndex}
           </span>
           <div className="flex items-center pt-3 text-blue-50 hover:text-indigo-700 cursor-pointer">
             <button
-              /*   onClick={() => {
-                if (!isPreviousData && paginatedData.data.hasNextPage) {
-                  setPage((old) => old + 1);
-                }
-              }} */
-              /* disabled={isPreviousData || !paginatedData.data.hasNextPage} */
+              onClick={goToLastPage}
               className="text-sm font-medium leading-none mr-3"
             >
               <ArrowForwardIcon />
