@@ -236,7 +236,7 @@ export function useFetchDocumentaries() {
 }
 
 export function usePaginatedSeries(pageIndex: number) {
-  const url = `${BASE_URL}/tv/popular?api_key=${API_KEY}&language=en-US&page=${pageIndex}`;
+  const url = `${BASE_URL}/tv/top_rated?api_key=${API_KEY}&language=en-US&page=${pageIndex}`;
 
   const { data, error, isFetching } = useQuery(
     ["pagintedSeries", pageIndex],

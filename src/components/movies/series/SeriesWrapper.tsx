@@ -28,6 +28,8 @@ const SeriesWrapper: FC = () => {
     setPageIndex(pageIndex + 1);
   };
 
+  console.log(data);
+
   return (
     <>
       <SecondNavbar />
