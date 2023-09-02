@@ -50,12 +50,18 @@ const Navbar: FC = () => {
           <img src="/images/logo.png" className="h-4 lg:h-7" alt="Logo" />
         </Link>
         <div className="flex-row ml-8 gap-7 hidden lg:flex">
-          <NavbarItem label="Home" active />
-          <NavbarItem label="Series" />
-          <NavbarItem label="Films" />
-          <NavbarItem label="New & Popular" />
-          <NavbarItem label="My List" />
-          <NavbarItem label="Browse by Languages" />
+          {/* <NavbarItem href="/" label="Home" active />
+          <NavbarItem href="/series" label="Series" />
+          <NavbarItem href="/films" label="Films" />
+          <NavbarItem href="/new-popular" label="New & Popular" />
+          <NavbarItem href="/list" label="My List" /> */}
+
+          <div className="text-white font-bold cursor-default">
+            <Link href="/">Home</Link>
+          </div>
+          <div className="text-white font-bold cursor-default">
+            <Link href="/series">Series</Link>
+          </div>
         </div>
         <div
           onClick={toggleMobileMenu}
