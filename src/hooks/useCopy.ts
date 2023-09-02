@@ -7,10 +7,11 @@ function useCopyToClipboard(): [CopiedValue, CopyFn] {
 
   const copiedValue = ()  => toast.success("Copied");
   const copiedFailed = () => toast.error("Copy failed");
+  const copiedNotSupported = () => toast.error("Clipboard not supprted");
 
   const copy: CopyFn = async (text) => {
     if (!navigator?.clipboard) {
-      console.warn("Clipboard not supported");
+      copiedNotSupported();
       return false;
     }
 
