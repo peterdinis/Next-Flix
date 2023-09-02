@@ -3,9 +3,9 @@
 import { FC, useState, useRef } from "react";
 import { DocumentData } from "firebase/firestore";
 import { Movie } from "@/types/moviesTypes";
-import Thumbnail from "./Thumbnail";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
-import Header from "../shared/Header";
+import { Thumbnail } from ".";
+import { Header } from "../shared";
 
 interface IMovieRowProps {
   title: string;
