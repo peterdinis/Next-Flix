@@ -1,6 +1,6 @@
 "use client"
 
-import Hero from "@/components/home/Hero";
+import { Hero } from "@/components/home";
 import PrivateRoute from "@/routes/PrivateRoute";
 import { NextPage } from "next";
 
