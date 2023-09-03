@@ -1,6 +1,8 @@
+"use client"
+
 import { FC } from "react";
 import Link from "next/link";
-import SecondNavbar from "./navbar/SecondNavbar";
+import { SecondNavbar } from ".";
 
 const NotFound: FC = () => {
   return (
