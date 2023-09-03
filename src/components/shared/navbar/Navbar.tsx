@@ -2,10 +2,9 @@
 
 import { FC, useCallback, useEffect, useState } from "react";
 import {IoMdArrowDropdown } from 'react-icons/io';
-import MobileMenu from "../menu/MobileMenu";
-import AccountMenu from "../menu/AccountMenu";
 import { TOP_OFFSET } from "@/constants/applictionConstants";
 import Link from "next/link";
+import { AccountMenu, MobileMenu } from "..";
 
 const Navbar: FC = () => {
   const [showAccountMenu, setShowAccountMenu] = useState(false);

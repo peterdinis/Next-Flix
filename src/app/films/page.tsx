@@ -1,4 +1,4 @@
-import FilmsWrapper from "@/components/movies/films/FilmsWrapper";
+import { FilmsWrapper } from "@/components/movies";
 import { NextPage } from "next";
 
 const FilmsPage: NextPage = () => {

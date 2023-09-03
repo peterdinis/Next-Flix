@@ -1,4 +1,4 @@
-import ProfileWrapper from "@/components/auth/ProfileWrapper";
+import { ProfileWrapper } from "@/components/auth";
 import { NextPage } from "next";
 
 const ProfilePage: NextPage = () => {
