@@ -1,4 +1,4 @@
-import WatchWrapper from "@/components/watch/WatchWrapper";
+import { WatchWrapper } from "@/components/watch";
 import { NextPage } from "next";
 
 const WatchPage: NextPage = () => {
