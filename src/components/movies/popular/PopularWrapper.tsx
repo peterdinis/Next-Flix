@@ -8,6 +8,9 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { TOTAL_POPULAR_PAGE } from "@/constants/applictionConstants";
 import {Loader, SecondHeader, SecondNavbar} from "../../shared/index"
+import { useRecoilState } from "recoil";
+import { modalState, movieState } from "@/store/atoms/modalAtom";
+import { MovieModal } from "@/components/modals";
 
 const PopularWrapper: FC = () => {
   const [pageIndex, setPageIndex] = useState<number>(1);
@@ -25,6 +28,9 @@ const PopularWrapper: FC = () => {
     }
     setPageIndex(pageIndex + 1);
   };
+
+  const [showModal, setShowModal] = useRecoilState(modalState);
+  const [currentMovie, setCurrentMovie] = useRecoilState(movieState);
 
   return (
     <>
@@ -73,6 +79,8 @@ const PopularWrapper: FC = () => {
           {isFetching ? <Loader color="red" /> : null}
         </div>
       </div>
+
+      {showModal && <MovieModal />}
     </>
   );
 };
