@@ -7,7 +7,10 @@ import ScrollToTop from "react-scroll-to-top";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { TOTAL_SERIES_PAGE } from "@/constants/applictionConstants";
-import {Loader, SecondHeader, SecondNavbar} from "../../shared/index"
+import { Loader, SecondHeader, SecondNavbar } from "../../shared/index";
+import { useRecoilState } from "recoil";
+import { modalState, movieState } from "@/store/atoms/modalAtom";
+import { MovieModal } from "@/components/modals";
 
 const SeriesWrapper: FC = () => {
   const [pageIndex, setPageIndex] = useState<number>(1);
@@ -26,7 +29,8 @@ const SeriesWrapper: FC = () => {
     setPageIndex(pageIndex + 1);
   };
 
-  console.log(data);
+  const [showModal, setShowModal] = useRecoilState(modalState);
+  const [currentMovie, setCurrentMovie] = useRecoilState(movieState);
 
   return (
     <>
@@ -38,7 +42,13 @@ const SeriesWrapper: FC = () => {
           data.results.map((item: Series) => {
             return (
               <div className="flex items-center space-x-0.5 overflow-x-scroll scrollbar-hide md:space-x-2.5 md:p-2">
-                <div className="relative h-28 min-w-[180px] cursor-pointer transition-transform duration-200 ease-out md:h-36 md:min-w-[260px] md:hover:scale-105">
+                <div
+                  onClick={() => {
+                    setShowModal(true);
+                    setCurrentMovie(item);
+                  }}
+                  className="relative h-28 min-w-[180px] cursor-pointer transition-transform duration-200 ease-out md:h-36 md:min-w-[260px] md:hover:scale-105"
+                >
                   <img
                     src={`https://image.tmdb.org/t/p/w500${
                       item.backdrop_path || item.poster_path
@@ -75,6 +85,7 @@ const SeriesWrapper: FC = () => {
           {isFetching ? <Loader color="red" /> : null}
         </div>
       </div>
+      {showModal && <MovieModal />}
     </>
   );
 };
