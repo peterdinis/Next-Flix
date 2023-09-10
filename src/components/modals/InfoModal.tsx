@@ -1,4 +1,4 @@
-import { modalState, movieState } from "@/store/atoms/modalAtom";
+import { modalState, movieState } from "@/recoil/atoms/modalAtom";
 import { useRecoilState } from "recoil";
 import { FaPlay } from "react-icons/fa";
 import { BiInfoCircle } from "react-icons/bi";

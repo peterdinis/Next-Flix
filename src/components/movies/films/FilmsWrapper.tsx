@@ -8,14 +8,14 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { TOTAL_FILMS_PAGE } from "@/constants/applictionConstants";
 import {Loader, SecondHeader, SecondNavbar} from "../../shared/index"
+import { useRecoilState } from "recoil";
+import { modalState, movieState } from "@/recoil/atoms/modalAtom";
+import { MovieModal } from "@/components/modals";
 
 const FilmsWrapper: FC = () => {
   const [pageIndex, setPageIndex] = useState<number>(1);
 
   const { data, isFetching } = usePaginatedFilms(pageIndex);
-
-  console.log(data);
-  console.log(pageIndex);
 
   const goToNextPage = () => {
     if (pageIndex === 1) return;
@@ -28,6 +28,9 @@ const FilmsWrapper: FC = () => {
     }
     setPageIndex(pageIndex + 1);
   };
+
+  const [showModal, setShowModal] = useRecoilState(modalState);
+  const [currentMovie, setCurrentMovie] = useRecoilState(movieState);
 
   return (
     <>
@@ -76,6 +79,8 @@ const FilmsWrapper: FC = () => {
           {isFetching ? <Loader color="red" /> : null}
         </div>
       </div>
+      
+      {showModal && <MovieModal />}
     </>
   );
 };

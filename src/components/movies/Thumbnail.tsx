@@ -2,7 +2,7 @@ import { FC } from "react";
 import { DocumentData } from "firebase/firestore";
 import React from "react";
 import { useRecoilState } from "recoil";
-import { modalState, movieState } from "@/store/atoms/modalAtom";
+import { modalState, movieState } from "@/recoil/atoms/modalAtom";
 import { Movie } from "@/types/moviesTypes";
 
 interface ThumbnailProps {

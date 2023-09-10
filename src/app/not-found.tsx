@@ -1,3 +1,5 @@
+"use client"
+
 import { NotFound } from "@/components/shared";
 import { NextPage } from "next";
 
