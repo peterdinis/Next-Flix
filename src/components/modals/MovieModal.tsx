@@ -7,6 +7,11 @@ import { Genre, Element, Movie } from "@/types/moviesTypes";
 import { useAuth } from "@/hooks/useAuth";
 import { DocumentData, collection, onSnapshot } from "firebase/firestore";
 import { db } from "@/firebase";
+import { Toaster } from "react-hot-toast";
+import ReactPlayer from 'react-player';
+import { CheckIcon, VolumeOffIcon, VolumeUpIcon } from '@heroicons/react/solid';
+import { ThumbUpIcon } from '@heroicons/react/outline';
+import { FaPlay } from 'react-icons/fa';
 
 const toastStyle = {
   background: "white",
@@ -64,7 +69,7 @@ const MovieModal: FC = () => {
     fetchMovie();
   }, [movie]);
 
-  useEffect(() => {
+/*   useEffect(() => {
     if (currentUser) {
       return onSnapshot(
         collection(db, 'customers', currentUser.uid, 'myList'),
@@ -77,11 +82,12 @@ const MovieModal: FC = () => {
     setAddedToList(
       moviesInList.findIndex((result) => result.data().id === movie?.id) !== -1
     );
-  }, [moviesInList]);
+  }, [moviesInList]); */
 
   return (
     <MuiModal open={showModal} onClose={handleClose}>
       <Fragment>
+        <Toaster position="bottom-center" />
         <button
           className="modalButton absolute right-5 top-5 !z-40 h-9 w-9 border-none bg-[#181818] hover:bg-[#181818]"
           onClick={handleClose}
@@ -89,7 +95,41 @@ const MovieModal: FC = () => {
           <FiXCircle className="h-6 w-6 text-blue-50" />
         </button>
 
-        <div></div>
+        <div className="relative aspect-video">
+        <ReactPlayer
+            url={`https://www.youtube.com/watch?v=${trailer}`}
+            width="100%"
+            height="100%"
+            style={{ position: 'absolute', top: '0', left: '0' }}
+            playing
+            muted={muted}
+          />
+           <div className="absolute bottom-10 flex w-full items-center justify-between px-10">
+            <div className="flex space-x-3">
+              <button className="flex items-center gap-x-2 rounded bg-white px-8 text-xl font-bold text-black transition hover:bg-[#e6e6e6] cursor-not-allowed">
+                <FaPlay className="h-7 w-7 text-black" />
+                Play
+              </button>
+              {/* <button className="modalButton" onClick={handleList}>
+                {addedToList ? (
+                  <CheckIcon className="h-7 w-7" />
+                ) : (
+                  <PlusIcon className="h-7 w-7" />
+                )}
+              </button> */}
+              <button className="modalButton cursor-not-allowed">
+                <ThumbUpIcon className="h-7 w-7" />
+              </button>
+            </div>
+            <button onClick={() => setMuted(!muted)}>
+              {muted ? (
+                <VolumeOffIcon className="h-6 w-6" />
+              ) : (
+                <VolumeUpIcon className="h-6 w-6" />
+              )}
+            </button>
+          </div>
+        </div>
       </Fragment>
     </MuiModal>
   );
