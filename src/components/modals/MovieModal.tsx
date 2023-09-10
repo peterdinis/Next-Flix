@@ -2,7 +2,7 @@ import { FC, Fragment, useState, useEffect } from "react";
 import MuiModal from "@mui/material/Modal";
 import { useRecoilState} from "recoil";
 import {FiXCircle} from "react-icons/fi";
-import { modalState } from "@/store/atoms/modalAtom";
+import { modalState } from "@/recoil/atoms/modalAtom";
 import { Genre, Movie, Element } from "@/types/moviesTypes";
 
 const MovieModal: FC = () => {

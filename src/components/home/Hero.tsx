@@ -11,7 +11,7 @@ import {
   useFetchTrendingMovies,
   useHororMovies,
 } from "@/api/queries/movies/moviesRequests";
-import { modalState } from "@/store/atoms/modalAtom";
+import { modalState } from "@/recoil/atoms/modalAtom";
 import { useRecoilValue } from "recoil";
 import ScrollToTop from "react-scroll-to-top";
 import { Navbar } from "../shared";
