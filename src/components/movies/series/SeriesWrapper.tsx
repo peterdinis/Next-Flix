@@ -9,7 +9,7 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { TOTAL_SERIES_PAGE } from "@/constants/applictionConstants";
 import { Loader, SecondHeader, SecondNavbar } from "../../shared/index";
 import { useRecoilState } from "recoil";
-import { modalState, movieState } from "@/store/atoms/modalAtom";
+import { modalState, movieState } from "@/recoil/atoms/modalAtom";
 import { MovieModal } from "@/components/modals";
 
 const SeriesWrapper: FC = () => {
