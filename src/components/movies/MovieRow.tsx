@@ -3,10 +3,10 @@
 import { FC, useState, useRef } from "react";
 import { DocumentData } from "firebase/firestore";
 import { Movie } from "@/types/moviesTypes";
-import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
+import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
 import { Thumbnail } from ".";
 import { Header } from "../shared";
-
+import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 interface IMovieRowProps {
   title: string;
   movies: Movie[] | DocumentData[] | any; // TODO: Update typing later
@@ -35,7 +35,7 @@ const MovieRow: FC<IMovieRowProps> = ({ title, movies }: IMovieRowProps) => {
     <div className="h-40 space-y-0.5 md:space-y-2">
       <Header title={title} />
       <div className="group relative md:-ml-2">
-        <FiArrowLeft
+        <ArrowLeftIcon
           className={`absolute  top-0 text-blue-50 bottom-0 left-2 z-40 m-auto h-9 w-9 cursor-pointer opacity-0 transition hover:scale-125 group-hover:opacity-100 ${
             !isMoved && "hidden"
           }`}
@@ -52,7 +52,7 @@ const MovieRow: FC<IMovieRowProps> = ({ title, movies }: IMovieRowProps) => {
             ))}
         </div>
 
-        <FiArrowRight
+        <ArrowRightIcon
           className={`absolute top-0 bottom-0 text-blue-50 right-2 z-40 m-auto h-9 w-9 cursor-pointer opacity-0 transition hover:scale-125 group-hover:opacity-100`}
           onClick={() => handleClick("right")}
         />
