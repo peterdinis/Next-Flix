@@ -1,5 +1,5 @@
 import React from "react";
-import { FiAirplay } from "react-icons/fi";
+import PlayCircleIcon from '@mui/icons-material/PlayCircle';
 import { useRouter } from "next/navigation";
 
 interface PlayButtonProps {
@@ -27,7 +27,7 @@ const PlayButton: React.FC<PlayButtonProps> = ({ movieId }) => {
         transition
         "
     >
-      <FiAirplay className="w-4 md:w-7 text-black mr-1" />
+      <PlayCircleIcon className="w-4 md:w-7 text-black mr-1" />
       Play
     </button>
   );

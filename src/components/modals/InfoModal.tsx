@@ -1,7 +1,7 @@
 import { modalState, movieState } from "@/recoil/atoms/modalAtom";
 import { useRecoilState } from "recoil";
-import { FaPlay } from "react-icons/fa";
-import { BiInfoCircle } from "react-icons/bi";
+import PlayCircleIcon from '@mui/icons-material/PlayCircle';
+import InfoIcon from '@mui/icons-material/Info';
 import { Movie, MovieApiResponse } from "@/types/moviesTypes";
 import { FC, useState, useEffect } from "react";
 import { baseUrl } from "@/constants/applictionConstants";
@@ -62,7 +62,7 @@ const InfoModal: FC<InfoModalPropsI> = ({
             }}
             className="bannerButton bg-white text-black"
           >
-            <FaPlay className="h-4 w-4 text-black md:h-7 md:w-7 cursor-not-allowed" />
+            <PlayCircleIcon className="h-4 w-4 text-black md:h-7 md:w-7 cursor-not-allowed" />
             Play
           </button>
           <button
@@ -72,7 +72,7 @@ const InfoModal: FC<InfoModalPropsI> = ({
               setCurrentMovie(movie);
             }}
           >
-            More Info <BiInfoCircle className="h-5 w-5 md:h-8 md:w-8" />
+            More Info <InfoIcon className="h-5 w-5 md:h-8 md:w-8" />
           </button>
         </div>
       </div>
