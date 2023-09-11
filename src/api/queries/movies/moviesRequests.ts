@@ -284,7 +284,7 @@ export function usePaginatedPopular(pageIndex: number) {
 }
 
 export function usePaginatedFilms(pageIndex: number) {
-  const url = `${BASE_URL}/movie/movies?include_adult=true?api_key=${API_KEY}&language=en-US&page=${pageIndex}`;
+  const url = `${BASE_URL}/movie/top_rated?api_key=${API_KEY}&language=en-US&page=${pageIndex}`;
 
   const { data, error, isFetching } = useQuery(
     ["paginatedFilms", pageIndex],
