@@ -1,7 +1,7 @@
 "use client";
 
 import { FC, useCallback, useEffect, useState } from "react";
-import { IoMdArrowDropdown } from "react-icons/io";
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { TOP_OFFSET } from "@/constants/applictionConstants";
 import Link from "next/link";
 import SearchIcon from "@mui/icons-material/Search";
@@ -73,7 +73,7 @@ const SecondNavbar: FC = () => {
           className="lg:hidden flex flex-row items-center gap-2 ml-8 cursor-pointer relative"
         >
           <p className="text-white text-sm">Browse</p>
-          <IoMdArrowDropdown
+          <ArrowDropDownIcon
             className={`w-4 text-white fill-white transition ${
               showMobileMenu ? "rotate-180" : "rotate-0"
             }`}
@@ -95,7 +95,7 @@ const SecondNavbar: FC = () => {
             <div className="w-6 h-6 lg:w-10 lg:h-10 rounded-md overflow-hidden">
               <img src="/images/default-blue.jpg" alt="" />
             </div>
-            <IoMdArrowDropdown
+            <ArrowDropDownIcon
               className={`w-4 text-white fill-white transition ${
                 showAccountMenu ? "rotate-180" : "rotate-0"
               }`}

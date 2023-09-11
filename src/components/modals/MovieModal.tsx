@@ -1,17 +1,17 @@
 import { FC, Fragment, useState, useEffect } from "react";
 import MuiModal from "@mui/material/Modal";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { FiXCircle } from "react-icons/fi";
+import PlayCircleIcon from '@mui/icons-material/PlayCircle';
 import { modalState, movieState } from "@/recoil/atoms/modalAtom";
 import { Genre, Element, Movie } from "@/types/moviesTypes";
 import { useAuth } from "@/hooks/useAuth";
-import { DocumentData, collection, onSnapshot } from "firebase/firestore";
-import { db } from "@/firebase";
+import { DocumentData} from "firebase/firestore";
 import { Toaster } from "react-hot-toast";
 import ReactPlayer from 'react-player';
-import { CheckIcon, VolumeOffIcon, VolumeUpIcon } from '@heroicons/react/solid';
-import { ThumbUpIcon } from '@heroicons/react/outline';
-import { FaPlay } from 'react-icons/fa';
+import VolumeDownIcon from '@mui/icons-material/VolumeDown';
+import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+import CancelIcon from '@mui/icons-material/Cancel';
+import VolumeUpIcon from '@mui/icons-material/VolumeUp';
 
 const toastStyle = {
   background: "white",
@@ -92,7 +92,7 @@ const MovieModal: FC = () => {
           className="modalButton absolute right-5 top-5 !z-40 h-9 w-9 border-none bg-[#181818] hover:bg-[#181818]"
           onClick={handleClose}
         >
-          <FiXCircle className="h-6 w-6 text-blue-50" />
+          <CancelIcon className="h-6 w-6 text-blue-50" />
         </button>
 
         <div className="relative aspect-video">
@@ -107,7 +107,7 @@ const MovieModal: FC = () => {
            <div className="absolute bottom-10 flex w-full items-center justify-between px-10">
             <div className="flex space-x-3">
               <button className="flex items-center gap-x-2 rounded bg-white px-8 text-xl font-bold text-black transition hover:bg-[#e6e6e6] cursor-not-allowed">
-                <FaPlay className="h-7 w-7 text-black" />
+                <PlayCircleIcon className="h-7 w-7 text-black" />
                 Play
               </button>
               {/* <button className="modalButton" onClick={handleList}>
@@ -123,7 +123,7 @@ const MovieModal: FC = () => {
             </div>
             <button onClick={() => setMuted(!muted)}>
               {muted ? (
-                <VolumeOffIcon className="h-6 w-6" />
+                <VolumeDownIcon className="h-6 w-6" />
               ) : (
                 <VolumeUpIcon className="h-6 w-6" />
               )}
