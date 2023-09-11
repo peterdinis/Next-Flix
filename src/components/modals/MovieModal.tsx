@@ -5,13 +5,13 @@ import { FiXCircle } from "react-icons/fi";
 import { modalState, movieState } from "@/recoil/atoms/modalAtom";
 import { Genre, Element, Movie } from "@/types/moviesTypes";
 import { useAuth } from "@/hooks/useAuth";
-import { DocumentData, collection, onSnapshot } from "firebase/firestore";
-import { db } from "@/firebase";
+import { DocumentData} from "firebase/firestore";
 import { Toaster } from "react-hot-toast";
 import ReactPlayer from 'react-player';
-import { CheckIcon, VolumeOffIcon, VolumeUpIcon } from '@heroicons/react/solid';
-import { ThumbUpIcon } from '@heroicons/react/outline';
+import VolumeDownIcon from '@mui/icons-material/VolumeDown';
+import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import { FaPlay } from 'react-icons/fa';
+import VolumeUpIcon from '@mui/icons-material/VolumeUp';
 
 const toastStyle = {
   background: "white",
@@ -123,7 +123,7 @@ const MovieModal: FC = () => {
             </div>
             <button onClick={() => setMuted(!muted)}>
               {muted ? (
-                <VolumeOffIcon className="h-6 w-6" />
+                <VolumeDownIcon className="h-6 w-6" />
               ) : (
                 <VolumeUpIcon className="h-6 w-6" />
               )}
