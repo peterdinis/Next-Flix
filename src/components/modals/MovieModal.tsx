@@ -1,17 +1,17 @@
 import { FC, Fragment, useState, useEffect } from "react";
 import MuiModal from "@mui/material/Modal";
 import { useRecoilState, useRecoilValue } from "recoil";
-import PlayCircleIcon from '@mui/icons-material/PlayCircle';
+import PlayCircleIcon from "@mui/icons-material/PlayCircle";
 import { modalState, movieState } from "@/recoil/atoms/modalAtom";
 import { Genre, Element, Movie } from "@/types/moviesTypes";
 import { useAuth } from "@/hooks/useAuth";
-import { DocumentData} from "firebase/firestore";
+import { DocumentData } from "firebase/firestore";
 import { Toaster } from "react-hot-toast";
-import ReactPlayer from 'react-player';
-import VolumeDownIcon from '@mui/icons-material/VolumeDown';
-import ThumbUpIcon from '@mui/icons-material/ThumbUp';
-import CancelIcon from '@mui/icons-material/Cancel';
-import VolumeUpIcon from '@mui/icons-material/VolumeUp';
+import ReactPlayer from "react-player";
+import VolumeDownIcon from "@mui/icons-material/VolumeDown";
+import ThumbUpIcon from "@mui/icons-material/ThumbUp";
+import CancelIcon from "@mui/icons-material/Cancel";
+import VolumeUpIcon from "@mui/icons-material/VolumeUp";
 
 const toastStyle = {
   background: "white",
@@ -69,7 +69,7 @@ const MovieModal: FC = () => {
     fetchMovie();
   }, [movie]);
 
-/*   useEffect(() => {
+  /*   useEffect(() => {
     if (currentUser) {
       return onSnapshot(
         collection(db, 'customers', currentUser.uid, 'myList'),
@@ -96,15 +96,15 @@ const MovieModal: FC = () => {
         </button>
 
         <div className="relative aspect-video">
-        <ReactPlayer
+          <ReactPlayer
             url={`https://www.youtube.com/watch?v=${trailer}`}
             width="100%"
             height="100%"
-            style={{ position: 'absolute', top: '0', left: '0' }}
+            style={{ position: "absolute", top: "0", left: "0" }}
             playing
             muted={muted}
           />
-           <div className="absolute bottom-10 flex w-full items-center justify-between px-10">
+          <div className="absolute bottom-10 flex w-full items-center justify-between px-10">
             <div className="flex space-x-3">
               <button className="flex items-center gap-x-2 rounded bg-white px-8 text-xl font-bold text-black transition hover:bg-[#e6e6e6] cursor-not-allowed">
                 <PlayCircleIcon className="h-7 w-7 text-black" />
@@ -136,29 +136,33 @@ const MovieModal: FC = () => {
               <p className="font-semibold text-green-400">
                 {movie?.vote_average * 10}% Match
               </p>
-              <p className="font-light">
+              <p className="text-blue-50  font-light">
                 {movie?.release_date || movie?.first_air_date}
               </p>
-              <div className="flex h-4 items-center justify-center rounded border border-white/40 px-1.5 text-xs">
+              <div className="text-blue-50  flex h-4 items-center justify-center rounded border border-white/40 px-1.5 text-xs">
                 HD
               </div>
             </div>
 
             <div className="flex flex-col gap-x-10 gap-y-4 font-light md:flex-row">
-              <p className="w-5/6">{movie?.overview}</p>
+              <p className="text-blue-50  w-5/6">{movie?.overview}</p>
               <div className="flex flex-col space-y-3 text-sm">
                 <div>
-                  <span className="text-[gray]">Genres: </span>
-                  {genres.map((genre) => genre.name).join(', ')}
+                  <span className="text-blue-50">Genres: </span>
+                  <span className="text-blue-50">
+                    {genres.map((genre) => genre.name).join(", ")}
+                  </span>
                 </div>
                 <div>
-                  <span className="text-[gray]">Original language: </span>
-                  {movie?.original_language}
+                  <span className="text-blue-50">Original language: </span>
+                  <span className="text-blue-50">
+                    {movie?.original_language}
+                  </span>
                 </div>
 
                 <div>
-                  <span className="text-[gray]">Total votes: </span>
-                  {movie?.vote_count}
+                  <span className="text-blue-50">Total votes: </span>
+                  <span className="text-blue-50">{movie?.vote_count}</span>
                 </div>
               </div>
             </div>
