@@ -1,6 +1,6 @@
 "use client";
 
-import { FC, useState } from "react";
+import { FC, useState, useCallback } from "react";
 import { usePaginatedSeries } from "@/api/queries/movies/moviesRequests";
 import { Series } from "@/types/moviesTypes";
 import ScrollToTop from "react-scroll-to-top";
@@ -11,10 +11,12 @@ import { Loader, SecondHeader, SecondNavbar } from "../../shared/index";
 import { useRecoilState } from "recoil";
 import { modalState, movieState } from "@/recoil/atoms/modalAtom";
 import { MovieModal } from "@/components/modals";
+import SearchIcon from "@mui/icons-material/Search";
+import { SearchDropdown } from "../../shared/index";
 
 const SeriesWrapper: FC = () => {
   const [pageIndex, setPageIndex] = useState<number>(1);
-
+  const [showSearchDropdown, setShowSearchDropdown] = useState(false);
   const { data, isFetching } = usePaginatedSeries(pageIndex);
 
   const goToNextPage = () => {
@@ -32,11 +34,22 @@ const SeriesWrapper: FC = () => {
   const [showModal, setShowModal] = useRecoilState(modalState);
   const [currentMovie, setCurrentMovie] = useRecoilState(movieState);
 
+  const toggleSearchDropdown = useCallback(() => {
+    setShowSearchDropdown((current) => !current);
+  }, []);
+
   return (
     <>
       <SecondNavbar />
       <ScrollToTop />
       <SecondHeader title="Netflix Series" />
+      <SearchIcon
+            className={`sm:w-6 sm:h-6 text-blue-50 cursor-pointer ${
+              showSearchDropdown ? "hidden" : "block"
+            }`}
+            onClick={toggleSearchDropdown}
+          />
+          {showSearchDropdown && <SearchDropdown />}
       <div className="flex flex-wrap justify-center mt-10">
         {data.results &&
           data.results.map((item: Series) => {
