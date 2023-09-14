@@ -12,6 +12,8 @@ import VolumeDownIcon from '@mui/icons-material/VolumeDown';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import CancelIcon from '@mui/icons-material/Cancel';
 import VolumeUpIcon from '@mui/icons-material/VolumeUp';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import CheckIcon from '@mui/icons-material/Check';
 
 const toastStyle = {
   background: "white",
@@ -69,20 +71,9 @@ const MovieModal: FC = () => {
     fetchMovie();
   }, [movie]);
 
-/*   useEffect(() => {
-    if (currentUser) {
-      return onSnapshot(
-        collection(db, 'customers', currentUser.uid, 'myList'),
-        (snapshot) => setMoviesInList(snapshot.docs)
-      );
-    }
-  }, [db, movie?.id]);
-
-  useEffect(() => {
-    setAddedToList(
-      moviesInList.findIndex((result) => result.data().id === movie?.id) !== -1
-    );
-  }, [moviesInList]); */
+  const handleList = () => {
+    console.log("Ping");
+  }
 
   return (
     <MuiModal open={showModal} onClose={handleClose}>
@@ -110,13 +101,13 @@ const MovieModal: FC = () => {
                 <PlayCircleIcon className="h-7 w-7 text-black" />
                 Play
               </button>
-              {/* <button className="modalButton" onClick={handleList}>
+              <button className="modalButton" onClick={handleList}>
                 {addedToList ? (
                   <CheckIcon className="h-7 w-7" />
                 ) : (
-                  <PlusIcon className="h-7 w-7" />
+                  <AddCircleOutlineIcon className="h-7 w-7" />
                 )}
-              </button> */}
+              </button>
               <button className="modalButton cursor-not-allowed">
                 <ThumbUpIcon className="h-7 w-7" />
               </button>
