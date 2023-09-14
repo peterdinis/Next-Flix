@@ -1,40 +1,38 @@
 import { FC, Fragment, useState, useEffect } from "react";
 import MuiModal from "@mui/material/Modal";
 import { useRecoilState, useRecoilValue } from "recoil";
-import PlayCircleIcon from '@mui/icons-material/PlayCircle';
+import PlayCircleIcon from "@mui/icons-material/PlayCircle";
 import { modalState, movieState } from "@/recoil/atoms/modalAtom";
 import { Genre, Element, Movie } from "@/types/moviesTypes";
 import { useAuth } from "@/hooks/useAuth";
-import { DocumentData} from "firebase/firestore";
-import { Toaster } from "react-hot-toast";
-import ReactPlayer from 'react-player';
-import VolumeDownIcon from '@mui/icons-material/VolumeDown';
-import ThumbUpIcon from '@mui/icons-material/ThumbUp';
-import CancelIcon from '@mui/icons-material/Cancel';
-import VolumeUpIcon from '@mui/icons-material/VolumeUp';
-
-const toastStyle = {
-  background: "white",
-  color: "black",
-  fontWeight: "bold",
-  fontSize: "1rem",
-  padding: "15px",
-  borderRadius: "9999px",
-  maxWidth: "1000px",
-};
+import {
+  DocumentData,
+  Unsubscribe,
+  collection,
+  deleteDoc,
+  doc,
+  onSnapshot,
+  setDoc,
+} from "firebase/firestore";
+import toast, { Toaster } from "react-hot-toast";
+import ReactPlayer from "react-player";
+import VolumeDownIcon from "@mui/icons-material/VolumeDown";
+import ThumbUpIcon from "@mui/icons-material/ThumbUp";
+import CancelIcon from "@mui/icons-material/Cancel";
+import VolumeUpIcon from "@mui/icons-material/VolumeUp";
+import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
+import CheckIcon from "@mui/icons-material/Check";
+import { db } from "@/firebase";
+import { toastStyle } from "@/utils/toastStyle";
 
 const MovieModal: FC = () => {
   const [showModal, setShdowModal] = useRecoilState(modalState);
-
   const [trailer, setTrailer] = useState("");
   const [genres, setGenres] = useState<Genre[]>([]);
   const movie = useRecoilValue(movieState);
-  const [addToList, setAddToList] = useState(false);
   const { currentUser } = useAuth();
   const [addedToList, setAddedToList] = useState<boolean>(false);
-  const [moviesInList, setMoviesInList] = useState<DocumentData[] | Movie[]>(
-    []
-  );
+  const [movies, setMovies] = useState<DocumentData[] | Movie[]>([]);
   const [muted, setMuted] = useState<boolean>(false);
 
   const handleClose = () => {
@@ -69,20 +67,86 @@ const MovieModal: FC = () => {
     fetchMovie();
   }, [movie]);
 
-/*   useEffect(() => {
+  useEffect(() => {
     if (currentUser) {
       return onSnapshot(
-        collection(db, 'customers', currentUser.uid, 'myList'),
-        (snapshot) => setMoviesInList(snapshot.docs)
+        collection(db, "customers", currentUser.uid, "myList"),
+        (snapshot) => setMovies(snapshot.docs)
       );
     }
   }, [db, movie?.id]);
 
   useEffect(() => {
-    setAddedToList(
-      moviesInList.findIndex((result) => result.data().id === movie?.id) !== -1
-    );
-  }, [moviesInList]); */
+    let unsubscribe: Unsubscribe;
+
+    if (currentUser && currentUser.email) {
+      const collectionRef = collection(
+        db,
+        "customers",
+        currentUser.email,
+        "myList"
+      );
+
+      unsubscribe = onSnapshot(collectionRef, (snapshot) => {
+        const movieList = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          data: doc.data(),
+        }));
+        setMovies(movieList);
+      });
+    }
+
+    return () => {
+      if (unsubscribe) {
+        unsubscribe();
+      }
+    };
+  }, [db, currentUser]);
+
+  useEffect(
+    () =>
+      setAddedToList(
+        movies.findIndex((result) => result.data().id === movie?.id) !== -1
+      ),
+    [movies]
+  );
+
+  useEffect(
+    () =>
+      setAddedToList(
+        movies.findIndex((result) => result.data().id === movie?.id) !== -1
+      ),
+    [movies]
+  );
+
+  const handleList = async () => {
+    if (addedToList) {
+      await deleteDoc(
+        doc(db, "customers", currentUser!.uid, "myList", movie?.id.toString()!)
+      );
+
+      toast(
+        `${movie?.title || movie?.original_name} has been removed from My List`,
+        {
+          duration: 8000,
+          style: toastStyle,
+        }
+      );
+    } else {
+      await setDoc(
+        doc(db, "customers", currentUser!.uid, "myList", movie?.id.toString()!),
+        { ...movie }
+      );
+
+      toast(
+        `${movie?.title || movie?.original_name} has been added to My List`,
+        {
+          duration: 8000,
+          style: toastStyle,
+        }
+      );
+    }
+  };
 
   return (
     <MuiModal open={showModal} onClose={handleClose}>
@@ -96,27 +160,27 @@ const MovieModal: FC = () => {
         </button>
 
         <div className="relative aspect-video">
-        <ReactPlayer
+          <ReactPlayer
             url={`https://www.youtube.com/watch?v=${trailer}`}
             width="100%"
             height="100%"
-            style={{ position: 'absolute', top: '0', left: '0' }}
+            style={{ position: "absolute", top: "0", left: "0" }}
             playing
             muted={muted}
           />
-           <div className="absolute bottom-10 flex w-full items-center justify-between px-10">
+          <div className="absolute bottom-10 flex w-full items-center justify-between px-10">
             <div className="flex space-x-3">
               <button className="flex items-center gap-x-2 rounded bg-white px-8 text-xl font-bold text-black transition hover:bg-[#e6e6e6] cursor-not-allowed">
                 <PlayCircleIcon className="h-7 w-7 text-black" />
                 Play
               </button>
-              {/* <button className="modalButton" onClick={handleList}>
+              <button className="modalButton" onClick={handleList}>
                 {addedToList ? (
                   <CheckIcon className="h-7 w-7" />
                 ) : (
-                  <PlusIcon className="h-7 w-7" />
+                  <AddCircleOutlineIcon className="h-7 w-7" />
                 )}
-              </button> */}
+              </button>
               <button className="modalButton cursor-not-allowed">
                 <ThumbUpIcon className="h-7 w-7" />
               </button>
@@ -149,7 +213,7 @@ const MovieModal: FC = () => {
               <div className="flex flex-col space-y-3 text-sm">
                 <div>
                   <span className="text-[gray]">Genres: </span>
-                  {genres.map((genre) => genre.name).join(', ')}
+                  {genres.map((genre) => genre.name).join(", ")}
                 </div>
                 <div>
                   <span className="text-[gray]">Original language: </span>
