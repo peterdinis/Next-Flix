@@ -5,8 +5,8 @@ import PlayCircleIcon from '@mui/icons-material/PlayCircle';
 import { modalState, movieState } from "@/recoil/atoms/modalAtom";
 import { Genre, Element, Movie } from "@/types/moviesTypes";
 import { useAuth } from "@/hooks/useAuth";
-import { DocumentData} from "firebase/firestore";
-import { Toaster } from "react-hot-toast";
+import { DocumentData, Unsubscribe, collection, deleteDoc, doc, onSnapshot, setDoc} from "firebase/firestore";
+import toast, { Toaster } from "react-hot-toast";
 import ReactPlayer from 'react-player';
 import VolumeDownIcon from '@mui/icons-material/VolumeDown';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
@@ -14,6 +14,7 @@ import CancelIcon from '@mui/icons-material/Cancel';
 import VolumeUpIcon from '@mui/icons-material/VolumeUp';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import CheckIcon from '@mui/icons-material/Check';
+import { db } from "@/firebase";
 
 const toastStyle = {
   background: "white",
@@ -37,6 +38,7 @@ const MovieModal: FC = () => {
   const [moviesInList, setMoviesInList] = useState<DocumentData[] | Movie[]>(
     []
   );
+  const [movies, setMovies] = useState<DocumentData[] | Movie[]>([])
   const [muted, setMuted] = useState<boolean>(false);
 
   const handleClose = () => {
@@ -71,9 +73,65 @@ const MovieModal: FC = () => {
     fetchMovie();
   }, [movie]);
 
-  const handleList = () => {
-    console.log("Ping");
+  useEffect(() => {
+    let unsubscribe: Unsubscribe; 
+  
+    if (currentUser && currentUser.email) {
+      const collectionRef = collection(db, 'customers', currentUser.email, 'myList');
+  
+      unsubscribe = onSnapshot(collectionRef, (snapshot) => {
+        const movieList = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          data: doc.data(),
+        }));
+        setMovies(movieList);
+      });
+    }
+  
+    return () => {
+      if (unsubscribe) {
+        unsubscribe();
+      }
+    };
+  }, [db, currentUser]);
+
+  useEffect(
+    () =>
+      setAddedToList(
+        movies.findIndex((result) => result.data().id === movie?.id) !== -1
+      ),
+    [movies]
+  )
+
+  const handleList = async () => {
+    if (addedToList) {
+      await deleteDoc(
+        doc(db, 'customers', currentUser!.uid, 'myList', movie?.id.toString()!)
+      )
+
+      toast(
+        `${movie?.title || movie?.original_name} has been removed from My List`,
+        {
+          duration: 8000,
+          style: toastStyle,
+        }
+      )
+    } else {
+      await setDoc(
+        doc(db, 'customers', currentUser!.uid, 'myList', movie?.id.toString()!),
+        { ...movie }
+      )
+
+      toast(
+        `${movie?.title || movie?.original_name} has been added to My List`,
+        {
+          duration: 8000,
+          style: toastStyle,
+        }
+      )
+    }
   }
+
 
   return (
     <MuiModal open={showModal} onClose={handleClose}>

@@ -9,7 +9,7 @@ const ListWrapper: FC = () => {
   return (
     <>
       <SecondNavbar />
-      <SecondHeader title="My List" />
+      <SecondHeader title="My Movie List" />
       <div className="text-white text-xl pt-4 font-thin">
         You don't have any movies in myList sections{" "}
         <SentimentDissatisfiedIcon />
