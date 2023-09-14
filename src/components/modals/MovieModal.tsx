@@ -25,18 +25,13 @@ import CheckIcon from "@mui/icons-material/Check";
 import { db } from "@/firebase";
 import { toastStyle } from "@/utils/toastStyle";
 
-
 const MovieModal: FC = () => {
   const [showModal, setShdowModal] = useRecoilState(modalState);
-
   const [trailer, setTrailer] = useState("");
   const [genres, setGenres] = useState<Genre[]>([]);
   const movie = useRecoilValue(movieState);
   const { currentUser } = useAuth();
   const [addedToList, setAddedToList] = useState<boolean>(false);
-  const [moviesInList, setMoviesInList] = useState<DocumentData[] | Movie[]>(
-    []
-  );
   const [movies, setMovies] = useState<DocumentData[] | Movie[]>([]);
   const [muted, setMuted] = useState<boolean>(false);
 
