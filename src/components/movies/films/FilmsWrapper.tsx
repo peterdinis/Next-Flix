@@ -7,7 +7,7 @@ import ScrollToTop from "react-scroll-to-top";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { TOTAL_FILMS_PAGE } from "@/constants/applictionConstants";
-import {Loader, SecondHeader, SecondNavbar} from "../../shared/index"
+import { Loader, SecondHeader, SecondNavbar } from "../../shared/index";
 import { useRecoilState } from "recoil";
 import { modalState, movieState } from "@/recoil/atoms/modalAtom";
 import { MovieModal } from "@/components/modals";
@@ -30,7 +30,7 @@ const FilmsWrapper: FC = () => {
   };
 
   const [showModal, setShowModal] = useRecoilState(modalState);
-  const [currentMovie, setCurrentMovie] = useRecoilState(movieState);
+  const [, setCurrentMovie] = useRecoilState(movieState);
 
   return (
     <>
@@ -42,7 +42,13 @@ const FilmsWrapper: FC = () => {
           data.results.map((item: Film) => {
             return (
               <div className="flex items-center space-x-0.5 overflow-x-scroll scrollbar-hide md:space-x-2.5 md:p-2">
-                <div className="relative h-28 min-w-[180px] cursor-pointer transition-transform duration-200 ease-out md:h-36 md:min-w-[260px] md:hover:scale-105">
+                <div
+                  onClick={() => {
+                    setShowModal(true);
+                    setCurrentMovie(item);
+                  }}
+                  className="relative h-28 min-w-[180px] cursor-pointer transition-transform duration-200 ease-out md:h-36 md:min-w-[260px] md:hover:scale-105"
+                >
                   <img
                     src={`https://image.tmdb.org/t/p/w500${
                       item.backdrop_path || item.poster_path
@@ -79,7 +85,7 @@ const FilmsWrapper: FC = () => {
           {isFetching ? <Loader color="red" /> : null}
         </div>
       </div>
-      
+
       {showModal && <MovieModal />}
     </>
   );
