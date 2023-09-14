@@ -30,7 +30,7 @@ const SeriesWrapper: FC = () => {
   };
 
   const [showModal, setShowModal] = useRecoilState(modalState);
-  const [currentMovie, setCurrentMovie] = useRecoilState(movieState);
+  const [, setCurrentMovie] = useRecoilState(movieState);
 
   return (
     <>
