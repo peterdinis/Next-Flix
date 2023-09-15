@@ -3,7 +3,7 @@
 import { FC, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/hooks/useAuth";
-import { images } from "./images";
+import { images } from "../../utils/images";
 
 interface UserCardProps {
   name: string;
