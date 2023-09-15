@@ -11,7 +11,9 @@ import { collection } from "firebase/firestore";
 const ListWrapper: FC = () => {
   const [myFilms, setMyFilms] = useState<Movie[] | null>(null);
 
-  const myFilmsRef = collection(db, "customers", "myList");
+  const myFilmsRef = collection(db, "customers");
+
+  console.log(myFilmsRef);
 
   return (
     <>
