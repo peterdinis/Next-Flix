@@ -61,7 +61,7 @@ const Navbar: FC = () => {
             <Link href="/new-popular">New & Popular</Link>
           </div>
           <div className="text-white font-bold cursor-default">
-            <Link href="/list">List</Link>
+            <Link href="/list">WatchList</Link>
           </div>
         </div>
         <div
