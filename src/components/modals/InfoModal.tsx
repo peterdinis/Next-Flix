@@ -22,7 +22,7 @@ import CancelIcon from "@mui/icons-material/Cancel";
 import VolumeUpIcon from "@mui/icons-material/VolumeUp";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import CheckIcon from "@mui/icons-material/Check";
-import { db } from "@/firebase";
+import { db } from "@/firebase/init";
 import { toastStyle } from "@/utils/toastStyle";
 
 const InfoModal: FC = () => {
