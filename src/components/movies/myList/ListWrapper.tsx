@@ -7,22 +7,15 @@ import SentimentDissatisfiedIcon from "@mui/icons-material/SentimentDissatisfied
 import { db } from "@/firebase";
 import { Movie } from "@/types/moviesTypes";
 import { collection } from "firebase/firestore";
+import NoFilms from "./NoFilms";
 
 const ListWrapper: FC = () => {
-  const [myFilms, setMyFilms] = useState<Movie[] | null>(null);
-
-  const myFilmsRef = collection(db, "customers");
-
-  console.log(myFilmsRef);
 
   return (
     <>
       <SecondNavbar />
       <SecondHeader title="My Movie List" />
-      <div className="text-white text-xl pt-4 font-thin">
-        You don't have any movies in myList sections{" "}
-        <SentimentDissatisfiedIcon />
-      </div>
+      <NoFilms />
     </>
   );
 };
