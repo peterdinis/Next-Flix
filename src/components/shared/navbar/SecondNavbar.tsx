@@ -4,14 +4,12 @@ import { FC, useCallback, useEffect, useState } from "react";
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { TOP_OFFSET } from "@/constants/applictionConstants";
 import Link from "next/link";
-import SearchIcon from "@mui/icons-material/Search";
-import { AccountMenu, MobileMenu, SearchDropdown } from "..";
+import { AccountMenu, MobileMenu } from "..";
 
 const SecondNavbar: FC = () => {
   const [showAccountMenu, setShowAccountMenu] = useState(false);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [showBackground, setShowBackground] = useState(false);
-  const [showSearchDropdown, setShowSearchDropdown] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,10 +25,6 @@ const SecondNavbar: FC = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
-
-  const toggleSearchDropdown = useCallback(() => {
-    setShowSearchDropdown((current) => !current);
   }, []);
 
   const toggleAccountMenu = useCallback(() => {
@@ -81,13 +75,6 @@ const SecondNavbar: FC = () => {
           <MobileMenu visible={showMobileMenu} />
         </div>
         <div className="flex flex-row ml-auto gap-7 items-center">
-          <SearchIcon
-            className={`sm:w-6 sm:h-6 text-blue-50 cursor-pointer ${
-              showSearchDropdown ? "hidden" : "block"
-            }`}
-            onClick={toggleSearchDropdown}
-          />
-          {showSearchDropdown && <SearchDropdown />}
           <div
             onClick={toggleAccountMenu}
             className="flex flex-row items-center gap-2 cursor-pointer relative"
