@@ -70,7 +70,7 @@ const InfoModal: FC = () => {
   useEffect(() => {
     if (currentUser) {
       return onSnapshot(
-        collection(db, "customers", currentUser.uid, "myList"),
+        collection(db, "watchList"),
         (snapshot) => setMovies(snapshot.docs)
       );
     }
