@@ -5,7 +5,7 @@ import SecondNavbar from "../../shared/navbar/SecondNavbar";
 import SecondHeader from "@/components/shared/SecondHeader";
 import NoFilms from "./NoFilms";
 import { collection, query, onSnapshot } from "firebase/firestore";
-import { db } from "@/firebase";
+import { db } from "@/firebase/init";
 
 const ListWrapper: FC = () => {
   const [myMoviesInList, setMyMoviesInList] = useState<any>();
