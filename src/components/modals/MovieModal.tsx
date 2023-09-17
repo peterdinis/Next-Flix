@@ -14,7 +14,7 @@ import {
   onSnapshot,
   setDoc,
 } from "firebase/firestore";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import ReactPlayer from "react-player";
 import VolumeDownIcon from "@mui/icons-material/VolumeDown";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
@@ -23,7 +23,6 @@ import VolumeUpIcon from "@mui/icons-material/VolumeUp";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import CheckIcon from "@mui/icons-material/Check";
 import { db } from "@/firebase/init";
-import { toastStyle } from "@/utils/toastStyle";
 
 const MovieModal: FC = () => {
   const [showModal, setShdowModal] = useRecoilState(modalState);
@@ -70,7 +69,8 @@ const MovieModal: FC = () => {
   useEffect(() => {
     if (currentUser) {
       return onSnapshot(
-        collection(db, "watchList"), 
+        collection(db, "watchList"),
+        /* collection(db, "customers", currentUser.uid, "myList"), */
         (snapshot) => setMovies(snapshot.docs)
       );
     }
@@ -80,12 +80,7 @@ const MovieModal: FC = () => {
     let unsubscribe: Unsubscribe;
 
     if (currentUser && currentUser.email) {
-      const collectionRef = collection(
-        db,
-        "customers",
-        currentUser.email,
-        "myList"
-      );
+      const collectionRef = collection(db, "watchList"),
 
       unsubscribe = onSnapshot(collectionRef, (snapshot) => {
         const movieList = snapshot.docs.map((doc) => ({
@@ -125,11 +120,10 @@ const MovieModal: FC = () => {
         doc(db, "customers", currentUser!.uid, "myList", movie?.id.toString()!)
       );
 
-      toast(
+      toast.success(
         `${movie?.title || movie?.original_name} has been removed from My List`,
         {
           duration: 8000,
-          style: toastStyle,
         }
       );
     } else {
@@ -138,11 +132,10 @@ const MovieModal: FC = () => {
         { ...movie }
       );
 
-      toast(
+      toast.success(
         `${movie?.title || movie?.original_name} has been added to My List`,
         {
           duration: 8000,
-          style: toastStyle,
         }
       );
     }
@@ -151,7 +144,6 @@ const MovieModal: FC = () => {
   return (
     <MuiModal open={showModal} onClose={handleClose}>
       <Fragment>
-        <Toaster position="bottom-center" />
         <button
           className="modalButton absolute right-5 top-5 !z-40 h-9 w-9 border-none bg-[#181818] hover:bg-[#181818]"
           onClick={handleClose}
