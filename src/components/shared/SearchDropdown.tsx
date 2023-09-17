@@ -1,5 +1,4 @@
 import { FC } from "react";
-import SearchIcon from "@mui/icons-material/Search";
 
 interface ISearchDropdownProps {
   value?: string;
@@ -17,9 +16,6 @@ const SearchDropdown: FC<ISearchDropdownProps> = ({value, changeValue}: ISearchD
         className="bg-transparent h-10 px-5 pr-10 rounded-full text-sm focus:outline-none text-blue-50"
         onChange={changeValue}
       />
-      <button type="submit" className="absolute right-0 top-0 mt-3 mr-4">
-        <SearchIcon className="mb-4 text-blue-50" />
-      </button>
     </div>
   );
 };
