@@ -1,10 +1,10 @@
 import {
   BASE_URL,
   API_KEY,
-  initialMovieData,
 } from "@/constants/applictionConstants";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import { initialMovieData } from "@/data/initialData";
 
 export function useAllMovies() {
   const url = `${BASE_URL}/trending/all/week?api_key=${API_KEY}&language=en-US`;

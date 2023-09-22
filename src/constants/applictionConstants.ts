@@ -11,8 +11,3 @@ export const TOTAL_SERIES_PAGE: number = 7729;
 export const TOTAL_FILMS_PAGE: number = 83;
 
 export const TOTAL_POPULAR_PAGE: number = 39829;
-
-export const initialMovieData = {
-    name: "Custom Name",
-    description: "Custom Description",
-}
