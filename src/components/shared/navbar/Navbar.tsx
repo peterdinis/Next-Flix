@@ -60,9 +60,6 @@ const Navbar: FC = () => {
           <div className="text-white font-bold cursor-default">
             <Link href="/new-popular">New & Popular</Link>
           </div>
-          <div className="text-white font-bold cursor-default">
-            <Link href="/list">List</Link>
-          </div>
         </div>
         <div
           onClick={toggleMobileMenu}

@@ -25,9 +25,6 @@ const MobileMenu: FC<MobileMenuProps> = ({ visible }: MobileMenuProps) => {
         <div className="px-3 text-center text-white hover:underline">
           <Link href="/new-popular">New & Popular</Link>
         </div>
-        <div className="px-3 text-center text-white hover:underline">
-          <Link href="/list">My List</Link>
-        </div>
       </div>
     </div>
   );
