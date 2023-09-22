@@ -41,7 +41,7 @@ const FilmsWrapper: FC = () => {
         {data.results &&
           data.results.map((item: Film) => {
             return (
-              <div className="flex items-center space-x-0.5 overflow-x-scroll scrollbar-hide md:space-x-2.5 md:p-2">
+              <div key={item.id} className="flex items-center space-x-0.5 overflow-x-scroll scrollbar-hide md:space-x-2.5 md:p-2">
                 <div
                   onClick={() => {
                     setShowModal(true);

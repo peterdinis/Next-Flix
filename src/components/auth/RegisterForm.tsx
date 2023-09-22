@@ -5,7 +5,9 @@ import { useRouter } from "next/navigation";
 import { Input } from "../shared";
 import Link from "next/link";
 import { useAuth } from "@/hooks/useAuth";
-import {toast} from "react-hot-toast";
+import { toast } from "react-hot-toast";
+import logo from "../../../public/images/logo.png";
+import Image from "next/image";
 
 const RegisterForm: FC = () => {
   const router = useRouter();
@@ -32,7 +34,7 @@ const RegisterForm: FC = () => {
     <div className="relative h-full w-full bg-[url('/images/mainhero.jpg')] bg-no-repeat bg-center bg-fixed bg-cover">
       <div className="bg-black w-full h-full lg:bg-opacity-50">
         <nav className="px-12 py-5">
-          <img src="/images/logo.png" className="h-12" alt="Logo" />
+          <Image height={50} src={logo} className="h-12" alt="Logo" />
         </nav>
         <div className="flex justify-center">
           <div className="bg-black bg-opacity-70 px-16 py-16 self-center mt-2 lg:w-2/5 lg:max-w-md rounded-md w-full">
@@ -66,7 +68,7 @@ const RegisterForm: FC = () => {
             <p className="text-neutral-500 mt-12">
               Already have an account?
               <span className="text-white ml-1 hover:underline cursor-pointer">
-               <Link href="/login"> Login</Link>
+                <Link href="/login"> Login</Link>
               </span>
               .
             </p>
@@ -85,6 +87,5 @@ const RegisterForm: FC = () => {
     </div>
   );
 };
-
 
 export default RegisterForm;

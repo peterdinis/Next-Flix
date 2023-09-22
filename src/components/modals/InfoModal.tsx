@@ -74,7 +74,7 @@ const InfoModal: FC = () => {
         (snapshot) => setMovies(snapshot.docs)
       );
     }
-  }, [db, movie?.id]);
+  }, [db, movie?.id, currentUser]);
 
   useEffect(() => {
     let unsubscribe: Unsubscribe;
@@ -101,14 +101,14 @@ const InfoModal: FC = () => {
         unsubscribe();
       }
     };
-  }, [db, currentUser]);
+  }, [currentUser]);
 
   useEffect(
     () =>
       setAddedToList(
         movies.findIndex((result) => result.data().id === movie?.id) !== -1
       ),
-    [movies]
+    [movies, movie?.id]
   );
 
   useEffect(
@@ -116,7 +116,7 @@ const InfoModal: FC = () => {
       setAddedToList(
         movies.findIndex((result) => result.data().id === movie?.id) !== -1
       ),
-    [movies]
+    [movies, movie?.id]
   );
 
   const handleList = async () => {
