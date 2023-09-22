@@ -9,7 +9,7 @@ import { Header } from "../shared";
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 interface IMovieRowProps {
   title: string;
-  movies: Movie[] | DocumentData[] | any; // TODO: Update typing later
+  movies: Movie[] | DocumentData[] | any;
 }
 
 const MovieRow: FC<IMovieRowProps> = ({ title, movies }: IMovieRowProps) => {
