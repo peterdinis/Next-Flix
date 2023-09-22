@@ -1,15 +1,22 @@
-import { FC } from "react";
+import { ChangeEvent, FC } from "react";
 
 interface InputProps {
   id: string;
   value: string;
   type?: string;
   label: string;
-  onChange: any;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   placeholder?: string;
 }
 
-const Input: FC<InputProps> = ({ id, value, onChange, type, label, placeholder }: InputProps) => {
+const Input: FC<InputProps> = ({
+  id,
+  value,
+  onChange,
+  type,
+  label,
+  placeholder,
+}: InputProps) => {
   return (
     <div className="relative">
       <input
