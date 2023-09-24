@@ -18,7 +18,7 @@ const LoginForm: FC = () => {
     password: "",
   });
 
-  const { login, signInWithGoogle } = useAuth();
+  const { login } = useAuth();
 
   const loginUser = async () => {
     try {

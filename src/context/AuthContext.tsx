@@ -6,8 +6,6 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   onAuthStateChanged,
-  signInWithPopup,
-  GoogleAuthProvider,
   signOut,
   User,
 } from "firebase/auth";
@@ -54,15 +52,9 @@ const AuthContextProvider: FC<AuthProviderProps> = ({ children }) => {
     return signOut(auth);
   }
 
-  function signInWithGoogle() {
-    const provider = new GoogleAuthProvider();
-    return signInWithPopup(auth, provider);
-  }
-
   const value: AuthContextType = {
-    currentUser,
-    signInWithGoogle,
     login,
+    currentUser,
     register,
     logout,
   };
