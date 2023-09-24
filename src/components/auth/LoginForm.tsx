@@ -6,7 +6,6 @@ import Link from "next/link";
 import { useAuth } from "@/hooks/useAuth";
 import { toast } from "react-hot-toast";
 import Cookie from "js-cookie";
-import GoogleIcon from '@mui/icons-material/Google';
 import { Input } from "../shared";
 import logo from "../../../public/images/logo.png"
 import Image from "next/image";
@@ -32,13 +31,6 @@ const LoginForm: FC = () => {
       toast.error("Login failed. Please check your credentials.");
       router.push("/login");
     }
-  };
-
-  const loginWithGoogle = async () => {
-    signInWithGoogle();
-    setTimeout(() => {
-      router.push("/profile");
-    }, 10000);
   };
 
   return (
@@ -82,16 +74,6 @@ const LoginForm: FC = () => {
                 <Link href="/register">Register here</Link>
               </span>
               .
-            </p>
-            <p className="mt-12">
-              <button
-                onClick={loginWithGoogle}
-                type="button"
-                className="text-white bg-[#4285F4] hover:bg-[#4285F4]/90 focus:ring-4 focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#4285F4]/55 mr-2 mb-2"
-              >
-                <GoogleIcon className="mr-2 -ml-1 w-4 h-4" />
-                Sign in with Google
-              </button>
             </p>
           </div>
         </div>
