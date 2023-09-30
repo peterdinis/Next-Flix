@@ -40,7 +40,7 @@ NEXT_PUBLIC_FIREBASE_MESSAGINGSENDER_ID
 NEXT_PUBLIC_FIREBASE_APP_ID
 NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
 
-1. TMDB API
+2. TMDB API
 
 - create account and tmdb api and from settings copy information about api key and access token and update your env local
 
